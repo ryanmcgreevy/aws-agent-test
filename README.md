@@ -1,0 +1,197 @@
+# AWS Strands + AgentCore Sandbox
+
+This repository is a **personal testing and learning project** for:
+
+- [AWS Strands SDK](https://strandsagents.com/)
+- Amazon Bedrock AgentCore Runtime
+
+It is intentionally small and practical, designed to help me learn how to:
+
+1. Build a basic Strands agent in Python
+2. Wrap it with FastAPI using an HTTP runtime contract
+3. Containerize for ARM64
+4. Deploy to AgentCore Runtime
+5. Invoke the deployed endpoint from the AWS CLI
+
+## Project Status
+
+This project is currently functioning as a working end-to-end learning setup:
+
+- Local API app runs via FastAPI
+- ARM64 image builds and pushes to ECR
+- AgentCore Runtime deploys and endpoint can be invoked
+
+## Important Note
+
+This is **not production-ready** code. It is for experimentation, validation, and learning AWS deployment workflows.
+
+## Repository Layout
+
+- `agent.py`: Defines the Strands agent and `run()` function
+- `main.py`: FastAPI app exposing health and invoke routes
+- `requirements.txt`: Python dependencies
+- `Dockerfile`: ARM64 container build for AgentCore
+- `deploy.sh`: Build + push + deploy helper script
+- `invoke.sh`: Quick test invoke script for deployed runtime
+- `.env.example`: Environment variable template
+
+## Prerequisites
+
+- Python 3.12+
+- AWS CLI v2 configured with credentials
+- Docker with `buildx`
+- Bedrock model access enabled in your AWS region
+- IAM execution role for AgentCore runtime with at least:
+  - `bedrock:InvokeModel`
+  - `bedrock:InvokeModelWithResponseStream`
+  - `ecr:GetAuthorizationToken`
+  - `ecr:BatchGetImage`
+  - `ecr:GetDownloadUrlForLayer`
+
+## Execution Role IAM Permissions
+
+The runtime execution role (for example `AgentCoreExecutionRole`) should include these permissions.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowBedrockModelInvoke",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AllowEcrAuthToken",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:GetAuthorizationToken"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AllowEcrImagePull",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:BatchGetImage",
+        "ecr:GetDownloadUrlForLayer"
+      ],
+      "Resource": "arn:aws:ecr:<region>:<account-id>:repository/<repo-name>"
+    }
+  ]
+}
+```
+
+For least privilege, scope ECR permissions to the exact repository and scope Bedrock permissions to only the model or inference profile ARNs you use.
+
+## Local Development
+
+Create and activate a virtual environment, then install dependencies:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Run locally:
+
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8080
+```
+
+Quick local check:
+
+```bash
+curl -s -X POST http://localhost:8080/invoke \
+  -H "Content-Type: application/json" \
+  -d '{"input":"what is 2+2?"}'
+```
+
+## Configure Environment
+
+Copy and edit env values:
+
+```bash
+cp .env.example .env
+```
+
+Set required fields in `.env`:
+
+- `AWS_ACCOUNT_ID`
+- `AWS_REGION`
+- `ECR_REPO_NAME`
+- `AGENTCORE_EXECUTION_ROLE_ARN`
+- `AGENT_RUNTIME_NAME`
+
+After deployment, also set either:
+
+- `AGENT_RUNTIME_ID` (recommended), or
+- `AGENT_RUNTIME_ARN`
+
+And endpoint qualifier:
+
+- `AGENT_ENDPOINT_NAME` (default `prod`)
+
+## Deploy to AgentCore
+
+Run:
+
+```bash
+./deploy.sh
+```
+
+What `deploy.sh` does:
+
+1. Loads `.env`
+2. Verifies AWS CLI and Docker buildx
+3. Ensures ECR repo exists
+4. Logs Docker into ECR
+5. Builds and pushes ARM64 image
+6. Creates AgentCore runtime with HTTP protocol
+7. Waits for runtime `READY`
+8. Creates endpoint (name `prod`)
+
+## Invoke Deployed Runtime
+
+Use:
+
+```bash
+./invoke.sh "what is 2+2?"
+```
+
+This script:
+
+- Builds a JSON payload (`{"input": "..."}`)
+- Calls `aws bedrock-agentcore invoke-agent-runtime`
+- Prints response body
+
+## Runtime Behavior Notes
+
+- Endpoint network mode can be `PUBLIC` or `VPC` (set via deployment config)
+- Even with `PUBLIC` network mode, requests still require AWS auth + IAM permission to invoke
+- Runtime sessions have lifecycle controls (`idleRuntimeSessionTimeout`, `maxLifetime`) that can be tuned for cost/latency tradeoffs
+
+## Learning Goals / Future Ideas
+
+- Add tool usage in Strands (`strands-agents-tools`)
+- Add CI smoke test for endpoint readiness + invoke success
+- Add structured logging and basic observability checks
+- Add least-privilege IAM policy docs for runtime and caller
+
+## Cleanup (Optional)
+
+If you want to tear down resources later, remove:
+
+- AgentCore runtime endpoint
+- AgentCore runtime
+- ECR repository/images
+- IAM role/policies created for this test
+
+---
+
+Personal note: this repository exists to learn by doing, iterate quickly, and document practical AWS Strands + AgentCore deployment patterns.
