@@ -1,0 +1,35 @@
+version: 0.2
+# Runs on ARM_CONTAINER (Graviton) — builds ARM64 Docker images natively.
+# No QEMU emulation required unlike the local deploy.sh approach.
+#
+# Environment variables injected by CodeBuild project (set in pipeline.yml):
+#   ECR_REPO_URI — full ECR repository URI
+
+phases:
+  pre_build:
+    commands:
+      - echo "==> Logging in to ECR"
+      - ECR_REGISTRY=$(echo "$ECR_REPO_URI" | cut -d/ -f1)
+      - aws ecr get-login-password --region "$AWS_DEFAULT_REGION" | docker login --username AWS --password-stdin "$ECR_REGISTRY"
+      - IMAGE_TAG=$(echo "$CODEBUILD_RESOLVED_SOURCE_VERSION" | cut -c 1-7)
+      - IMAGE_URI="$ECR_REPO_URI:$IMAGE_TAG"
+      - LATEST_URI="$ECR_REPO_URI:latest"
+      - echo "Image URI = $IMAGE_URI"
+
+  build:
+    commands:
+      - echo "==> Building ARM64 Docker image"
+      - docker build -t "$IMAGE_URI" -t "$LATEST_URI" .
+
+  post_build:
+    commands:
+      - echo "==> Pushing images to ECR"
+      - docker push "$IMAGE_URI"
+      - docker push "$LATEST_URI"
+      - echo "$IMAGE_URI" > imageUri.txt
+      - echo "==> Build complete — $IMAGE_URI"
+
+artifacts:
+  # imageUri.txt is passed as BuildArtifact to the deploy stage.
+  files:
+    - imageUri.txt

@@ -1,0 +1,116 @@
+version: 0.2
+# Deploy stage buildspec.
+#
+# Input artifacts (set by pipeline.yml):
+#   Primary source : SourceArtifact  — repo contents; this file lives here
+#   Secondary source: BuildArtifact  — imageUri.txt from the build stage,
+#                     available at $CODEBUILD_SRC_DIR_BuildArtifact/
+#
+# Environment variables injected by the CodeBuild project (set in pipeline.yml):
+#   ECR_REPO_URI         — full ECR repository URI
+#   EXECUTION_ROLE_ARN   — AgentCore execution role ARN
+#   AGENT_RUNTIME_NAME   — AgentCore runtime name (matches naming constraints)
+#   AGENT_NETWORK_MODE   — PUBLIC or VPC
+#   AGENT_ENDPOINT_NAME  — endpoint qualifier name (e.g. prod)
+#   SSM_RUNTIME_ID_PATH  — SSM parameter path storing the runtime ID
+#
+# First-run logic:
+#   SSM value == "NONE"  → create-agent-runtime, store ID, create-endpoint
+#   SSM value != "NONE"  → update-agent-runtime, update-endpoint to latest version
+
+phases:
+  pre_build:
+    commands:
+      - echo "==> Reading image URI from build artifact"
+      - IMAGE_URI=$(cat "$CODEBUILD_SRC_DIR_BuildArtifact/imageUri.txt")
+      - echo "Deploying image $IMAGE_URI"
+      - echo "==> Reading runtime ID from SSM ($SSM_RUNTIME_ID_PATH)"
+      - RUNTIME_ID=$(aws ssm get-parameter --name "$SSM_RUNTIME_ID_PATH" --query Parameter.Value --output text)
+      - echo "Current runtime ID = $RUNTIME_ID"
+
+  build:
+    commands:
+      # ── Create or update the AgentCore runtime ─────────────────────────────
+      - |
+        if [[ "$RUNTIME_ID" == "NONE" ]]; then
+          echo "==> First run: creating AgentCore runtime"
+          RESPONSE=$(aws bedrock-agentcore-control create-agent-runtime \
+            --agent-runtime-name "$AGENT_RUNTIME_NAME" \
+            --agent-runtime-artifact "{\"containerConfiguration\":{\"containerUri\":\"$IMAGE_URI\"}}" \
+            --role-arn "$EXECUTION_ROLE_ARN" \
+            --network-configuration "{\"networkMode\":\"$AGENT_NETWORK_MODE\"}" \
+            --protocol-configuration '{"serverProtocol":"HTTP"}' \
+            --region "$AWS_DEFAULT_REGION" \
+            --output json)
+          RUNTIME_ID=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['agentRuntimeId'])")
+          echo "Runtime created: $RUNTIME_ID"
+          aws ssm put-parameter \
+            --name "$SSM_RUNTIME_ID_PATH" \
+            --value "$RUNTIME_ID" \
+            --type String \
+            --overwrite \
+            --region "$AWS_DEFAULT_REGION"
+        else
+          echo "==> Subsequent run: updating AgentCore runtime $RUNTIME_ID"
+          aws bedrock-agentcore-control update-agent-runtime \
+            --agent-runtime-id "$RUNTIME_ID" \
+            --agent-runtime-artifact "{\"containerConfiguration\":{\"containerUri\":\"$IMAGE_URI\"}}" \
+            --role-arn "$EXECUTION_ROLE_ARN" \
+            --network-configuration "{\"networkMode\":\"$AGENT_NETWORK_MODE\"}" \
+            --protocol-configuration '{"serverProtocol":"HTTP"}' \
+            --region "$AWS_DEFAULT_REGION"
+        fi
+
+      # ── Wait for runtime to become READY ──────────────────────────────────
+      - |
+        echo "==> Waiting for runtime READY (max 10 minutes)"
+        STATUS="UNKNOWN"
+        for i in $(seq 1 60); do
+          STATUS=$(aws bedrock-agentcore-control get-agent-runtime \
+            --agent-runtime-id "$RUNTIME_ID" \
+            --region "$AWS_DEFAULT_REGION" \
+            --query status \
+            --output text)
+          echo "Status: $STATUS (attempt $i/60)"
+          [[ "$STATUS" == "READY" ]] && break
+          if [[ "$STATUS" == "FAILED" ]]; then
+            echo "Runtime entered FAILED state. Aborting."
+            exit 1
+          fi
+          sleep 10
+        done
+        if [[ "$STATUS" != "READY" ]]; then
+          echo "Runtime did not become READY in time. Aborting."
+          exit 1
+        fi
+
+      # ── Create or update the endpoint ─────────────────────────────────────
+      - |
+        ENDPOINT_STATUS=$(aws bedrock-agentcore-control get-agent-runtime-endpoint \
+          --agent-runtime-id "$RUNTIME_ID" \
+          --endpoint-name "$AGENT_ENDPOINT_NAME" \
+          --region "$AWS_DEFAULT_REGION" \
+          --query status \
+          --output text 2>/dev/null || echo "NOT_FOUND")
+
+        if [[ "$ENDPOINT_STATUS" == "NOT_FOUND" ]]; then
+          echo "==> Creating endpoint $AGENT_ENDPOINT_NAME"
+          aws bedrock-agentcore-control create-agent-runtime-endpoint \
+            --agent-runtime-id "$RUNTIME_ID" \
+            --name "$AGENT_ENDPOINT_NAME" \
+            --region "$AWS_DEFAULT_REGION"
+        else
+          echo "==> Updating endpoint $AGENT_ENDPOINT_NAME to latest runtime version"
+          LATEST_VERSION=$(aws bedrock-agentcore-control get-agent-runtime \
+            --agent-runtime-id "$RUNTIME_ID" \
+            --region "$AWS_DEFAULT_REGION" \
+            --query agentRuntimeVersion \
+            --output text)
+          aws bedrock-agentcore-control update-agent-runtime-endpoint \
+            --agent-runtime-id "$RUNTIME_ID" \
+            --endpoint-name "$AGENT_ENDPOINT_NAME" \
+            --agent-runtime-version "$LATEST_VERSION" \
+            --region "$AWS_DEFAULT_REGION"
+        fi
+
+      - echo "==> Deployment complete"

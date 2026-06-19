@@ -1,0 +1,564 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >-
+  CI/CD pipeline for the aws-agent-test Strands + AgentCore sandbox.
+  Creates ECR, IAM roles, SSM parameter, CodeStar GitHub connection,
+  two CodeBuild projects, and a V2 CodePipeline with file-path triggers.
+  All resources are tagged project:aws-agent-test.
+  IMPORTANT: After deploying this stack, open the CodeStar Connections console
+  and authorize the GitHub App connection before running the pipeline.
+
+# ── Parameters ────────────────────────────────────────────────────────────────
+
+Parameters:
+
+  GitHubOwner:
+    Type: String
+    Default: ryanmcgreevy
+    Description: GitHub account or organization that owns the repository.
+
+  GitHubRepo:
+    Type: String
+    Default: aws-agent-test
+    Description: GitHub repository name (without owner prefix).
+
+  GitHubBranch:
+    Type: String
+    Default: master
+    Description: Branch that triggers the pipeline.
+
+  EcrRepoName:
+    Type: String
+    Default: my-strands-agent
+    Description: ECR repository name to create and push agent images to.
+
+  AgentRuntimeName:
+    Type: String
+    Default: my_strands_agent
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9_]{0,47}'
+    Description: >-
+      AgentCore runtime name. Must start with a letter and contain only
+      letters, digits, and underscores (max 48 chars).
+
+  AgentEndpointName:
+    Type: String
+    Default: prod
+    Description: Name of the AgentCore runtime endpoint.
+
+  BedrockModelId:
+    Type: String
+    Default: us.anthropic.claude-sonnet-4-6
+    Description: >-
+      Bedrock model ID used by the agent. Cross-region inference profiles
+      (us.* prefix) are recommended for higher availability.
+
+  AgentNetworkMode:
+    Type: String
+    Default: PUBLIC
+    AllowedValues:
+      - PUBLIC
+      - VPC
+    Description: >-
+      AgentCore runtime network mode. Use PUBLIC for internet-accessible
+      (still IAM-auth protected). Use VPC for private networking.
+
+# ── Resources ─────────────────────────────────────────────────────────────────
+
+Resources:
+
+  # ── S3 artifact bucket ──────────────────────────────────────────────────────
+
+  ArtifactBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'agent-pipeline-artifacts-${AWS::AccountId}-${AWS::Region}'
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  ArtifactBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ArtifactBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: '*'
+            Action: 's3:*'
+            Resource:
+              - !GetAtt ArtifactBucket.Arn
+              - !Sub '${ArtifactBucket.Arn}/*'
+            Condition:
+              Bool:
+                'aws:SecureTransport': 'false'
+
+  # ── ECR repository ──────────────────────────────────────────────────────────
+
+  EcrRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: !Ref EcrRepoName
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  # ── IAM: AgentCore execution role ───────────────────────────────────────────
+  # This role is assumed by AgentCore Runtime when running the container.
+  # It grants the container permission to call Bedrock and pull from ECR.
+
+  AgentCoreExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: AgentCoreExecutionRole
+      Description: Execution role assumed by AgentCore Runtime to run the Strands agent container.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: bedrock-agentcore.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                'aws:SourceAccount': !Ref AWS::AccountId
+      Policies:
+        - PolicyName: BedrockInvoke
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: AllowBedrockModelInvoke
+                Effect: Allow
+                Action:
+                  - bedrock:InvokeModel
+                  - bedrock:InvokeModelWithResponseStream
+                Resource: '*'
+                # Tighten to specific model ARNs in production:
+                # Resource: !Sub 'arn:aws:bedrock:*::foundation-model/${BedrockModelId}'
+        - PolicyName: EcrPull
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: AllowEcrAuthToken
+                Effect: Allow
+                Action: ecr:GetAuthorizationToken
+                Resource: '*'
+              - Sid: AllowEcrImagePull
+                Effect: Allow
+                Action:
+                  - ecr:BatchGetImage
+                  - ecr:GetDownloadUrlForLayer
+                Resource: !GetAtt EcrRepository.Arn
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  # ── IAM: CodeBuild build role ────────────────────────────────────────────────
+  # Used by the build CodeBuild project to push Docker images to ECR.
+
+  CodeBuildBuildRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub 'agent-codebuild-build-role-${AWS::Region}'
+      Description: Service role for the agent Docker build CodeBuild project.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codebuild.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: EcrPush
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: AllowEcrAuthToken
+                Effect: Allow
+                Action: ecr:GetAuthorizationToken
+                Resource: '*'
+              - Sid: AllowEcrPush
+                Effect: Allow
+                Action:
+                  - ecr:BatchCheckLayerAvailability
+                  - ecr:GetDownloadUrlForLayer
+                  - ecr:BatchGetImage
+                  - ecr:InitiateLayerUpload
+                  - ecr:UploadLayerPart
+                  - ecr:CompleteLayerUpload
+                  - ecr:PutImage
+                Resource: !GetAtt EcrRepository.Arn
+        - PolicyName: ArtifactBucketAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                  - s3:PutObject
+                Resource: !Sub '${ArtifactBucket.Arn}/*'
+        - PolicyName: CloudWatchLogs
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*'
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  # ── IAM: CodeBuild deploy role ───────────────────────────────────────────────
+  # Used by the deploy CodeBuild project to call AgentCore control plane APIs.
+
+  CodeBuildDeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub 'agent-codebuild-deploy-role-${AWS::Region}'
+      Description: Service role for the agent AgentCore deploy CodeBuild project.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codebuild.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: AgentCoreControlPlane
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: AllowAgentCoreOperations
+                Effect: Allow
+                Action: bedrock-agentcore:*
+                Resource: '*'
+                # Tighten to specific runtime ARN after first deployment:
+                # Resource: !Sub 'arn:aws:bedrock-agentcore:${AWS::Region}:${AWS::AccountId}:runtime/*'
+        - PolicyName: PassAgentCoreExecutionRole
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: iam:PassRole
+                Resource: !GetAtt AgentCoreExecutionRole.Arn
+                Condition:
+                  StringEquals:
+                    'iam:PassedToService': bedrock-agentcore.amazonaws.com
+        - PolicyName: SSMRuntimeId
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ssm:GetParameter
+                  - ssm:PutParameter
+                Resource: !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/agent/*'
+        - PolicyName: ArtifactBucketRead
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                Resource: !Sub '${ArtifactBucket.Arn}/*'
+        - PolicyName: CloudWatchLogs
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*'
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  # ── IAM: CodePipeline role ───────────────────────────────────────────────────
+
+  CodePipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub 'agent-codepipeline-role-${AWS::Region}'
+      Description: Service role for the agent CodePipeline.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codepipeline.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: CodeBuildAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - codebuild:StartBuild
+                  - codebuild:StopBuild
+                  - codebuild:BatchGetBuilds
+                Resource:
+                  - !GetAtt CodeBuildBuildProject.Arn
+                  - !GetAtt CodeBuildDeployProject.Arn
+        - PolicyName: CodeStarConnection
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: codestar-connections:UseConnection
+                Resource: !Ref GitHubConnection
+        - PolicyName: ArtifactBucketAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                  - s3:PutObject
+                  - s3:GetBucketVersioning
+                Resource:
+                  - !GetAtt ArtifactBucket.Arn
+                  - !Sub '${ArtifactBucket.Arn}/*'
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  # ── SSM Parameter: runtime ID ────────────────────────────────────────────────
+  # Initialized to NONE. The deploy buildspec writes the real ID after first run.
+
+  SSMRuntimeId:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: /agent/runtime-id
+      Type: String
+      Value: NONE
+      Description: >-
+        AgentCore runtime ID. Set to NONE initially; updated by the deploy
+        buildspec after the first pipeline run creates the runtime.
+      Tags:
+        project: aws-agent-test
+
+  # ── CodeStar Connection ──────────────────────────────────────────────────────
+  # Created in PENDING state. YOU MUST manually authorize this in the console:
+  # AWS Console → CodePipeline → Settings → Connections → select connection → Update pending connection
+
+  GitHubConnection:
+    Type: AWS::CodeStarConnections::Connection
+    Properties:
+      ConnectionName: !Sub '${GitHubRepo}-github-connection'
+      ProviderType: GitHub
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  # ── CodeBuild: build project ─────────────────────────────────────────────────
+  # ARM_CONTAINER on Graviton → native ARM64 Docker builds, no QEMU needed.
+
+  CodeBuildBuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Sub '${GitHubRepo}-build'
+      Description: Builds and pushes the ARM64 Docker image for the Strands agent.
+      ServiceRole: !GetAtt CodeBuildBuildRole.Arn
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: buildspec-build.yml
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        Type: ARM_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/amazonlinux2-aarch64-standard:3.0
+        PrivilegedMode: true  # Required for Docker daemon access
+        EnvironmentVariables:
+          - Name: ECR_REPO_URI
+            Value: !Sub '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${EcrRepoName}'
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+          GroupName: !Sub '/aws/codebuild/${GitHubRepo}-build'
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  # ── CodeBuild: deploy project ────────────────────────────────────────────────
+  # Calls the AgentCore control plane to create or update the runtime and endpoint.
+
+  CodeBuildDeployProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Sub '${GitHubRepo}-deploy'
+      Description: Creates or updates the AgentCore runtime and endpoint for the Strands agent.
+      ServiceRole: !GetAtt CodeBuildDeployRole.Arn
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: buildspec-deploy.yml
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        Type: ARM_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/amazonlinux2-aarch64-standard:3.0
+        PrivilegedMode: false
+        EnvironmentVariables:
+          - Name: ECR_REPO_URI
+            Value: !Sub '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${EcrRepoName}'
+          - Name: EXECUTION_ROLE_ARN
+            Value: !GetAtt AgentCoreExecutionRole.Arn
+          - Name: AGENT_RUNTIME_NAME
+            Value: !Ref AgentRuntimeName
+          - Name: AGENT_NETWORK_MODE
+            Value: !Ref AgentNetworkMode
+          - Name: AGENT_ENDPOINT_NAME
+            Value: !Ref AgentEndpointName
+          - Name: SSM_RUNTIME_ID_PATH
+            Value: /agent/runtime-id
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+          GroupName: !Sub '/aws/codebuild/${GitHubRepo}-deploy'
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  # ── CodePipeline ─────────────────────────────────────────────────────────────
+
+  AgentPipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      Name: !Sub '${GitHubRepo}-pipeline'
+      RoleArn: !GetAtt CodePipelineRole.Arn
+      PipelineType: V2
+      ArtifactStore:
+        Type: S3
+        Location: !Ref ArtifactBucket
+
+      # Git-based trigger: only start the pipeline when commits touch
+      # agent source files or Docker/buildspec configuration.
+      Triggers:
+        - ProviderType: CodeStarSourceConnection
+          GitConfiguration:
+            SourceActionName: Source
+            Push:
+              - Branches:
+                  Includes:
+                    - !Ref GitHubBranch
+                FilePaths:
+                  Includes:
+                    - agent.py
+                    - main.py
+                    - requirements.txt
+                    - Dockerfile
+                    - .dockerignore
+                    - buildspec-build.yml
+                    - buildspec-deploy.yml
+
+      Stages:
+        # Source: pull from GitHub via CodeStar Connection
+        - Name: Source
+          Actions:
+            - Name: Source
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Provider: CodeStarSourceConnection
+                Version: '1'
+              Configuration:
+                ConnectionArn: !Ref GitHubConnection
+                FullRepositoryId: !Sub '${GitHubOwner}/${GitHubRepo}'
+                BranchName: !Ref GitHubBranch
+                OutputArtifactFormat: CODE_ZIP
+                DetectChanges: 'false'  # Pipeline-level triggers handle detection
+              OutputArtifacts:
+                - Name: SourceArtifact
+              RunOrder: 1
+
+        # Build: ARM64 Docker image → ECR, passes imageUri.txt downstream
+        - Name: Build
+          Actions:
+            - Name: Build
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: '1'
+              Configuration:
+                ProjectName: !Ref CodeBuildBuildProject
+              InputArtifacts:
+                - Name: SourceArtifact
+              OutputArtifacts:
+                - Name: BuildArtifact
+              RunOrder: 1
+
+        # Deploy: create or update AgentCore runtime + endpoint
+        - Name: Deploy
+          Actions:
+            - Name: Deploy
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: '1'
+              Configuration:
+                ProjectName: !Ref CodeBuildDeployProject
+                # SourceArtifact is primary so buildspec-deploy.yml is resolved from repo root.
+                # BuildArtifact is secondary; accessible at $CODEBUILD_SRC_DIR_BuildArtifact.
+                PrimarySource: SourceArtifact
+              InputArtifacts:
+                - Name: SourceArtifact
+                - Name: BuildArtifact
+              RunOrder: 1
+
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+# ── Outputs ───────────────────────────────────────────────────────────────────
+
+Outputs:
+
+  PipelineConsoleUrl:
+    Description: AWS Console URL for the CodePipeline.
+    Value: !Sub 'https://${AWS::Region}.console.aws.amazon.com/codesuite/codepipeline/pipelines/${AgentPipeline}/view'
+
+  EcrRepositoryUri:
+    Description: ECR repository URI for the agent Docker image.
+    Value: !Sub '${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${EcrRepoName}'
+
+  GitHubConnectionArn:
+    Description: >-
+      CodeStar Connection ARN. REQUIRED ACTION: go to the CodeStar Connections
+      console and authorize this connection before running the pipeline.
+      AWS Console → CodePipeline → Settings → Connections → select connection → Update pending connection.
+    Value: !Ref GitHubConnection
+
+  AgentCoreExecutionRoleArn:
+    Description: ARN of the IAM role assumed by AgentCore Runtime.
+    Value: !GetAtt AgentCoreExecutionRole.Arn
+
+  SSMRuntimeIdPath:
+    Description: SSM parameter path storing the AgentCore runtime ID (updated by first pipeline run).
+    Value: !Ref SSMRuntimeId
