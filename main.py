@@ -36,7 +36,16 @@ app = FastAPI(title="Strands Agent", version="0.1.0")
 # ── Request / Response models ────────────────────────────────────────────────
 
 class InvokeRequest(BaseModel):
-    input: str
+    """Accept both 'input' and 'prompt' keys for compatibility with invoke.sh and AgentCore playground."""
+    input: str | None = None
+    prompt: str | None = None
+
+    def get_text(self) -> str:
+        """Extract the user input from either 'input' or 'prompt' field."""
+        text = self.input or self.prompt
+        if not text:
+            raise ValueError("Either 'input' or 'prompt' must be provided")
+        return text.strip()
 
 
 class InvokeResponse(BaseModel):
@@ -55,12 +64,16 @@ async def health():
 async def invoke(body: InvokeRequest):
     """Main invocation endpoint. Calls the Strands agent and returns the result."""
     logger.info("Received invoke request (runtime_id=%s)", RUNTIME_ID)
-    if not body.input or not body.input.strip():
-        raise HTTPException(status_code=400, detail="'input' must be a non-empty string")
     try:
-        result = run(body.input)
+        user_input = body.get_text()
+        if not user_input:
+            raise ValueError("'input' or 'prompt' must be a non-empty string")
+        result = run(user_input)
         logger.info("Agent responded successfully")
         return InvokeResponse(response=result)
+    except ValueError as exc:
+        logger.warning("Invalid request: %s", exc)
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
     except Exception as exc:
         logger.error("Agent error: %s", exc, exc_info=True)
         raise HTTPException(status_code=500, detail="Agent invocation failed") from exc
