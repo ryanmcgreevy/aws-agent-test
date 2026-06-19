@@ -31,9 +31,12 @@ This is **not production-ready** code. It is for experimentation, validation, an
 - `main.py`: FastAPI app exposing health and invoke routes
 - `requirements.txt`: Python dependencies
 - `Dockerfile`: ARM64 container build for AgentCore
-- `deploy.sh`: Build + push + deploy helper script
+- `deploy.sh`: Local build + push + deploy helper script
 - `invoke.sh`: Quick test invoke script for deployed runtime
 - `.env.example`: Environment variable template
+- `pipeline.yml`: CloudFormation template for CI/CD pipeline
+- `buildspec-build.yml`: CodeBuild buildspec for Docker image build and push
+- `buildspec-deploy.yml`: CodeBuild buildspec for AgentCore runtime/endpoint deployment
 
 ## Prerequisites
 
@@ -155,6 +158,76 @@ What `deploy.sh` does:
 6. Creates AgentCore runtime with HTTP protocol
 7. Waits for runtime `READY`
 8. Creates endpoint (name `prod`)
+
+## CI/CD Pipeline (CloudFormation + AWS CodePipeline)
+
+This project includes an automated CI/CD pipeline defined in `pipeline.yml` (CloudFormation) that orchestrates build, test, and deployment of the agent.
+
+### Pipeline Architecture
+
+- **Source**: GitHub repository (via CodeStar Connections)
+- **Build Stage**: AWS CodeBuild compiles the Dockerfile and pushes to ECR
+- **Deploy Stage**: AWS CodeBuild runs `bedrock-agentcore-control` commands to update the runtime and endpoint
+
+### Initial Setup
+
+1. Deploy the CloudFormation stack:
+
+```bash
+aws cloudformation deploy \
+  --stack-name agent-pipeline \
+  --template-file pipeline.yml \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --region us-east-1
+```
+
+2. Retrieve the CloudStar Connections ARN from stack outputs and authorize GitHub:
+
+```bash
+aws cloudformation describe-stacks \
+  --stack-name agent-pipeline \
+  --region us-east-1 \
+  --query 'Stacks[0].Outputs[?OutputKey==`GitHubConnectionArn`].OutputValue' \
+  --output text
+```
+
+3. Go to [AWS CodePipeline Settings > Connections](https://console.aws.amazon.com/codesuite/settings/connections) in the AWS Console and authorize the pending GitHub App connection.
+
+### Pipeline Triggers
+
+Once the connection is authorized, the pipeline automatically triggers on:
+- Push to the `master` branch
+- Changes to source files or CI/CD configuration
+
+### Build Stage
+
+The build stage (`buildspec-build.yml`):
+
+- Authenticates Docker to ECR
+- Builds a multi-stage Dockerfile targeting ARM64
+- Pushes images tagged with the commit short-SHA and `latest`
+- Exports `imageUri.txt` artifact for the deploy stage
+
+### Deploy Stage
+
+The deploy stage (`buildspec-deploy.yml`):
+
+- Reads the built image URI from the build artifact
+- Checks SSM for an existing runtime ID
+- **First run**: Creates AgentCore runtime or adopts existing runtime if name conflict
+- **Subsequent runs**: Updates runtime with new image
+- Waits for runtime to become `READY`
+- Creates or updates the endpoint
+
+### Local Deployment vs. Pipeline
+
+Both `deploy.sh` (local) and the pipeline use identical conflict-handling logic:
+
+- If a runtime with the same name already exists, both adopt it and update with the new image
+- If no endpoint exists, both create one
+- If endpoint exists, both update it to the latest runtime version
+
+You can use either method interchangeably; the pipeline is useful for automated deployments on repository changes.
 
 ## Invoke Deployed Runtime
 
