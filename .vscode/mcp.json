@@ -1,0 +1,35 @@
+{
+	"servers": {
+		"github": {
+			"type": "http",
+			"url": "https://api.githubcopilot.com/mcp/"
+		},
+		"aws-mcp": {
+		"command": "uvx",
+		"args": [
+			"mcp-proxy-for-aws==1.6.0",
+			"https://aws-mcp.us-east-1.api.aws/mcp",
+			"--metadata", "AWS_REGION=us-east-2"
+		]
+		},
+        "bedrock-agentcore-mcp-server": {
+        "command": "uvx",
+        "args": [
+            "awslabs.amazon-bedrock-agentcore-mcp-server@latest"
+        ],
+        "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+        },
+        "disabled": false,
+        "autoApprove": [
+            "search_agentcore_docs",
+            "fetch_agentcore_doc"
+        ]
+        },
+		"strands-agents": {
+		"command": "uvx",
+		"args": ["strands-agents-mcp-server"]
+		}
+	},
+	"inputs": []
+}
