@@ -1,6 +1,7 @@
 # ── Stage 1: Install dependencies ───────────────────────────────────────────
 # AgentCore runs on Graviton (ARM64). x86 images will NOT start.
-FROM python:3.12-slim AS builder
+# Use ECR Public mirror to avoid Docker Hub pull rate limits in CI.
+FROM public.ecr.aws/docker/library/python:3.12-slim AS builder
 
 WORKDIR /app
 RUN python -m venv /app/.venv
@@ -13,7 +14,7 @@ COPY . .
 
 
 # ── Stage 2: Minimal runtime image ──────────────────────────────────────────
-FROM python:3.12-slim
+FROM public.ecr.aws/docker/library/python:3.12-slim
 
 # Run as non-root for least-privilege
 RUN useradd -r -u 1001 appuser
