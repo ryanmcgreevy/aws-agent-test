@@ -138,7 +138,8 @@ docker buildx build \
   -t "${IMAGE_TAG}" \
   .
 
-echo "==> [7/7] Creating AgentCore Runtime"
+echo "==> [7/7] Creating or updating AgentCore Runtime"
+set +e
 RUNTIME_RESPONSE=$(aws bedrock-agentcore-control create-agent-runtime \
   --agent-runtime-name "${AGENT_RUNTIME_NAME_SANITIZED}" \
   --agent-runtime-artifact "{\"containerConfiguration\":{\"containerUri\":\"${IMAGE_TAG}\"}}" \
@@ -146,10 +147,42 @@ RUNTIME_RESPONSE=$(aws bedrock-agentcore-control create-agent-runtime \
   --network-configuration "${NETWORK_CONFIGURATION_JSON}" \
   --protocol-configuration '{"serverProtocol":"HTTP"}' \
   --region "${AWS_REGION}" \
-  --output json)
+  --output json 2>&1)
+CREATE_EXIT=$?
+set -e
 
-RUNTIME_ID=$(echo "${RUNTIME_RESPONSE}" | python3 -c "import sys,json; print(json.load(sys.stdin)['agentRuntimeId'])")
-echo "Runtime created: ${RUNTIME_ID}"
+if [[ $CREATE_EXIT -eq 0 ]]; then
+  RUNTIME_ID=$(echo "${RUNTIME_RESPONSE}" | python3 -c "import sys,json; print(json.load(sys.stdin)['agentRuntimeId'])")
+  echo "Runtime created: ${RUNTIME_ID}"
+else
+  if echo "${RUNTIME_RESPONSE}" | grep -q "ConflictException"; then
+    echo "Runtime name already exists; looking up existing runtime ID by name"
+    EXISTING_ID=$(aws bedrock-agentcore-control list-agent-runtimes \
+      --region "${AWS_REGION}" \
+      --query "agentRuntimes[?agentRuntimeName=='${AGENT_RUNTIME_NAME_SANITIZED}'].agentRuntimeId | [0]" \
+      --output text)
+    if [[ -z "${EXISTING_ID}" || "${EXISTING_ID}" == "None" || "${EXISTING_ID}" == "null" ]]; then
+      echo "Conflict detected, but existing runtime ID could not be resolved. Aborting."
+      echo "${RUNTIME_RESPONSE}"
+      exit 1
+    fi
+    RUNTIME_ID="${EXISTING_ID}"
+    echo "Adopted existing runtime: ${RUNTIME_ID}"
+    
+    echo "==> Updating runtime ${RUNTIME_ID} with latest container image"
+    aws bedrock-agentcore-control update-agent-runtime \
+      --agent-runtime-id "${RUNTIME_ID}" \
+      --agent-runtime-artifact "{\"containerConfiguration\":{\"containerUri\":\"${IMAGE_TAG}\"}}" \
+      --role-arn "${AGENTCORE_EXECUTION_ROLE_ARN}" \
+      --network-configuration "${NETWORK_CONFIGURATION_JSON}" \
+      --protocol-configuration '{"serverProtocol":"HTTP"}' \
+      --region "${AWS_REGION}"
+  else
+    echo "create-agent-runtime failed:"
+    echo "${RUNTIME_RESPONSE}"
+    exit 1
+  fi
+fi
 
 echo "==> Waiting for runtime to become READY"
 for i in {1..60}; do
