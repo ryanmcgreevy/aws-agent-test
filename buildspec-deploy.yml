@@ -15,7 +15,7 @@ version: 0.2
 #   SSM_RUNTIME_ID_PATH  — SSM parameter path storing the runtime ID
 #
 # First-run logic:
-#   SSM value == "NONE"  → create-agent-runtime, store ID, create-endpoint
+#   SSM value == "NONE"  → create-agent-runtime (or adopt existing by name), store ID
 #   SSM value != "NONE"  → update-agent-runtime, update-endpoint to latest version
 
 phases:
@@ -34,6 +34,7 @@ phases:
       - |
         if [[ "$RUNTIME_ID" == "NONE" ]]; then
           echo "==> First run: creating AgentCore runtime"
+          set +e
           RESPONSE=$(aws bedrock-agentcore-control create-agent-runtime \
             --agent-runtime-name "$AGENT_RUNTIME_NAME" \
             --agent-runtime-artifact "{\"containerConfiguration\":{\"containerUri\":\"$IMAGE_URI\"}}" \
@@ -41,9 +42,43 @@ phases:
             --network-configuration "{\"networkMode\":\"$AGENT_NETWORK_MODE\"}" \
             --protocol-configuration '{"serverProtocol":"HTTP"}' \
             --region "$AWS_DEFAULT_REGION" \
-            --output json)
-          RUNTIME_ID=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['agentRuntimeId'])")
-          echo "Runtime created: $RUNTIME_ID"
+            --output json 2>&1)
+          CREATE_EXIT=$?
+          set -e
+
+          if [[ $CREATE_EXIT -eq 0 ]]; then
+            RUNTIME_ID=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['agentRuntimeId'])")
+            echo "Runtime created: $RUNTIME_ID"
+          else
+            if echo "$RESPONSE" | grep -q "ConflictException"; then
+              echo "Runtime name already exists; looking up existing runtime ID by name"
+              EXISTING_ID=$(aws bedrock-agentcore-control list-agent-runtimes \
+                --region "$AWS_DEFAULT_REGION" \
+                --query "agentRuntimes[?agentRuntimeName=='$AGENT_RUNTIME_NAME'].agentRuntimeId | [0]" \
+                --output text)
+              if [[ -z "$EXISTING_ID" || "$EXISTING_ID" == "None" || "$EXISTING_ID" == "null" ]]; then
+                echo "Conflict detected, but existing runtime ID could not be resolved. Aborting."
+                echo "$RESPONSE"
+                exit 1
+              fi
+              RUNTIME_ID="$EXISTING_ID"
+              echo "Adopted existing runtime: $RUNTIME_ID"
+            else
+              echo "create-agent-runtime failed:"
+              echo "$RESPONSE"
+              exit 1
+            fi
+          fi
+
+          echo "==> Updating runtime $RUNTIME_ID with latest container image"
+          aws bedrock-agentcore-control update-agent-runtime \
+            --agent-runtime-id "$RUNTIME_ID" \
+            --agent-runtime-artifact "{\"containerConfiguration\":{\"containerUri\":\"$IMAGE_URI\"}}" \
+            --role-arn "$EXECUTION_ROLE_ARN" \
+            --network-configuration "{\"networkMode\":\"$AGENT_NETWORK_MODE\"}" \
+            --protocol-configuration '{"serverProtocol":"HTTP"}' \
+            --region "$AWS_DEFAULT_REGION"
+
           aws ssm put-parameter \
             --name "$SSM_RUNTIME_ID_PATH" \
             --value "$RUNTIME_ID" \
