@@ -71,6 +71,11 @@ Parameters:
     Default: Vector-backed knowledge base for the Strands agent
     Description: Description of the Knowledge Base.
 
+  KnowledgeBaseVectorIndexName:
+    Type: String
+    Default: agent-kb-index
+    Description: Name of the S3 Vectors index for the Knowledge Base.
+
 # ── Resources ─────────────────────────────────────────────────────────────────
 
 Resources:
@@ -595,21 +600,20 @@ Resources:
   # ── Bedrock Knowledge Base (S3 Vector Backed) ───────────────────────────────
 
   BedrockKnowledgeBase:
-    Type: AWS::Bedrock::Agent::KnowledgeBase
+    Type: AWS::Bedrock::KnowledgeBase
     Properties:
       Name: !Ref KnowledgeBaseName
       Description: !Ref KnowledgeBaseDescription
       KnowledgeBaseConfiguration:
         Type: VECTOR
         VectorKnowledgeBaseConfiguration:
-          EmbeddingModel:
-            Provider: BEDROCK
-            Model: amazon.titan-embed-text-v2:0
+          EmbeddingModelArn: !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/amazon.titan-embed-text-v2:0'
       RoleArn: !GetAtt KnowledgeBaseRole.Arn
       StorageConfiguration:
-        Type: S3
-        S3StorageConfiguration:
-          BucketArn: !GetAtt VectorBucket.Arn
+        Type: S3_VECTORS
+        S3VectorsConfiguration:
+          VectorBucketArn: !GetAtt VectorBucket.Arn
+          IndexName: !Ref KnowledgeBaseVectorIndexName
       Tags:
         - Key: project
           Value: aws-agent-test
