@@ -562,6 +562,9 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub 'agent-vectors-${AWS::AccountId}-${AWS::Region}'
+      NotificationConfiguration:
+        EventBridgeConfiguration:
+          EventBridgeEnabled: true
       VersioningConfiguration:
         Status: Enabled
       BucketEncryption:
@@ -714,6 +717,149 @@ Resources:
           BucketOwnerAccountId: !Ref AWS::AccountId
           InclusionPrefixes:
             - !Ref KnowledgeBaseSourcePrefix
+
+  # ── Auto-sync KB ingestion on S3 uploads ───────────────────────────────────
+
+  KnowledgeBaseAutoSyncRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub 'bedrock-kb-autosync-role-${AWS::Region}'
+      Description: Lambda execution role that starts Bedrock KB ingestion jobs on source object uploads.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: LambdaLogs
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*'
+        - PolicyName: BedrockIngestion
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: StartIngestion
+                Effect: Allow
+                Action:
+                  - bedrock:StartIngestionJob
+                  - bedrock:GetIngestionJob
+                  - bedrock:ListIngestionJobs
+                Resource:
+                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${BedrockKnowledgeBase}'
+                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:data-source/${BedrockKnowledgeBase}/${BedrockKnowledgeBaseDataSource.DataSourceId}'
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  KnowledgeBaseAutoSyncFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub 'bedrock-kb-autosync-${AWS::Region}'
+      Description: Starts Bedrock Knowledge Base ingestion when source docs are uploaded.
+      Runtime: python3.12
+      Handler: index.handler
+      Timeout: 30
+      Role: !GetAtt KnowledgeBaseAutoSyncRole.Arn
+      Environment:
+        Variables:
+          KNOWLEDGE_BASE_ID: !Ref BedrockKnowledgeBase
+          DATA_SOURCE_ID: !GetAtt BedrockKnowledgeBaseDataSource.DataSourceId
+          SOURCE_PREFIX: !Ref KnowledgeBaseSourcePrefix
+      Code:
+        ZipFile: |
+          import json
+          import os
+
+          import boto3
+          from botocore.exceptions import ClientError
+
+
+          kb_id = os.environ["KNOWLEDGE_BASE_ID"]
+          ds_id = os.environ["DATA_SOURCE_ID"]
+          source_prefix = os.environ.get("SOURCE_PREFIX", "")
+          client = boto3.client("bedrock-agent")
+
+
+          def handler(event, context):
+              detail = event.get("detail", {})
+              bucket = detail.get("bucket", {}).get("name")
+              obj_key = detail.get("object", {}).get("key", "")
+
+              # Extra guard so only source-prefix uploads trigger ingestion.
+              if source_prefix and not obj_key.startswith(source_prefix):
+                  return {
+                      "status": "ignored",
+                      "reason": "outside_source_prefix",
+                      "bucket": bucket,
+                      "key": obj_key,
+                  }
+
+              try:
+                  response = client.start_ingestion_job(
+                      knowledgeBaseId=kb_id,
+                      dataSourceId=ds_id,
+                      description=f"Auto-sync for {obj_key or 'unknown-object'}",
+                  )
+                  return {
+                      "status": "started",
+                      "ingestionJobId": response["ingestionJob"]["ingestionJobId"],
+                      "bucket": bucket,
+                      "key": obj_key,
+                  }
+              except ClientError as err:
+                  code = err.response.get("Error", {}).get("Code", "Unknown")
+                  if code in {"ConflictException", "ValidationException"}:
+                      return {
+                          "status": "skipped",
+                          "errorCode": code,
+                          "message": str(err),
+                          "bucket": bucket,
+                          "key": obj_key,
+                      }
+                  raise
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  KnowledgeBaseAutoSyncRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: !Sub 'bedrock-kb-autosync-${AWS::Region}'
+      Description: Starts Bedrock KB ingestion when new source docs are uploaded to S3.
+      State: ENABLED
+      EventPattern:
+        source:
+          - aws.s3
+        detail-type:
+          - Object Created
+        detail:
+          bucket:
+            name:
+              - !Ref VectorBucket
+          object:
+            key:
+              - prefix: !Ref KnowledgeBaseSourcePrefix
+      Targets:
+        - Arn: !GetAtt KnowledgeBaseAutoSyncFunction.Arn
+          Id: KnowledgeBaseAutoSyncLambdaTarget
+
+  KnowledgeBaseAutoSyncLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref KnowledgeBaseAutoSyncFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt KnowledgeBaseAutoSyncRule.Arn
+
   # ── CodePipeline ─────────────────────────────────────────────────────────────
 
   AgentPipeline:
@@ -910,3 +1056,11 @@ Outputs:
   KnowledgeBaseRoleArn:
     Description: ARN of the Knowledge Base service role.
     Value: !GetAtt KnowledgeBaseRole.Arn
+
+  KnowledgeBaseAutoSyncFunctionName:
+    Description: Lambda function name that starts KB ingestion on source uploads.
+    Value: !Ref KnowledgeBaseAutoSyncFunction
+
+  KnowledgeBaseAutoSyncRuleArn:
+    Description: EventBridge rule ARN that triggers KB auto-sync.
+    Value: !GetAtt KnowledgeBaseAutoSyncRule.Arn
