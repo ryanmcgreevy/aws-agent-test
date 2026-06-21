@@ -397,6 +397,15 @@ Resources:
                   - cloudformation:DescribeStacks
                   - cloudformation:GetTemplateSummary
                 Resource: !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${GitHubRepo}-pipeline/*'
+              - Effect: Allow
+                Action:
+                  - cloudformation:CreateChangeSet
+                  - cloudformation:DeleteChangeSet
+                  - cloudformation:DescribeChangeSet
+                  - cloudformation:ExecuteChangeSet
+                Resource:
+                  - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${GitHubRepo}-pipeline/*'
+                  - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:changeSet/${GitHubRepo}-changeset/*'
         - PolicyName: PassCloudFormationRole
           PolicyDocument:
             Version: '2012-10-17'
