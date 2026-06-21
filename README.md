@@ -249,6 +249,87 @@ This script:
 - Even with `PUBLIC` network mode, requests still require AWS auth + IAM permission to invoke
 - Runtime sessions have lifecycle controls (`idleRuntimeSessionTimeout`, `maxLifetime`) that can be tuned for cost/latency tradeoffs
 
+## Bedrock Knowledge Base (RAG Integration)
+
+This project now includes a **Bedrock Knowledge Base** backed by S3 vectors. This enables Retrieval Augmented Generation (RAG) — your agent can search a collection of documents for context before answering questions.
+
+### Knowledge Base Architecture
+
+The CloudFormation stack (`pipeline.yml`) creates:
+
+- **Vector Storage Bucket** (`agent-vectors-{AccountId}-{Region}`): S3 bucket for storing documents and embeddings
+- **Knowledge Base Role**: IAM role for Bedrock to access S3
+- **Bedrock Knowledge Base**: Vector-based knowledge base using Titan Embed Text v2 embeddings
+- **Agent Execution Role Updates**: Added `bedrock:Retrieve` permissions
+
+### Configuration
+
+You can customize the knowledge base when deploying:
+
+```bash
+aws cloudformation deploy \
+  --stack-name agent-pipeline \
+  --template-file pipeline.yml \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides \
+    KnowledgeBaseName=my-custom-kb \
+    KnowledgeBaseDescription="My custom knowledge base" \
+  --region us-east-1
+```
+
+### Adding Documents
+
+1. **Upload documents to the vector bucket** (any format: PDF, TXT, JSON, Markdown, etc.):
+
+```bash
+aws s3 cp my-document.pdf s3://agent-vectors-{AccountId}-{Region}/documents/
+```
+
+2. **Create a data source in the knowledge base** (AWS Console or CLI):
+
+```bash
+# Get the Knowledge Base ID from stack outputs
+KB_ID=$(aws cloudformation describe-stacks \
+  --stack-name agent-pipeline \
+  --query 'Stacks[0].Outputs[?OutputKey==`KnowledgeBaseId`].OutputValue' \
+  --output text)
+
+# Create data source
+aws bedrock-agent create-data-source \
+  --knowledge-base-id $KB_ID \
+  --name my-documents \
+  --data-source-configuration s3Configuration='{bucketArn="arn:aws:s3:::agent-vectors-{AccountId}-{Region}"}'
+```
+
+3. **Start ingestion to generate embeddings**:
+
+```bash
+aws bedrock-agent start-ingestion-job \
+  --knowledge-base-id $KB_ID \
+  --data-source-id <data-source-id>
+```
+
+### Using the Knowledge Base with Your Agent
+
+The agent code (`agent.py`) is already updated to support RAG:
+
+```python
+# Retrieve context from knowledge base
+def retrieve_from_knowledge_base(query: str, max_results: int = 3) -> str:
+    # Returns relevant document chunks based on semantic similarity
+    ...
+
+# The run() function automatically augments prompts with KB context
+def run(user_input: str) -> str:
+    context = retrieve_from_knowledge_base(user_input)
+    augmented_input = f"Context: {context}\n\nQuestion: {user_input}"
+    return agent(augmented_input)
+```
+
+To enable the knowledge base at runtime, set the `KNOWLEDGE_BASE_ID` environment variable in your deployment configuration.
+
+For comprehensive documentation, see [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
+
 ## Learning Goals / Future Ideas
 
 - Add tool usage in Strands (`strands-agents-tools`)

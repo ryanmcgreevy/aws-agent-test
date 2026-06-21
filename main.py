@@ -23,6 +23,9 @@ from agent import run
 RUNTIME_ID = os.environ.get("RUNTIME_ID", "local")
 AWS_REGION = os.environ.get("AWS_REGION", "us-east-1")
 
+# Optional: Knowledge Base ID for RAG (set via build environment or CodeBuild)
+KNOWLEDGE_BASE_ID = os.environ.get("KNOWLEDGE_BASE_ID")
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",

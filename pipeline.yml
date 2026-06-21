@@ -61,6 +61,16 @@ Parameters:
       AgentCore runtime network mode. Use PUBLIC for internet-accessible
       (still IAM-auth protected). Use VPC for private networking.
 
+  KnowledgeBaseName:
+    Type: String
+    Default: agent-knowledge-base
+    Description: Name of the Bedrock Knowledge Base backed by S3 vectors.
+
+  KnowledgeBaseDescription:
+    Type: String
+    Default: Vector-backed knowledge base for the Strands agent
+    Description: Description of the Knowledge Base.
+
 # ── Resources ─────────────────────────────────────────────────────────────────
 
 Resources:
@@ -150,6 +160,15 @@ Resources:
                 Resource: '*'
                 # Tighten to specific model ARNs in production:
                 # Resource: !Sub 'arn:aws:bedrock:*::foundation-model/${BedrockModelId}'
+        - PolicyName: KnowledgeBaseRetrieve
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: AllowKnowledgeBaseRetrieve
+                Effect: Allow
+                Action:
+                  - bedrock:Retrieve
+                Resource: !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/*'
         - PolicyName: EcrPull
           PolicyDocument:
             Version: '2012-10-17'
@@ -443,7 +462,114 @@ Resources:
       Tags:
         - Key: project
           Value: aws-agent-test
+  # ── S3 bucket for vector storage (Bedrock Knowledge Base) ────────────────────
 
+  VectorBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'agent-vectors-${AWS::AccountId}-${AWS::Region}'
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  VectorBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref VectorBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: '*'
+            Action: 's3:*'
+            Resource:
+              - !GetAtt VectorBucket.Arn
+              - !Sub '${VectorBucket.Arn}/*'
+            Condition:
+              Bool:
+                'aws:SecureTransport': 'false'
+          - Sid: AllowBedrockKnowledgeBase
+            Effect: Allow
+            Principal:
+              Service: bedrock.amazonaws.com
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+            Resource:
+              - !GetAtt VectorBucket.Arn
+              - !Sub '${VectorBucket.Arn}/*'
+            Condition:
+              StringEquals:
+                'aws:SourceAccount': !Ref AWS::AccountId
+
+  # ── IAM role: Bedrock Knowledge Base ────────────────────────────────────────
+
+  KnowledgeBaseRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub 'bedrock-knowledge-base-role-${AWS::Region}'
+      Description: Service role for Bedrock Knowledge Base to access S3 and vectors.
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: bedrock.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                'aws:SourceAccount': !Ref AWS::AccountId
+      Policies:
+        - PolicyName: S3VectorAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: S3BucketOperations
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:ListBucket
+                  - s3:GetBucketLocation
+                Resource:
+                  - !GetAtt VectorBucket.Arn
+                  - !Sub '${VectorBucket.Arn}/*'
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  # ── Bedrock Knowledge Base (S3 Vector Backed) ───────────────────────────────
+
+  BedrockKnowledgeBase:
+    Type: AWS::Bedrock::Agent::KnowledgeBase
+    Properties:
+      Name: !Ref KnowledgeBaseName
+      Description: !Ref KnowledgeBaseDescription
+      KnowledgeBaseConfiguration:
+        Type: VECTOR
+        VectorKnowledgeBaseConfiguration:
+          EmbeddingModel:
+            Provider: BEDROCK
+            Model: amazon.titan-embed-text-v2:0
+      RoleArn: !GetAtt KnowledgeBaseRole.Arn
+      StorageConfiguration:
+        Type: S3
+        S3StorageConfiguration:
+          BucketArn: !GetAtt VectorBucket.Arn
+      Tags:
+        - Key: project
+          Value: aws-agent-test
   # ── CodePipeline ─────────────────────────────────────────────────────────────
 
   AgentPipeline:
@@ -475,6 +601,7 @@ Resources:
                     - .dockerignore
                     - buildspec-build.yml
                     - buildspec-deploy.yml
+                    - pipeline.yml
 
       Stages:
         # Source: pull from GitHub via CodeStar Connection
@@ -562,3 +689,19 @@ Outputs:
   SSMRuntimeIdPath:
     Description: SSM parameter path storing the AgentCore runtime ID (updated by first pipeline run).
     Value: !Ref SSMRuntimeId
+
+  KnowledgeBaseId:
+    Description: ID of the Bedrock Knowledge Base.
+    Value: !Ref BedrockKnowledgeBase
+
+  KnowledgeBaseArn:
+    Description: ARN of the Bedrock Knowledge Base.
+    Value: !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${BedrockKnowledgeBase}'
+
+  VectorBucketName:
+    Description: S3 bucket name for vector storage.
+    Value: !Ref VectorBucket
+
+  KnowledgeBaseRoleArn:
+    Description: ARN of the Knowledge Base service role.
+    Value: !GetAtt KnowledgeBaseRole.Arn
