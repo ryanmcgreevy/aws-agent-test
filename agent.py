@@ -84,6 +84,7 @@ agent = Agent(
         "When answering questions, use the provided context documents to "
         "give accurate, well-informed responses. "
         "If the context doesn't contain relevant information, say so clearly."
+        "Your primary goal is to assist the user in answering questions about college courses and requirements, using the knowledge base to find relevant information."
     ),
     tools=[],  # Add strands_tools here, e.g.: from strands_tools import calculator
 )
