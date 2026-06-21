@@ -396,7 +396,7 @@ Resources:
                   - cloudformation:DeleteStack
                   - cloudformation:DescribeStacks
                   - cloudformation:GetTemplateSummary
-                Resource: !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/agent-pipeline/*'
+                Resource: !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${GitHubRepo}-pipeline/*'
         - PolicyName: PassCloudFormationRole
           PolicyDocument:
             Version: '2012-10-17'
