@@ -26,6 +26,12 @@ Parameters:
     Default: master
     Description: Branch that triggers the pipeline.
 
+  PipelineTargetStackName:
+    Type: String
+    Default: agent-pipeline
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9-]{0,127}'
+    Description: Existing CloudFormation stack name the Infrastructure stage updates.
+
   EcrRepoName:
     Type: String
     Default: my-strands-agent
@@ -396,7 +402,7 @@ Resources:
                   - cloudformation:DeleteStack
                   - cloudformation:DescribeStacks
                   - cloudformation:GetTemplateSummary
-                Resource: !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/agent-pipeline/*'
+                Resource: !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${PipelineTargetStackName}/*'
               - Effect: Allow
                 Action:
                   - cloudformation:CreateChangeSet
@@ -404,8 +410,8 @@ Resources:
                   - cloudformation:DescribeChangeSet
                   - cloudformation:ExecuteChangeSet
                 Resource:
-                  - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/agent-pipeline/*'
-                  - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:changeSet/${GitHubRepo}-changeset/*'
+                  - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${PipelineTargetStackName}/*'
+                  - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:changeSet/${PipelineTargetStackName}-changeset/*'
         - PolicyName: PassCloudFormationRole
           PolicyDocument:
             Version: '2012-10-17'
@@ -772,8 +778,8 @@ Resources:
                 Version: '1'
               Configuration:
                 ActionMode: CHANGE_SET_REPLACE
-                StackName: agent-pipeline
-                ChangeSetName: !Sub '${GitHubRepo}-changeset'
+                StackName: !Ref PipelineTargetStackName
+                ChangeSetName: !Sub '${PipelineTargetStackName}-changeset'
                 TemplatePath: SourceArtifact::pipeline.yml
                 Capabilities: CAPABILITY_NAMED_IAM
                 RoleArn: !GetAtt CloudFormationStackRole.Arn
@@ -781,7 +787,8 @@ Resources:
                   {
                     "GitHubOwner": "ryanmcgreevy",
                     "GitHubRepo": "aws-agent-test",
-                    "GitHubBranch": "master"
+                    "GitHubBranch": "master",
+                    "PipelineTargetStackName": "agent-pipeline"
                   }
               InputArtifacts:
                 - Name: SourceArtifact
@@ -794,8 +801,8 @@ Resources:
                 Version: '1'
               Configuration:
                 ActionMode: CHANGE_SET_EXECUTE
-                StackName: agent-pipeline
-                ChangeSetName: !Sub '${GitHubRepo}-changeset'
+                StackName: !Ref PipelineTargetStackName
+                ChangeSetName: !Sub '${PipelineTargetStackName}-changeset'
               RunOrder: 2
 
         # Build: ARM64 Docker image → ECR, passes imageUri.txt downstream
