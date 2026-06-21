@@ -396,7 +396,7 @@ Resources:
                   - cloudformation:DeleteStack
                   - cloudformation:DescribeStacks
                   - cloudformation:GetTemplateSummary
-                Resource: !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${GitHubRepo}-pipeline/*'
+                Resource: !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/agent-pipeline/*'
               - Effect: Allow
                 Action:
                   - cloudformation:CreateChangeSet
@@ -404,7 +404,7 @@ Resources:
                   - cloudformation:DescribeChangeSet
                   - cloudformation:ExecuteChangeSet
                 Resource:
-                  - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${GitHubRepo}-pipeline/*'
+                  - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/agent-pipeline/*'
                   - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:changeSet/${GitHubRepo}-changeset/*'
         - PolicyName: PassCloudFormationRole
           PolicyDocument:
@@ -772,7 +772,7 @@ Resources:
                 Version: '1'
               Configuration:
                 ActionMode: CHANGE_SET_REPLACE
-                StackName: !Sub '${GitHubRepo}-pipeline'
+                StackName: agent-pipeline
                 ChangeSetName: !Sub '${GitHubRepo}-changeset'
                 TemplatePath: SourceArtifact::pipeline.yml
                 Capabilities: CAPABILITY_NAMED_IAM
@@ -794,7 +794,7 @@ Resources:
                 Version: '1'
               Configuration:
                 ActionMode: CHANGE_SET_EXECUTE
-                StackName: !Sub '${GitHubRepo}-pipeline'
+                StackName: agent-pipeline
                 ChangeSetName: !Sub '${GitHubRepo}-changeset'
               RunOrder: 2
 
