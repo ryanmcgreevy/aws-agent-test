@@ -67,10 +67,19 @@ Parameters:
       AgentCore runtime network mode. Use PUBLIC for internet-accessible
       (still IAM-auth protected). Use VPC for private networking.
 
+  KnowledgeBaseId:
+    Type: String
+    Default: QDYAUTFYTX
+    Description: >-
+      ID of the existing Bedrock Managed Knowledge Base. The managed KB must be
+      created once outside of CloudFormation (AWS console or CLI) because
+      AWS::Bedrock::KnowledgeBase does not yet support Type: MANAGED in
+      CloudFormation. Update this default when re-creating the KB in a new account/region.
+
   KnowledgeBaseName:
     Type: String
     Default: agent-knowledge-base
-    Description: Name of the Bedrock Managed Knowledge Base.
+    Description: Name of the Bedrock Managed Knowledge Base (informational only; not used to create the KB).
 
   KnowledgeBaseDescription:
     Type: String
@@ -89,8 +98,7 @@ Parameters:
 
 # ── Conditions ────────────────────────────────────────────────────────────────
 
-Conditions:
-  AlwaysTrue: !Equals ['true', 'true']
+Conditions: {}
 
 # ── Resources ─────────────────────────────────────────────────────────────────
 
@@ -305,8 +313,8 @@ Resources:
                   - bedrock:CreateDataSource
                   - bedrock:StartIngestionJob
                 Resource:
-                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${BedrockKnowledgeBase}'
-                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:data-source/${BedrockKnowledgeBase}/*'
+                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${KnowledgeBaseId}'
+                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:data-source/${KnowledgeBaseId}/*'
         - PolicyName: PassAgentCoreExecutionRole
           PolicyDocument:
             Version: '2012-10-17'
@@ -543,7 +551,7 @@ Resources:
           - Name: SSM_RUNTIME_ID_PATH
             Value: /agent/runtime-id
           - Name: KNOWLEDGE_BASE_ID
-            Value: !Ref BedrockKnowledgeBase
+            Value: !Ref KnowledgeBaseId
           - Name: KNOWLEDGE_BASE_DATA_SOURCE_NAME
             Value: !Ref KnowledgeBaseDataSourceName
           - Name: KNOWLEDGE_BASE_SOURCE_BUCKET
@@ -649,21 +657,10 @@ Resources:
         - Key: project
           Value: aws-agent-test
 
-  # ── Bedrock Knowledge Base (Managed) ────────────────────────────────────────
-
-  BedrockKnowledgeBase:
-    Type: AWS::Bedrock::KnowledgeBase
-    Condition: AlwaysTrue
-    Properties:
-      Name: !Ref KnowledgeBaseName
-      Description: !Ref KnowledgeBaseDescription
-      KnowledgeBaseConfiguration:
-        Type: MANAGED
-        ManagedKnowledgeBaseConfiguration:
-          EmbeddingModelType: MANAGED
-      RoleArn: !GetAtt KnowledgeBaseRole.Arn
-      Tags:
-        project: aws-agent-test
+  # ── Bedrock Knowledge Base ────────────────────────────────────────────────────
+  # NOTE: AWS::Bedrock::KnowledgeBase does not support Type: MANAGED in CloudFormation.
+  # The managed KB is created once outside of CloudFormation via the AWS console or CLI.
+  # Its ID is stored in the KnowledgeBaseId parameter above and referenced throughout.
 
   # ── Auto-sync KB ingestion on S3 uploads ───────────────────────────────────
 
@@ -702,8 +699,8 @@ Resources:
                   - bedrock:ListIngestionJobs
                   - bedrock:ListDataSources
                 Resource:
-                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${BedrockKnowledgeBase}'
-                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:data-source/${BedrockKnowledgeBase}/*'
+                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${KnowledgeBaseId}'
+                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:data-source/${KnowledgeBaseId}/*'
       Tags:
         - Key: project
           Value: aws-agent-test
@@ -719,7 +716,7 @@ Resources:
       Role: !GetAtt KnowledgeBaseAutoSyncRole.Arn
       Environment:
         Variables:
-          KNOWLEDGE_BASE_ID: !Ref BedrockKnowledgeBase
+          KNOWLEDGE_BASE_ID: !Ref KnowledgeBaseId
           DATA_SOURCE_NAME: !Ref KnowledgeBaseDataSourceName
           SOURCE_PREFIX: !Ref KnowledgeBaseSourcePrefix
       Code:
@@ -1002,14 +999,12 @@ Outputs:
     Value: !Ref SSMRuntimeId
 
   KnowledgeBaseId:
-    Condition: AlwaysTrue
-    Description: ID of the Bedrock Knowledge Base.
-    Value: !Ref BedrockKnowledgeBase
+    Description: ID of the Bedrock Managed Knowledge Base (managed outside CloudFormation).
+    Value: !Ref KnowledgeBaseId
 
   KnowledgeBaseArn:
-    Condition: AlwaysTrue
-    Description: ARN of the Bedrock Knowledge Base.
-    Value: !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${BedrockKnowledgeBase}'
+    Description: ARN of the Bedrock Managed Knowledge Base.
+    Value: !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${KnowledgeBaseId}'
 
   KnowledgeBaseDataSourceName:
     Description: Name of the managed knowledge base data source created by deploy automation.
