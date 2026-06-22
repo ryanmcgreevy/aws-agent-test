@@ -16,6 +16,8 @@ import boto3
 from strands import Agent
 from strands.models import BedrockModel
 from strands.session import FileSessionManager, S3SessionManager
+from strands import tool
+from strands.agent.conversation_manager import SummarizingConversationManager
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +50,21 @@ model = BedrockModel(
 bedrock_agent_runtime = boto3.client('bedrock-agent-runtime', region_name='us-east-1')
 
 
+@tool
+def access_RAG(query: str) -> str:
+    """Access the Retrieval Augmented Generation (RAG) system. 
+    This tool is used by the agent to retrieve relevant documents from the knowledge base based on the user's query, and returns the retrieved context as a string.
+    This knowledge base contains information about college courses and requirements, and is used to provide accurate and informed responses to user questions. 
+    The agent will call this tool with the user's query, and the tool will return relevant information from the knowledge base that the agent can then use to formulate its response.
+
+    Args:
+        query: The search query for semantic retrieval
+    Returns:
+        String containing the concatenated retrieved documents from the knowledge base relevant to the query. If no knowledge base is configured or if retrieval fails, returns an empty string.
+    """
+    return retrieve_from_knowledge_base(query)
+
+
 def build_session_manager(session_id: str) -> S3SessionManager | FileSessionManager | None:
     """Create an S3 or file-backed session manager depending on runtime config."""
     if not SESSION_BUCKET_NAME:
@@ -73,11 +90,14 @@ def build_agent(session_manager: S3SessionManager | None = None) -> Agent:
             "You are a helpful assistant with access to a knowledge base. "
             "When answering questions, use the provided context documents to "
             "give accurate, well-informed responses. "
-            "If the context doesn't contain relevant information, say so clearly."
+            "If the context doesn't contain relevant information, try calling the access_RAG tool to retrieve more information. You may need to rephrase the question to get better retrieval results."
             "Your primary goal is to assist the user in answering questions about college courses and requirements, using the knowledge base to find relevant information."
         ),
-        tools=[],  # Add strands_tools here, e.g.: from strands_tools import calculator
+        tools=[access_RAG],  # Add strands_tools here, e.g.: from strands_tools import calculator
         session_manager=session_manager,
+        conversation_manager=SummarizingConversationManager(
+            proactive_compression=True,
+        ),
     )
 
 

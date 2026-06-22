@@ -12,6 +12,7 @@ build/
 .venv/
 venv/
 env/
+.sessions/
 
 # Environment variables (never commit secrets)
 .env
