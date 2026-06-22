@@ -32,12 +32,13 @@ model = BedrockModel(
 )
 
 # Initialize Bedrock Agent Runtime client for knowledge base retrieval
-bedrock_agent_runtime = boto3.client('bedrock-agent-runtime')
+# Use us-east-1 region for managed knowledge bases
+bedrock_agent_runtime = boto3.client('bedrock-agent-runtime', region_name='us-east-1')
 
 
 def retrieve_from_knowledge_base(query: str, max_results: int = 3) -> str:
     """
-    Retrieve relevant documents from the Bedrock Knowledge Base.
+    Retrieve relevant documents from the Bedrock Managed Knowledge Base.
     
     Args:
         query: The search query for semantic retrieval
@@ -50,15 +51,10 @@ def retrieve_from_knowledge_base(query: str, max_results: int = 3) -> str:
         return ""
     
     try:
+        # For Managed Knowledge Bases, use retrievalQuery parameter (not text)
         response = bedrock_agent_runtime.retrieve(
             knowledgeBaseId=KNOWLEDGE_BASE_ID,
-            retrievalConfiguration={
-                'vectorSearchConfiguration': {
-                    'numberOfResults': max_results,
-                    'overrideSearchType': 'SEMANTIC'
-                }
-            },
-            text=query
+            retrievalQuery={'text': query}
         )
         
         # Concatenate retrieved documents into context
