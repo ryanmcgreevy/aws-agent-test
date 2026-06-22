@@ -1,299 +1,209 @@
-# Bedrock Knowledge Base Integration Guide
+# Bedrock Managed Knowledge Base Integration Guide
 
-This document explains the S3-backed Bedrock Knowledge Base that has been added to your CloudFormation stack.
+This document explains the managed Bedrock Knowledge Base setup in this repository.
 
 ## Overview
 
-Your deployment now includes:
+Your deployment includes a Bedrock managed knowledge base and automation around ingestion:
 
-- **S3 Vector Bucket**: Stores vector embeddings and documents for semantic search
-- **Bedrock Knowledge Base**: Provides vector search capabilities with Titan embeddings
-- **IAM Roles**: Properly configured permissions for the Knowledge Base and your agent
+- **Source S3 Bucket**: Stores source documents under a prefix (default: `kb-source/`)
+- **Bedrock Managed Knowledge Base**: `Type: MANAGED` with AWS-managed embeddings
+- **Managed Data Source Automation**: Deploy stage ensures the managed S3 connector exists
+- **Auto-Sync Ingestion**: EventBridge + Lambda start ingestion jobs on new uploads
+- **Agent Retrieval Permissions**: Agent execution role can call `bedrock:Retrieve`
+
+This replaces the previous self-managed S3 Vectors setup.
 
 ## Stack Resources
 
-### New CloudFormation Resources
+### CloudFormation Resources
 
-1. **VectorBucket** - S3 bucket for storing documents and vectors
-   - Auto-generated name: `agent-vectors-{AccountId}-{Region}`
-   - Versioning enabled for audit trails
-   - Server-side encryption (AES256)
-   - Secure transport enforced
+1. **VectorBucket**
+   - Purpose: Source document bucket (not a vector-store resource)
+   - Name pattern: `agent-vectors-{AccountId}-{Region}`
+   - Security: encryption at rest, public access block, secure transport enforcement
+   - EventBridge notifications enabled for object-created events
 
-2. **VectorBucketPolicy** - S3 bucket policy
-   - Allows Bedrock service principal read access
-   - Denies unencrypted transport
+2. **VectorBucketPolicy**
+   - Allows Bedrock service read access to source documents
+   - Denies insecure transport (`aws:SecureTransport=false`)
 
-3. **KnowledgeBaseRole** - IAM service role
-   - Assumed by Bedrock
-   - Permissions to read from S3 vector bucket
+3. **KnowledgeBaseRole**
+   - Service role assumed by Bedrock
+   - Grants read/list access to the source S3 bucket
 
-4. **BedrockKnowledgeBase** - The knowledge base resource
-   - Vector-based (semantic search)
-   - Uses Titan Embed Text v2 embeddings
-   - Backed by S3 storage
+4. **BedrockKnowledgeBase**
+   - Type: `MANAGED`
+   - Managed embedding model (`EmbeddingModelType: MANAGED`)
 
-5. **AgentCoreExecutionRole** - Updated with
-   - New `bedrock:Retrieve` permission for accessing the knowledge base
+5. **KnowledgeBaseAutoSyncFunction** and **KnowledgeBaseAutoSyncRule**
+   - Trigger on S3 object creation under `KnowledgeBaseSourcePrefix`
+   - Lambda resolves data source by name (`list_data_sources`) and starts ingestion
+
+6. **CodeBuildDeployProject + buildspec-deploy.yml logic**
+   - Ensures managed KB data source exists
+   - Creates the data source if missing using `MANAGED_KNOWLEDGE_BASE_CONNECTOR`
+   - Starts an initial ingestion when a new data source is created
 
 ## Stack Parameters
 
-You can customize the knowledge base when deploying by setting:
+Current KB-related parameters:
 
 ```yaml
-KnowledgeBaseName: agent-knowledge-base  # Knowledge base name
-KnowledgeBaseDescription: "Vector-backed knowledge base for the Strands agent"
+KnowledgeBaseName: agent-knowledge-base
+KnowledgeBaseDescription: "Managed knowledge base for the Strands agent"
+KnowledgeBaseDataSourceName: agent-kb-source
+KnowledgeBaseSourcePrefix: kb-source/
 ```
+
+Removed from the stack during migration:
+
+- `KnowledgeBaseVectorIndexName`
+- `KnowledgeBaseVectorBucketName`
+- `KnowledgeBaseVectorDimension`
 
 ## Outputs
 
-After the stack deploys, you'll have these outputs:
+After deployment, use these outputs:
 
-- `KnowledgeBaseId`: The knowledge base ID (use for API calls)
-- `KnowledgeBaseArn`: Full ARN of the knowledge base
-- `VectorBucketName`: S3 bucket name for documents/vectors
-- `KnowledgeBaseRoleArn`: Role ARN for the knowledge base
+- `KnowledgeBaseId`
+- `KnowledgeBaseArn`
+- `KnowledgeBaseDataSourceName`
+- `KnowledgeBaseSourceBucketName`
+- `KnowledgeBaseSourceBucketArn`
+- `KnowledgeBaseRoleArn`
+- `KnowledgeBaseAutoSyncFunctionName`
+- `KnowledgeBaseAutoSyncRuleArn`
 
-## Adding Documents to Your Knowledge Base
+## Document Ingestion Flow
 
-### Via AWS Console
+### Automatic Path (recommended)
 
-1. Go to AWS Bedrock → Knowledge bases
-2. Select your knowledge base
-3. Click "Data source" → create new data source pointing to your S3 bucket
-4. Upload documents (PDF, TXT, JSON, etc.)
-5. Sync to generate embeddings
-
-### Via AWS CLI
+1. Upload files to the source bucket prefix:
 
 ```bash
-# List your knowledge base
-aws bedrock-agent list-knowledge-bases
+aws s3 cp my-document.pdf s3://agent-vectors-{AccountId}-{Region}/kb-source/
+```
 
-# Create a data source (replace KNOWLEDGE_BASE_ID)
-aws bedrock-agent create-data-source \
-  --knowledge-base-id KNOWLEDGE_BASE_ID \
-  --name my-documents \
-  --data-source-configuration s3Configuration='{bucketArn="arn:aws:s3:::YOUR_BUCKET"}'
+2. EventBridge receives object-created event.
+3. Auto-sync Lambda verifies the key matches `KnowledgeBaseSourcePrefix`.
+4. Lambda finds data source ID by configured name.
+5. Lambda calls `start-ingestion-job`.
 
-# Ingest documents (ingests from S3)
+### Manual Path (troubleshooting)
+
+```bash
+# Get KB ID from CloudFormation output
+KB_ID=$(aws cloudformation describe-stacks \
+  --stack-name agent-pipeline \
+  --query 'Stacks[0].Outputs[?OutputKey==`KnowledgeBaseId`].OutputValue' \
+  --output text)
+
+# Get data source name from stack output
+DS_NAME=$(aws cloudformation describe-stacks \
+  --stack-name agent-pipeline \
+  --query 'Stacks[0].Outputs[?OutputKey==`KnowledgeBaseDataSourceName`].OutputValue' \
+  --output text)
+
+# Resolve data source ID
+DS_ID=$(aws bedrock-agent list-data-sources \
+  --knowledge-base-id "$KB_ID" \
+  --query "dataSourceSummaries[?name=='$DS_NAME'].dataSourceId | [0]" \
+  --output text)
+
+# Start ingestion manually
 aws bedrock-agent start-ingestion-job \
-  --knowledge-base-id KNOWLEDGE_BASE_ID \
-  --data-source-id DATA_SOURCE_ID
+  --knowledge-base-id "$KB_ID" \
+  --data-source-id "$DS_ID" \
+  --description "Manual re-sync"
 ```
 
-### Via Python/Boto3
+## Deploy/Pipeline Behavior
+
+Deploy stage (`buildspec-deploy.yml`) now does two things:
+
+1. Deploys AgentCore runtime/endpoint as before
+2. Ensures managed KB data source exists:
+   - `list-data-sources`
+   - `create-data-source` if missing (S3 managed connector)
+   - `start-ingestion-job` once on creation
+
+This means first deployment after migration bootstraps the data source automatically.
+
+## Using the KB from Agent Code
+
+No special managed-KB code path is needed in the app. Retrieval API is the same:
 
 ```python
-import boto3
-
-bedrock_agent = boto3.client('bedrock-agent')
-s3 = boto3.client('s3')
-
-# Upload a document to the vector bucket
-s3.put_object(
-    Bucket='agent-vectors-{AccountId}-{Region}',
-    Key='documents/my-document.txt',
-    Body=b'Your document content here'
-)
-
-# Create data source
-response = bedrock_agent.create_data_source(
-    knowledgeBaseId='YOUR_KB_ID',
-    name='my-documents',
-    dataSourceConfiguration={
-        's3Configuration': {
-            'bucketArn': 'arn:aws:s3:::agent-vectors-{AccountId}-{Region}'
+response = bedrock_agent_runtime.retrieve(
+    knowledgeBaseId=KNOWLEDGE_BASE_ID,
+    retrievalConfiguration={
+        "vectorSearchConfiguration": {
+            "numberOfResults": 3,
+            "overrideSearchType": "SEMANTIC",
         }
-    }
-)
-
-# Start ingestion job
-bedrock_agent.start_ingestion_job(
-    knowledgeBaseId='YOUR_KB_ID',
-    dataSourceId=response['dataSource']['dataSourceId']
+    },
+    text=query,
 )
 ```
 
-## Using the Knowledge Base with Your Agent
+The app expects `KNOWLEDGE_BASE_ID` in environment variables. In this repo, CloudFormation injects it into deployment configuration.
 
-### Retrieve Documents
+## Security Notes
 
-In your agent code, use `bedrock:Retrieve` to search the knowledge base:
-
-```python
-import boto3
-from typing import Optional
-
-bedrock_agent_runtime = boto3.client('bedrock-agent-runtime')
-
-def retrieve_from_knowledge_base(
-    knowledge_base_id: str,
-    query: str,
-    max_results: int = 5
-) -> dict:
-    """Retrieve documents from the knowledge base based on a query."""
-    
-    response = bedrock_agent_runtime.retrieve(
-        knowledgeBaseId=knowledge_base_id,
-        retrievalConfiguration={
-            'vectorSearchConfiguration': {
-                'numberOfResults': max_results,
-                'overrideSearchType': 'SEMANTIC'
-            }
-        },
-        text=query
-    )
-    
-    return response
-
-# Example usage
-results = retrieve_from_knowledge_base(
-    knowledge_base_id='YOUR_KB_ID',
-    query='How does feature X work?'
-)
-
-for result in results['retrievalResults']:
-    print(f"Score: {result['score']}")
-    print(f"Content: {result['content']['text']}")
-```
-
-### Integrate with Strands Agent
-
-Update your agent to use the knowledge base as a context source:
-
-```python
-from strands import Agent
-from strands.models import BedrockModel
-import os
-import boto3
-
-MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-6")
-KNOWLEDGE_BASE_ID = os.environ.get("KNOWLEDGE_BASE_ID")
-
-model = BedrockModel(model_id=MODEL_ID, max_tokens=2048)
-bedrock_runtime = boto3.client('bedrock-agent-runtime')
-
-def get_context_from_kb(query: str) -> str:
-    """Retrieve context from knowledge base."""
-    if not KNOWLEDGE_BASE_ID:
-        return ""
-    
-    try:
-        response = bedrock_runtime.retrieve(
-            knowledgeBaseId=KNOWLEDGE_BASE_ID,
-            retrievalConfiguration={
-                'vectorSearchConfiguration': {
-                    'numberOfResults': 3
-                }
-            },
-            text=query
-        )
-        
-        context_parts = []
-        for result in response.get('retrievalResults', []):
-            context_parts.append(result['content']['text'])
-        
-        return "\n\n".join(context_parts)
-    except Exception as e:
-        print(f"Error retrieving from KB: {e}")
-        return ""
-
-agent = Agent(
-    model=model,
-    system_prompt=(
-        "You are a helpful assistant. "
-        "Use the provided context to answer questions accurately."
-    ),
-    tools=[]
-)
-
-def run(user_input: str) -> str:
-    """Invoke the agent with RAG context from the knowledge base."""
-    
-    # Retrieve context from knowledge base
-    context = get_context_from_kb(user_input)
-    
-    # Enhance prompt with context
-    if context:
-        enhanced_prompt = f"""
-Use this context to help answer the question:
-
-{context}
-
-User question: {user_input}
-"""
-    else:
-        enhanced_prompt = user_input
-    
-    response = agent(enhanced_prompt)
-    return str(response)
-```
-
-## Pipeline Integration
-
-The knowledge base stack resources are now part of your CloudFormation stack. When you update `pipeline.yml`, the stack update will be triggered automatically via CodePipeline.
-
-### Trigger Pipeline Changes
-
-The pipeline triggers on changes to `pipeline.yml`. To test the knowledge base:
-
-1. Commit any changes to `pipeline.yml`
-2. Push to your branch
-3. Pipeline automatically detects the change and updates the stack
-4. Wait for the Deploy stage to complete
-
-### Monitor Stack Updates
-
-```bash
-# Watch the stack update
-aws cloudformation describe-stack-events \
-  --stack-name YOUR_STACK_NAME \
-  --query 'StackEvents[0:10]' \
-  --output table
-```
-
-## Security Best Practices
-
-1. **Encryption**: Vector bucket uses AES256 encryption at rest
-2. **Transport**: Enforced HTTPS/SecureTransport for all S3 operations
-3. **IAM**: Granular permissions using service principals
-4. **Source Account**: All cross-service permissions restricted to your account
-5. **Public Access**: Bucket public access completely blocked
+- S3 source bucket enforces TLS and blocks public access
+- Bedrock role uses least-privilege bucket read permissions
+- Auto-sync Lambda is scoped to knowledge-base and data-source ARNs
+- Agent execution role grants `bedrock:Retrieve` for KB access
 
 ## Troubleshooting
 
-### Knowledge Base Not Finding Documents
+### Upload occurred but no ingestion started
 
-1. Check if documents were uploaded to the vector bucket
-2. Verify ingestion job completed successfully
-3. Check Knowledge Base data source status in console
+1. Check EventBridge rule is enabled (`KnowledgeBaseAutoSyncRuleArn`)
+2. Confirm object key starts with `KnowledgeBaseSourcePrefix` (default `kb-source/`)
+3. Check Lambda logs for `data_source_not_found`
+4. Verify data source exists with expected name:
 
-### Retrieve Returns Empty Results
+```bash
+aws bedrock-agent list-data-sources --knowledge-base-id "$KB_ID"
+```
 
-1. Verify the knowledge base has a data source with ingested documents
-2. Check CloudWatch logs for ingestion errors
-3. Confirm the knowledge base ID is correct
+### Ingestion fails
 
-### Permission Denied Errors
+1. Describe latest ingestion jobs:
 
-1. Verify the `KnowledgeBaseRole` has S3 permissions
-2. Check S3 bucket policy allows Bedrock service
-3. Confirm agent execution role has `bedrock:Retrieve` permission
+```bash
+aws bedrock-agent list-ingestion-jobs \
+  --knowledge-base-id "$KB_ID" \
+  --data-source-id "$DS_ID"
+```
 
-## Cost Considerations
+2. Inspect job details:
 
-- **Vector Storage**: ~$0.02 per 1M vectors
-- **Retrievals**: ~$0.01 per retrieval request
-- **Ingestion**: ~$0.10 per 1M tokens processed
+```bash
+aws bedrock-agent get-ingestion-job \
+  --knowledge-base-id "$KB_ID" \
+  --data-source-id "$DS_ID" \
+  --ingestion-job-id <job-id>
+```
 
-See [Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/) for details.
+3. Confirm Bedrock role can read source bucket and objects.
+
+### Retrieval returns empty results
+
+1. Ensure ingestion jobs complete successfully
+2. Validate that uploaded files are in the configured prefix
+3. Test with broader user queries and increased `numberOfResults`
+
+## Migration Notes
+
+This repository previously used a self-managed KB backed by S3 Vectors. The managed migration removes vector-store resource management and avoids metadata-size constraints previously encountered in S3Vectors ingestion.
 
 ## Next Steps
 
-1. **Deploy the Stack**: Push `pipeline.yml` changes to trigger CodePipeline
-2. **Add Documents**: Upload documents to the vector bucket
-3. **Ingest Data**: Create data source and run ingestion job
-4. **Test Retrieval**: Verify knowledge base searches work
-5. **Integrate Agent**: Update your agent code to use the knowledge base
-6. **Monitor**: Track usage and costs in CloudWatch
+1. Deploy the updated stack and pipeline
+2. Confirm deploy stage creates/validates the managed data source
+3. Upload test files to `kb-source/`
+4. Verify auto-sync starts ingestion and completes successfully
+5. Test end-to-end agent retrieval quality

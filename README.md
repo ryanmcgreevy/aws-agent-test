@@ -251,16 +251,18 @@ This script:
 
 ## Bedrock Knowledge Base (RAG Integration)
 
-This project now includes a **Bedrock Knowledge Base** backed by S3 vectors. This enables Retrieval Augmented Generation (RAG) — your agent can search a collection of documents for context before answering questions.
+This project includes a **Bedrock Managed Knowledge Base**. This enables Retrieval Augmented Generation (RAG) without managing vector-store infrastructure directly.
 
 ### Knowledge Base Architecture
 
 The CloudFormation stack (`pipeline.yml`) creates:
 
-- **Vector Storage Bucket** (`agent-vectors-{AccountId}-{Region}`): S3 bucket for storing documents and embeddings
-- **Knowledge Base Role**: IAM role for Bedrock to access S3
-- **Bedrock Knowledge Base**: Vector-based knowledge base using Titan Embed Text v2 embeddings
-- **Agent Execution Role Updates**: Added `bedrock:Retrieve` permissions
+- **Source Document Bucket** (`agent-vectors-{AccountId}-{Region}`): S3 bucket that stores source files under a configurable prefix (`kb-source/` by default)
+- **Knowledge Base Role**: IAM role for Bedrock managed knowledge base to read source documents from S3
+- **Bedrock Managed Knowledge Base**: `Type: MANAGED` with AWS-managed embedding model
+- **Auto-Sync Lambda + EventBridge Rule**: Starts ingestion jobs when new source files are uploaded
+- **Deploy Stage Data Source Automation**: Pipeline deploy step ensures the managed S3 connector data source exists and triggers initial ingestion when first created
+- **Agent Execution Role Updates**: Includes `bedrock:Retrieve` permissions for KB retrieval
 
 ### Configuration
 
@@ -279,13 +281,18 @@ aws cloudformation deploy \
 
 ### Adding Documents
 
-1. **Upload documents to the vector bucket** (any format: PDF, TXT, JSON, Markdown, etc.):
+1. **Upload documents to the source prefix** (any format supported by Bedrock connectors, such as PDF, TXT, JSON, Markdown):
 
 ```bash
-aws s3 cp my-document.pdf s3://agent-vectors-{AccountId}-{Region}/documents/
+aws s3 cp my-document.pdf s3://agent-vectors-{AccountId}-{Region}/kb-source/
 ```
 
-2. **Create a data source in the knowledge base** (AWS Console or CLI):
+2. **Auto-sync handles ingestion for uploads**:
+
+- EventBridge detects object creation
+- Lambda resolves the data source by name and calls `start-ingestion-job`
+
+3. **Optional manual sync commands** (for troubleshooting or bulk refresh):
 
 ```bash
 # Get the Knowledge Base ID from stack outputs
@@ -294,19 +301,21 @@ KB_ID=$(aws cloudformation describe-stacks \
   --query 'Stacks[0].Outputs[?OutputKey==`KnowledgeBaseId`].OutputValue' \
   --output text)
 
-# Create data source
-aws bedrock-agent create-data-source \
-  --knowledge-base-id $KB_ID \
-  --name my-documents \
-  --data-source-configuration s3Configuration='{bucketArn="arn:aws:s3:::agent-vectors-{AccountId}-{Region}"}'
-```
+# Discover managed data source ID by configured name
+DS_NAME=$(aws cloudformation describe-stacks \
+  --stack-name agent-pipeline \
+  --query 'Stacks[0].Outputs[?OutputKey==`KnowledgeBaseDataSourceName`].OutputValue' \
+  --output text)
 
-3. **Start ingestion to generate embeddings**:
+DS_ID=$(aws bedrock-agent list-data-sources \
+  --knowledge-base-id "$KB_ID" \
+  --query "dataSourceSummaries[?name=='$DS_NAME'].dataSourceId | [0]" \
+  --output text)
 
-```bash
+# Start ingestion manually if needed
 aws bedrock-agent start-ingestion-job \
-  --knowledge-base-id $KB_ID \
-  --data-source-id <data-source-id>
+  --knowledge-base-id "$KB_ID" \
+  --data-source-id "$DS_ID"
 ```
 
 ### Using the Knowledge Base with Your Agent
@@ -326,7 +335,7 @@ def run(user_input: str) -> str:
     return agent(augmented_input)
 ```
 
-To enable the knowledge base at runtime, set the `KNOWLEDGE_BASE_ID` environment variable in your deployment configuration.
+To enable the knowledge base at runtime, set the `KNOWLEDGE_BASE_ID` environment variable in your deployment configuration. In this project, the value is injected automatically by the CloudFormation pipeline stack.
 
 For comprehensive documentation, see [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
 

@@ -70,37 +70,17 @@ Parameters:
   KnowledgeBaseName:
     Type: String
     Default: agent-knowledge-base
-    Description: Name of the Bedrock Knowledge Base backed by S3 vectors.
+    Description: Name of the Bedrock Managed Knowledge Base.
 
   KnowledgeBaseDescription:
     Type: String
-    Default: Vector-backed knowledge base for the Strands agent
+    Default: Managed knowledge base for the Strands agent
     Description: Description of the Knowledge Base.
-
-  KnowledgeBaseVectorIndexName:
-    Type: String
-    Default: agent-kb-index
-    Description: Name of the S3 Vectors index for the Knowledge Base.
-
-  KnowledgeBaseVectorBucketName:
-    Type: String
-    Default: agent-kb-vectors
-    MinLength: 3
-    MaxLength: 63
-    AllowedPattern: '[a-z0-9-]+'
-    Description: Name of the S3 Vectors bucket for the Knowledge Base.
-
-  KnowledgeBaseVectorDimension:
-    Type: Number
-    Default: 1024
-    MinValue: 1
-    MaxValue: 4096
-    Description: Embedding vector dimension for the S3 Vectors index.
 
   KnowledgeBaseDataSourceName:
     Type: String
     Default: agent-kb-source
-    Description: Name of the Bedrock Knowledge Base data source.
+    Description: Name of the Bedrock Managed Knowledge Base data source.
 
   KnowledgeBaseSourcePrefix:
     Type: String
@@ -313,6 +293,20 @@ Resources:
                 Resource: '*'
                 # Tighten to specific runtime ARN after first deployment:
                 # Resource: !Sub 'arn:aws:bedrock-agentcore:${AWS::Region}:${AWS::AccountId}:runtime/*'
+        - PolicyName: BedrockKnowledgeBaseDataSourceManagement
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: AllowDataSourceLifecycle
+                Effect: Allow
+                Action:
+                  - bedrock:ListDataSources
+                  - bedrock:GetDataSource
+                  - bedrock:CreateDataSource
+                  - bedrock:StartIngestionJob
+                Resource:
+                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${BedrockKnowledgeBase}'
+                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:data-source/${BedrockKnowledgeBase}/*'
         - PolicyName: PassAgentCoreExecutionRole
           PolicyDocument:
             Version: '2012-10-17'
@@ -548,6 +542,14 @@ Resources:
             Value: !Ref AgentEndpointName
           - Name: SSM_RUNTIME_ID_PATH
             Value: /agent/runtime-id
+          - Name: KNOWLEDGE_BASE_ID
+            Value: !Ref BedrockKnowledgeBase
+          - Name: KNOWLEDGE_BASE_DATA_SOURCE_NAME
+            Value: !Ref KnowledgeBaseDataSourceName
+          - Name: KNOWLEDGE_BASE_SOURCE_BUCKET
+            Value: !Ref VectorBucket
+          - Name: AWS_ACCOUNT_ID
+            Value: !Ref AWS::AccountId
       LogsConfig:
         CloudWatchLogs:
           Status: ENABLED
@@ -612,35 +614,13 @@ Resources:
               StringEquals:
                 'aws:SourceAccount': !Ref AWS::AccountId
 
-  # ── S3 Vectors resources for Bedrock Knowledge Base ────────────────────────
-
-  KnowledgeBaseVectorBucket:
-    Type: AWS::S3Vectors::VectorBucket
-    Properties:
-      VectorBucketName: !Ref KnowledgeBaseVectorBucketName
-      Tags:
-        - Key: project
-          Value: aws-agent-test
-
-  KnowledgeBaseVectorIndex:
-    Type: AWS::S3Vectors::Index
-    Properties:
-      VectorBucketArn: !Ref KnowledgeBaseVectorBucket
-      IndexName: !Ref KnowledgeBaseVectorIndexName
-      DataType: float32
-      Dimension: !Ref KnowledgeBaseVectorDimension
-      DistanceMetric: cosine
-      Tags:
-        - Key: project
-          Value: aws-agent-test
-
-  # ── IAM role: Bedrock Knowledge Base ────────────────────────────────────────
+  # ── IAM role: Bedrock Managed Knowledge Base ────────────────────────────────
 
   KnowledgeBaseRole:
     Type: AWS::IAM::Role
     Properties:
       RoleName: !Sub 'bedrock-knowledge-base-role-${AWS::Region}'
-      Description: Service role for Bedrock Knowledge Base to access S3 and vectors.
+      Description: Service role for Bedrock Managed Knowledge Base to access source data in S3.
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -652,22 +632,10 @@ Resources:
               StringEquals:
                 'aws:SourceAccount': !Ref AWS::AccountId
       Policies:
-        - PolicyName: S3VectorsAccess
+        - PolicyName: ManagedKnowledgeBaseSourceRead
           PolicyDocument:
             Version: '2012-10-17'
             Statement:
-              - Sid: S3VectorsOperations
-                Effect: Allow
-                Action:
-                  - s3vectors:GetVectorBucket
-                  - s3vectors:GetIndex
-                  - s3vectors:ListIndexes
-                  - s3vectors:ListVectors
-                  - s3vectors:QueryVectors
-                  - s3vectors:GetVectors
-                Resource:
-                  - !Ref KnowledgeBaseVectorBucket
-                  - !Ref KnowledgeBaseVectorIndex
               - Sid: SourceBucketRead
                 Effect: Allow
                 Action:
@@ -681,7 +649,7 @@ Resources:
         - Key: project
           Value: aws-agent-test
 
-  # ── Bedrock Knowledge Base (S3 Vector Backed) ───────────────────────────────
+  # ── Bedrock Knowledge Base (Managed) ────────────────────────────────────────
 
   BedrockKnowledgeBase:
     Type: AWS::Bedrock::KnowledgeBase
@@ -690,33 +658,12 @@ Resources:
       Name: !Ref KnowledgeBaseName
       Description: !Ref KnowledgeBaseDescription
       KnowledgeBaseConfiguration:
-        Type: VECTOR
-        VectorKnowledgeBaseConfiguration:
-          EmbeddingModelArn: !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/amazon.titan-embed-text-v2:0'
+        Type: MANAGED
+        ManagedKnowledgeBaseConfiguration:
+          EmbeddingModelType: MANAGED
       RoleArn: !GetAtt KnowledgeBaseRole.Arn
-      StorageConfiguration:
-        Type: S3_VECTORS
-        S3VectorsConfiguration:
-          VectorBucketArn: !Ref KnowledgeBaseVectorBucket
-          IndexArn: !Ref KnowledgeBaseVectorIndex
       Tags:
         project: aws-agent-test
-
-  BedrockKnowledgeBaseDataSource:
-    Type: AWS::Bedrock::DataSource
-    Condition: AlwaysTrue
-    Properties:
-      Name: !Ref KnowledgeBaseDataSourceName
-      Description: !Sub 'S3 source documents from ${VectorBucket} for ${KnowledgeBaseName}'
-      DataDeletionPolicy: RETAIN
-      KnowledgeBaseId: !Ref BedrockKnowledgeBase
-      DataSourceConfiguration:
-        Type: S3
-        S3Configuration:
-          BucketArn: !GetAtt VectorBucket.Arn
-          BucketOwnerAccountId: !Ref AWS::AccountId
-          InclusionPrefixes:
-            - !Ref KnowledgeBaseSourcePrefix
 
   # ── Auto-sync KB ingestion on S3 uploads ───────────────────────────────────
 
@@ -753,9 +700,10 @@ Resources:
                   - bedrock:StartIngestionJob
                   - bedrock:GetIngestionJob
                   - bedrock:ListIngestionJobs
+                  - bedrock:ListDataSources
                 Resource:
                   - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${BedrockKnowledgeBase}'
-                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:data-source/${BedrockKnowledgeBase}/${BedrockKnowledgeBaseDataSource.DataSourceId}'
+                  - !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:data-source/${BedrockKnowledgeBase}/*'
       Tags:
         - Key: project
           Value: aws-agent-test
@@ -772,7 +720,7 @@ Resources:
       Environment:
         Variables:
           KNOWLEDGE_BASE_ID: !Ref BedrockKnowledgeBase
-          DATA_SOURCE_ID: !GetAtt BedrockKnowledgeBaseDataSource.DataSourceId
+          DATA_SOURCE_NAME: !Ref KnowledgeBaseDataSourceName
           SOURCE_PREFIX: !Ref KnowledgeBaseSourcePrefix
       Code:
         ZipFile: |
@@ -784,9 +732,34 @@ Resources:
 
 
           kb_id = os.environ["KNOWLEDGE_BASE_ID"]
-          ds_id = os.environ["DATA_SOURCE_ID"]
+          ds_name = os.environ["DATA_SOURCE_NAME"]
           source_prefix = os.environ.get("SOURCE_PREFIX", "")
           client = boto3.client("bedrock-agent")
+          ds_id_cache = None
+
+
+          def resolve_data_source_id():
+              global ds_id_cache
+              if ds_id_cache:
+                  return ds_id_cache
+
+              next_token = None
+              while True:
+                  params = {"knowledgeBaseId": kb_id, "maxResults": 100}
+                  if next_token:
+                      params["nextToken"] = next_token
+
+                  response = client.list_data_sources(**params)
+                  for summary in response.get("dataSourceSummaries", []):
+                      if summary.get("name") == ds_name:
+                          ds_id_cache = summary.get("dataSourceId")
+                          return ds_id_cache
+
+                  next_token = response.get("nextToken")
+                  if not next_token:
+                      break
+
+              return None
 
 
           def handler(event, context):
@@ -799,6 +772,16 @@ Resources:
                   return {
                       "status": "ignored",
                       "reason": "outside_source_prefix",
+                      "bucket": bucket,
+                      "key": obj_key,
+                  }
+
+              ds_id = resolve_data_source_id()
+              if not ds_id:
+                  return {
+                      "status": "skipped",
+                      "reason": "data_source_not_found",
+                      "dataSourceName": ds_name,
                       "bucket": bucket,
                       "key": obj_key,
                   }
@@ -1028,22 +1011,9 @@ Outputs:
     Description: ARN of the Bedrock Knowledge Base.
     Value: !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/${BedrockKnowledgeBase}'
 
-  VectorBucketName:
-    Description: S3 Vectors bucket name for vector storage.
-    Value: !Ref KnowledgeBaseVectorBucketName
-
-  VectorBucketArn:
-    Description: S3 Vectors bucket ARN for vector storage.
-    Value: !Ref KnowledgeBaseVectorBucket
-
-  VectorIndexArn:
-    Description: S3 Vectors index ARN for the Knowledge Base.
-    Value: !Ref KnowledgeBaseVectorIndex
-
-  KnowledgeBaseDataSourceId:
-    Condition: AlwaysTrue
-    Description: ID of the Bedrock Knowledge Base data source.
-    Value: !GetAtt BedrockKnowledgeBaseDataSource.DataSourceId
+  KnowledgeBaseDataSourceName:
+    Description: Name of the managed knowledge base data source created by deploy automation.
+    Value: !Ref KnowledgeBaseDataSourceName
 
   KnowledgeBaseSourceBucketName:
     Description: S3 bucket name for source documents ingested into the Knowledge Base.
