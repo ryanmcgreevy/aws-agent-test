@@ -42,6 +42,7 @@ class InvokeRequest(BaseModel):
     """Accept both 'input' and 'prompt' keys for compatibility with invoke.sh and AgentCore playground."""
     input: str | None = None
     prompt: str | None = None
+    session_id: str | None = None
 
     def get_text(self) -> str:
         """Extract the user input from either 'input' or 'prompt' field."""
@@ -53,6 +54,7 @@ class InvokeRequest(BaseModel):
 
 class InvokeResponse(BaseModel):
     response: str
+    session_id: str
 
 
 # ── Endpoints ────────────────────────────────────────────────────────────────
@@ -71,9 +73,9 @@ async def invoke(body: InvokeRequest):
         user_input = body.get_text()
         if not user_input:
             raise ValueError("'input' or 'prompt' must be a non-empty string")
-        result = run(user_input)
+        result, session_id = run(user_input, session_id=body.session_id)
         logger.info("Agent responded successfully")
-        return InvokeResponse(response=result)
+        return InvokeResponse(response=result, session_id=session_id)
     except ValueError as exc:
         logger.warning("Invalid request: %s", exc)
         raise HTTPException(status_code=400, detail=str(exc)) from exc

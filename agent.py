@@ -8,11 +8,16 @@ The agent is configured to use a Bedrock Knowledge Base for semantic
 search over document collections (RAG - Retrieval Augmented Generation).
 """
 
+import logging
 import os
+from uuid import uuid4
+
+import boto3
 from strands import Agent
 from strands.models import BedrockModel
-import boto3
-from typing import Optional
+from strands.session import S3SessionManager
+
+logger = logging.getLogger(__name__)
 
 # Cross-region inference profile — provides higher availability than a
 # single-region model ID. Requires Bedrock model access to be enabled.
@@ -24,6 +29,11 @@ MODEL_ID = os.environ.get(
 # Set KNOWLEDGE_BASE_ID environment variable to enable knowledge base retrieval.
 KNOWLEDGE_BASE_ID = os.environ.get("KNOWLEDGE_BASE_ID")
 
+# Optional S3-backed session persistence.
+SESSION_BUCKET_NAME = os.environ.get("SESSION_BUCKET_NAME")
+SESSION_BUCKET_PREFIX = os.environ.get("SESSION_BUCKET_PREFIX", "sessions")
+SESSION_REGION = os.environ.get("SESSION_BUCKET_REGION", os.environ.get("AWS_REGION", "us-east-1"))
+
 # Build the model. BedrockModel picks up credentials automatically from
 # the environment (IAM role, ~/.aws/credentials, or AgentCore-injected creds).
 model = BedrockModel(
@@ -34,6 +44,39 @@ model = BedrockModel(
 # Initialize Bedrock Agent Runtime client for knowledge base retrieval
 # Use us-east-1 region for managed knowledge bases
 bedrock_agent_runtime = boto3.client('bedrock-agent-runtime', region_name='us-east-1')
+
+
+def build_session_manager(session_id: str) -> S3SessionManager | None:
+    """Create an S3-backed session manager when persistence is configured."""
+    if not SESSION_BUCKET_NAME:
+        return None
+
+    try:
+        return S3SessionManager(
+            session_id=session_id,
+            bucket=SESSION_BUCKET_NAME,
+            prefix=SESSION_BUCKET_PREFIX,
+            region_name=SESSION_REGION,
+        )
+    except Exception as exc:  # pragma: no cover - keep the agent usable if S3 config is wrong
+        logger.warning("Falling back to stateless mode because session manager setup failed: %s", exc)
+        return None
+
+
+def build_agent(session_manager: S3SessionManager | None = None) -> Agent:
+    """Construct a Strands agent instance with the shared model and prompt."""
+    return Agent(
+        model=model,
+        system_prompt=(
+            "You are a helpful assistant with access to a knowledge base. "
+            "When answering questions, use the provided context documents to "
+            "give accurate, well-informed responses. "
+            "If the context doesn't contain relevant information, say so clearly."
+            "Your primary goal is to assist the user in answering questions about college courses and requirements, using the knowledge base to find relevant information."
+        ),
+        tools=[],  # Add strands_tools here, e.g.: from strands_tools import calculator
+        session_manager=session_manager,
+    )
 
 
 def retrieve_from_knowledge_base(query: str, max_results: int = 3) -> str:
@@ -72,21 +115,7 @@ def retrieve_from_knowledge_base(query: str, max_results: int = 3) -> str:
         return ""
 
 
-# Define the agent. Add tools to the `tools` list as your use case grows.
-agent = Agent(
-    model=model,
-    system_prompt=(
-        "You are a helpful assistant with access to a knowledge base. "
-        "When answering questions, use the provided context documents to "
-        "give accurate, well-informed responses. "
-        "If the context doesn't contain relevant information, say so clearly."
-        "Your primary goal is to assist the user in answering questions about college courses and requirements, using the knowledge base to find relevant information."
-    ),
-    tools=[],  # Add strands_tools here, e.g.: from strands_tools import calculator
-)
-
-
-def run(user_input: str) -> str:
+def run(user_input: str, session_id: str | None = None) -> tuple[str, str]:
     """
     Invoke the agent with a user message and return the response as a string.
     
@@ -95,12 +124,19 @@ def run(user_input: str) -> str:
     
     Args:
         user_input: The user's question or message
+        session_id: Optional caller-supplied session ID. When omitted, a new ID
+            is generated so the caller can reuse it on the next turn.
         
     Returns:
-        The agent's response as a string
+        A tuple of (response_text, effective_session_id).
     """
+    effective_session_id = session_id or uuid4().hex
+
     # Retrieve context from knowledge base if available
     context = retrieve_from_knowledge_base(user_input)
+
+    session_manager = build_session_manager(effective_session_id)
+    agent = build_agent(session_manager=session_manager)
     
     # If we have context from the knowledge base, augment the input
     if context:
@@ -117,4 +153,4 @@ Please answer this question: {user_input}
         augmented_input = user_input
     
     response = agent(augmented_input)
-    return str(response)
+    return str(response), effective_session_id

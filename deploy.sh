@@ -61,6 +61,8 @@ load_env_file
 
 # Optional networking mode: PUBLIC (default) or VPC.
 AGENT_NETWORK_MODE="${AGENT_NETWORK_MODE:-PUBLIC}"
+SESSION_BUCKET_NAME="${SESSION_BUCKET_NAME:-}"
+SESSION_BUCKET_PREFIX="${SESSION_BUCKET_PREFIX:-sessions}"
 
 # AgentCore runtime names must match: [a-zA-Z][a-zA-Z0-9_]{0,47}
 AGENT_RUNTIME_NAME_SANITIZED="$(echo "${AGENT_RUNTIME_NAME}" | sed 's/[^a-zA-Z0-9_]/_/g')"
@@ -99,6 +101,11 @@ if [[ "${AGENT_NETWORK_MODE}" == "VPC" ]]; then
   _sgs_json="[${_sgs_json%,}]"
 
   NETWORK_CONFIGURATION_JSON="{\"networkMode\":\"VPC\",\"networkModeConfig\":{\"subnets\":${_subnets_json},\"securityGroups\":${_sgs_json}}}"
+fi
+
+ENVIRONMENT_VARIABLES_JSON='{}'
+if [[ -n "${SESSION_BUCKET_NAME}" ]]; then
+  ENVIRONMENT_VARIABLES_JSON="{\"SESSION_BUCKET_NAME\":\"${SESSION_BUCKET_NAME}\",\"SESSION_BUCKET_PREFIX\":\"${SESSION_BUCKET_PREFIX}\"}"
 fi
 
 echo "==> [1/7] Verifying tools"
@@ -146,6 +153,7 @@ RUNTIME_RESPONSE=$(aws bedrock-agentcore-control create-agent-runtime \
   --role-arn "${AGENTCORE_EXECUTION_ROLE_ARN}" \
   --network-configuration "${NETWORK_CONFIGURATION_JSON}" \
   --protocol-configuration '{"serverProtocol":"HTTP"}' \
+  --environment-variables "${ENVIRONMENT_VARIABLES_JSON}" \
   --region "${AWS_REGION}" \
   --output json 2>&1)
 CREATE_EXIT=$?
@@ -176,6 +184,7 @@ else
       --role-arn "${AGENTCORE_EXECUTION_ROLE_ARN}" \
       --network-configuration "${NETWORK_CONFIGURATION_JSON}" \
       --protocol-configuration '{"serverProtocol":"HTTP"}' \
+      --environment-variables "${ENVIRONMENT_VARIABLES_JSON}" \
       --region "${AWS_REGION}"
   else
     echo "create-agent-runtime failed:"

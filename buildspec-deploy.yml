@@ -13,6 +13,8 @@ version: 0.2
 #   AGENT_NETWORK_MODE   — PUBLIC or VPC
 #   AGENT_ENDPOINT_NAME  — endpoint qualifier name (e.g. prod)
 #   SSM_RUNTIME_ID_PATH  — SSM parameter path storing the runtime ID
+#   SESSION_BUCKET_NAME           — S3 bucket used by S3SessionManager
+#   SESSION_BUCKET_PREFIX         — optional prefix inside the bucket
 #   KNOWLEDGE_BASE_ID              — Bedrock knowledge base ID
 #   KNOWLEDGE_BASE_DATA_SOURCE_NAME — Managed KB data source name to ensure
 #   KNOWLEDGE_BASE_SOURCE_BUCKET   — S3 bucket for KB source documents
@@ -28,6 +30,7 @@ phases:
       - echo "==> Reading image URI from build artifact"
       - IMAGE_URI=$(cat "$CODEBUILD_SRC_DIR_BuildArtifact/imageUri.txt")
       - echo "Deploying image $IMAGE_URI"
+      - SESSION_ENV_JSON="{\"SESSION_BUCKET_NAME\":\"$SESSION_BUCKET_NAME\",\"SESSION_BUCKET_PREFIX\":\"$SESSION_BUCKET_PREFIX\"}"
       - echo "==> Reading runtime ID from SSM ($SSM_RUNTIME_ID_PATH)"
       - RUNTIME_ID=$(aws ssm get-parameter --name "$SSM_RUNTIME_ID_PATH" --query Parameter.Value --output text)
       - echo "Current runtime ID = $RUNTIME_ID"
@@ -45,6 +48,7 @@ phases:
             --role-arn "$EXECUTION_ROLE_ARN" \
             --network-configuration "{\"networkMode\":\"$AGENT_NETWORK_MODE\"}" \
             --protocol-configuration '{"serverProtocol":"HTTP"}' \
+            --environment-variables "$SESSION_ENV_JSON" \
             --region "$AWS_DEFAULT_REGION" \
             --output json 2>&1)
           CREATE_EXIT=$?
@@ -97,6 +101,7 @@ phases:
             --role-arn "$EXECUTION_ROLE_ARN" \
             --network-configuration "{\"networkMode\":\"$AGENT_NETWORK_MODE\"}" \
             --protocol-configuration '{"serverProtocol":"HTTP"}' \
+            --environment-variables "$SESSION_ENV_JSON" \
             --region "$AWS_DEFAULT_REGION"
         fi
 

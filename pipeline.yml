@@ -96,6 +96,11 @@ Parameters:
     Default: kb-source/
     Description: S3 prefix within the source bucket to ingest into the knowledge base.
 
+  SessionBucketPrefix:
+    Type: String
+    Default: sessions/
+    Description: S3 prefix used by the agent session persistence layer.
+
 # ── Conditions ────────────────────────────────────────────────────────────────
 
 Conditions: {}
@@ -139,6 +144,45 @@ Resources:
             Resource:
               - !GetAtt ArtifactBucket.Arn
               - !Sub '${ArtifactBucket.Arn}/*'
+            Condition:
+              Bool:
+                'aws:SecureTransport': 'false'
+
+  # ── S3 bucket for agent session persistence ────────────────────────────────
+
+  SessionBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'agent-sessions-${AWS::AccountId}-${AWS::Region}'
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      Tags:
+        - Key: project
+          Value: aws-agent-test
+
+  SessionBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SessionBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: '*'
+            Action: 's3:*'
+            Resource:
+              - !GetAtt SessionBucket.Arn
+              - !Sub '${SessionBucket.Arn}/*'
             Condition:
               Bool:
                 'aws:SecureTransport': 'false'
@@ -212,6 +256,28 @@ Resources:
                   - ecr:BatchGetImage
                   - ecr:GetDownloadUrlForLayer
                 Resource: !GetAtt EcrRepository.Arn
+        - PolicyName: SessionBucketAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: AllowSessionBucketList
+                Effect: Allow
+                Action:
+                  - s3:ListBucket
+                  - s3:GetBucketLocation
+                Resource: !GetAtt SessionBucket.Arn
+                Condition:
+                  StringLike:
+                    's3:prefix':
+                      - !Sub '${SessionBucketPrefix}*'
+              - Sid: AllowSessionObjectReadWrite
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                  - s3:PutObject
+                  - s3:DeleteObject
+                Resource: !Sub '${SessionBucket.Arn}/${SessionBucketPrefix}*'
       Tags:
         - Key: project
           Value: aws-agent-test
@@ -558,6 +624,10 @@ Resources:
             Value: !Ref VectorBucket
           - Name: AWS_ACCOUNT_ID
             Value: !Ref AWS::AccountId
+          - Name: SESSION_BUCKET_NAME
+            Value: !Ref SessionBucket
+          - Name: SESSION_BUCKET_PREFIX
+            Value: !Ref SessionBucketPrefix
       LogsConfig:
         CloudWatchLogs:
           Status: ENABLED
@@ -1019,6 +1089,14 @@ Outputs:
   KnowledgeBaseSourceBucketArn:
     Description: S3 bucket ARN for source documents ingested into the Knowledge Base.
     Value: !GetAtt VectorBucket.Arn
+
+  SessionBucketName:
+    Description: S3 bucket name used for agent session persistence.
+    Value: !Ref SessionBucket
+
+  SessionBucketArn:
+    Description: S3 bucket ARN used for agent session persistence.
+    Value: !GetAtt SessionBucket.Arn
 
   KnowledgeBaseRoleArn:
     Description: ARN of the Knowledge Base service role.

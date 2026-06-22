@@ -51,6 +51,15 @@ This is **not production-ready** code. It is for experimentation, validation, an
   - `ecr:BatchGetImage`
   - `ecr:GetDownloadUrlForLayer`
 
+If you enable session persistence, the runtime execution role also needs access to the session bucket:
+
+- `s3:ListBucket`
+- `s3:GetBucketLocation`
+- `s3:GetObject`
+- `s3:GetObjectVersion`
+- `s3:PutObject`
+- `s3:DeleteObject`
+
 ## Execution Role IAM Permissions
 
 The runtime execution role (for example `AgentCoreExecutionRole`) should include these permissions.
@@ -115,6 +124,14 @@ curl -s -X POST http://localhost:8080/invoke \
   -d '{"input":"what is 2+2?"}'
 ```
 
+If session persistence is configured, include a `session_id` to continue the same conversation:
+
+```bash
+curl -s -X POST http://localhost:8080/invoke \
+  -H "Content-Type: application/json" \
+  -d '{"input":"remember this","session_id":"demo-session"}'
+```
+
 ## Configure Environment
 
 Copy and edit env values:
@@ -139,6 +156,11 @@ After deployment, also set either:
 And endpoint qualifier:
 
 - `AGENT_ENDPOINT_NAME` (default `prod`)
+
+For local session persistence tests, set:
+
+- `SESSION_BUCKET_NAME`
+- `SESSION_BUCKET_PREFIX` (optional, defaults to `sessions`)
 
 ## Deploy to AgentCore
 
@@ -239,15 +261,48 @@ Use:
 
 This script:
 
-- Builds a JSON payload (`{"input": "..."}`)
+- Builds a JSON payload (`{"input": "...", "session_id": "..."}` when provided)
 - Calls `aws bedrock-agentcore invoke-agent-runtime`
 - Prints response body
+
+Pass a session ID to reuse conversation state:
+
+```bash
+./invoke.sh --session-id demo-session "What did I just ask you?"
+```
 
 ## Runtime Behavior Notes
 
 - Endpoint network mode can be `PUBLIC` or `VPC` (set via deployment config)
 - Even with `PUBLIC` network mode, requests still require AWS auth + IAM permission to invoke
 - Runtime sessions have lifecycle controls (`idleRuntimeSessionTimeout`, `maxLifetime`) that can be tuned for cost/latency tradeoffs
+
+## Session Persistence
+
+The agent can persist conversation state in S3 using Strands `S3SessionManager`.
+
+### Session Flow
+
+- The caller may send `session_id` in the invoke payload.
+- If no `session_id` is provided, the agent generates one and returns it in the response.
+- Reusing the same `session_id` restores the prior conversation from S3.
+
+### Runtime Environment
+
+The runtime reads these environment variables:
+
+- `SESSION_BUCKET_NAME` - S3 bucket that stores session data
+- `SESSION_BUCKET_PREFIX` - optional key prefix for session objects
+
+The CloudFormation pipeline stack creates the bucket and injects those values into the runtime.
+
+### Invoke Example
+
+```bash
+./invoke.sh --session-id demo-session "continue our previous conversation"
+```
+
+The API response includes the effective `session_id`, so clients can reuse it on the next turn.
 
 ## Bedrock Knowledge Base (RAG Integration)
 
@@ -329,10 +384,11 @@ def retrieve_from_knowledge_base(query: str, max_results: int = 3) -> str:
     ...
 
 # The run() function automatically augments prompts with KB context
-def run(user_input: str) -> str:
+# and returns the response plus the effective session_id.
+def run(user_input: str, session_id: str | None = None) -> tuple[str, str]:
     context = retrieve_from_knowledge_base(user_input)
     augmented_input = f"Context: {context}\n\nQuestion: {user_input}"
-    return agent(augmented_input)
+  return agent(augmented_input), session_id or "generated-session-id"
 ```
 
 To enable the knowledge base at runtime, set the `KNOWLEDGE_BASE_ID` environment variable in your deployment configuration. In this project, the value is injected automatically by the CloudFormation pipeline stack.
