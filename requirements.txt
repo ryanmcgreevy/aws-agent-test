@@ -1,6 +1,6 @@
 # Strands agent + AWS SDK
 strands-agents>=1.44.0
-strands-agents-tools>=1.44.0
+strands-agents-tools>=0.8.1
 
 # HTTP server (AgentCore HTTP protocol)
 fastapi>=0.115.0

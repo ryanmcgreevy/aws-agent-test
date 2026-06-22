@@ -15,7 +15,7 @@ from uuid import uuid4
 import boto3
 from strands import Agent
 from strands.models import BedrockModel
-from strands.session import S3SessionManager
+from strands.session import FileSessionManager, S3SessionManager
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +33,8 @@ KNOWLEDGE_BASE_ID = os.environ.get("KNOWLEDGE_BASE_ID")
 SESSION_BUCKET_NAME = os.environ.get("SESSION_BUCKET_NAME")
 SESSION_BUCKET_PREFIX = os.environ.get("SESSION_BUCKET_PREFIX", "sessions")
 SESSION_REGION = os.environ.get("SESSION_BUCKET_REGION", os.environ.get("AWS_REGION", "us-east-1"))
+# Local fallback storage used when SESSION_BUCKET_NAME is not configured.
+LOCAL_SESSION_STORAGE_DIR = os.environ.get("LOCAL_SESSION_STORAGE_DIR", ".sessions")
 
 # Build the model. BedrockModel picks up credentials automatically from
 # the environment (IAM role, ~/.aws/credentials, or AgentCore-injected creds).
@@ -46,10 +48,10 @@ model = BedrockModel(
 bedrock_agent_runtime = boto3.client('bedrock-agent-runtime', region_name='us-east-1')
 
 
-def build_session_manager(session_id: str) -> S3SessionManager | None:
-    """Create an S3-backed session manager when persistence is configured."""
+def build_session_manager(session_id: str) -> S3SessionManager | FileSessionManager | None:
+    """Create an S3 or file-backed session manager depending on runtime config."""
     if not SESSION_BUCKET_NAME:
-        return None
+        return FileSessionManager(session_id=session_id, storage_dir=LOCAL_SESSION_STORAGE_DIR)
 
     try:
         return S3SessionManager(
@@ -131,7 +133,7 @@ def run(user_input: str, session_id: str | None = None) -> tuple[str, str]:
         A tuple of (response_text, effective_session_id).
     """
     effective_session_id = session_id or uuid4().hex
-
+    print(f"Running agent with session_id={effective_session_id} and user_input={user_input}")
     # Retrieve context from knowledge base if available
     context = retrieve_from_knowledge_base(user_input)
 

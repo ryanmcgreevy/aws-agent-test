@@ -6,6 +6,7 @@
 #   ./invoke.sh --session-id my-session "Continue our conversation"
 #
 # Reads configuration from .env when present.
+# Set SESSION_ID in .env or pass --session-id to test session persistence.
 
 set -euo pipefail
 export AWS_PAGER=""
@@ -89,6 +90,10 @@ EOF
 done
 
 PROMPT="${PROMPT:-Hello from invoke.sh. Please reply with a short greeting.}"
+
+if [[ -n "${SESSION_ID}" ]]; then
+  echo "Using session_id: ${SESSION_ID}"
+fi
 
 payload_file="$(mktemp)"
 response_file="$(mktemp)"

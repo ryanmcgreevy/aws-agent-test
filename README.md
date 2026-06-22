@@ -121,7 +121,7 @@ Quick local check:
 ```bash
 curl -s -X POST http://localhost:8080/invoke \
   -H "Content-Type: application/json" \
-  -d '{"input":"what is 2+2?"}'
+  -d '{"input":"what is 2+2?","session_id":"demo-session"}'
 ```
 
 If session persistence is configured, include a `session_id` to continue the same conversation:
@@ -161,6 +161,10 @@ For local session persistence tests, set:
 
 - `SESSION_BUCKET_NAME`
 - `SESSION_BUCKET_PREFIX` (optional, defaults to `sessions`)
+
+If `SESSION_BUCKET_NAME` is not set, the agent falls back to local file-backed sessions using:
+
+- `LOCAL_SESSION_STORAGE_DIR` (optional, defaults to `.sessions`)
 
 ## Deploy to AgentCore
 
@@ -279,7 +283,10 @@ Pass a session ID to reuse conversation state:
 
 ## Session Persistence
 
-The agent can persist conversation state in S3 using Strands `S3SessionManager`.
+The agent can persist conversation state using either:
+
+- Strands `S3SessionManager` when `SESSION_BUCKET_NAME` is configured
+- Strands `FileSessionManager` for local testing when `SESSION_BUCKET_NAME` is not configured
 
 ### Session Flow
 
@@ -293,8 +300,10 @@ The runtime reads these environment variables:
 
 - `SESSION_BUCKET_NAME` - S3 bucket that stores session data
 - `SESSION_BUCKET_PREFIX` - optional key prefix for session objects
+- `LOCAL_SESSION_STORAGE_DIR` - local directory for file-backed sessions when S3 settings are not provided
 
-The CloudFormation pipeline stack creates the bucket and injects those values into the runtime.
+The CloudFormation pipeline stack creates the S3 bucket and injects the S3 values into the runtime.
+For local development without S3, only `LOCAL_SESSION_STORAGE_DIR` is needed (or use the default `.sessions`).
 
 ### Invoke Example
 
