@@ -88,8 +88,8 @@ Parameters:
 
   KnowledgeBaseDataSourceName:
     Type: String
-    Default: agent-kb-source
-    Description: Name of the Bedrock Managed Knowledge Base data source.
+    Default: knowledge-base-quick-start-fzhav-data-source
+    Description: Name of the Bedrock Managed Knowledge Base data source (must match the name used when creating the data source in the AWS console).
 
   KnowledgeBaseSourcePrefix:
     Type: String
@@ -914,7 +914,9 @@ Resources:
                     "GitHubOwner": "ryanmcgreevy",
                     "GitHubRepo": "aws-agent-test",
                     "GitHubBranch": "master",
-                    "PipelineTargetStackName": "agent-pipeline"
+                    "PipelineTargetStackName": "agent-pipeline",
+                    "KnowledgeBaseId": "QDYAUTFYTX",
+                    "KnowledgeBaseDataSourceName": "knowledge-base-quick-start-fzhav-data-source"
                   }
               InputArtifacts:
                 - Name: SourceArtifact

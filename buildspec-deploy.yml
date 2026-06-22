@@ -152,36 +152,37 @@ phases:
             --region "$AWS_DEFAULT_REGION"
         fi
 
-      # ── Ensure managed knowledge base data source exists ─────────────────
+      # ── Trigger managed knowledge base ingestion ───────────────────────
+      # The managed KB and its data source are created outside CFN (AWS console).
+      # This step finds the data source by configured name (falling back to the
+      # first available data source) and starts ingestion.
       - |
-        echo "==> Ensuring managed data source exists for knowledge base $KNOWLEDGE_BASE_ID"
+        echo "==> Looking up data source for knowledge base $KNOWLEDGE_BASE_ID"
         DS_ID=$(aws bedrock-agent list-data-sources \
           --knowledge-base-id "$KNOWLEDGE_BASE_ID" \
           --query "dataSourceSummaries[?name=='$KNOWLEDGE_BASE_DATA_SOURCE_NAME'].dataSourceId | [0]" \
-          --output text)
+          --output text 2>/dev/null)
 
         if [[ -z "$DS_ID" || "$DS_ID" == "None" || "$DS_ID" == "null" ]]; then
-          echo "==> Creating managed data source $KNOWLEDGE_BASE_DATA_SOURCE_NAME"
-          CREATE_DS_RESPONSE=$(aws bedrock-agent create-data-source \
-            --name "$KNOWLEDGE_BASE_DATA_SOURCE_NAME" \
-            --description "Managed S3 source documents from $KNOWLEDGE_BASE_SOURCE_BUCKET" \
+          echo "==> Data source '$KNOWLEDGE_BASE_DATA_SOURCE_NAME' not found by name; falling back to first available data source"
+          DS_ID=$(aws bedrock-agent list-data-sources \
             --knowledge-base-id "$KNOWLEDGE_BASE_ID" \
-            --data-deletion-policy RETAIN \
-            --data-source-configuration "{\"type\":\"MANAGED_KNOWLEDGE_BASE_CONNECTOR\",\"managedKnowledgeBaseConnectorConfiguration\":{\"connectorParameters\":{\"type\":\"S3\",\"version\":\"1\",\"connectionConfiguration\":{\"bucketName\":\"$KNOWLEDGE_BASE_SOURCE_BUCKET\",\"bucketOwnerAccountId\":\"$AWS_ACCOUNT_ID\"},\"deletionProtectionConfiguration\":{\"enableDeletionProtection\":false}}}}" \
-            --region "$AWS_DEFAULT_REGION" \
-            --output json)
+            --query "dataSourceSummaries[0].dataSourceId" \
+            --output text 2>/dev/null)
+        fi
 
-          DS_ID=$(echo "$CREATE_DS_RESPONSE" | python3 -c "import sys, json; print(json.load(sys.stdin)['dataSource']['dataSourceId'])")
-          echo "Created data source: $DS_ID"
-
-          echo "==> Starting initial ingestion for new data source"
+        if [[ -z "$DS_ID" || "$DS_ID" == "None" || "$DS_ID" == "null" ]]; then
+          echo "WARNING: No data source found for knowledge base $KNOWLEDGE_BASE_ID. Skipping ingestion."
+          echo "Create a data source in the AWS Console and re-run the pipeline to trigger initial sync."
+        else
+          echo "==> Starting ingestion job for data source: $DS_ID"
           aws bedrock-agent start-ingestion-job \
             --knowledge-base-id "$KNOWLEDGE_BASE_ID" \
             --data-source-id "$DS_ID" \
-            --description "Initial ingestion after managed data source creation" \
-            --region "$AWS_DEFAULT_REGION"
-        else
-          echo "==> Data source already exists: $DS_ID"
+            --description "Sync triggered by pipeline deployment" \
+            --region "$AWS_DEFAULT_REGION" \
+          && echo "==> Ingestion job started" \
+          || echo "WARNING: Failed to start ingestion job (may already be running; EventBridge auto-sync will catch next upload)"
         fi
 
       - echo "==> Deployment complete"
