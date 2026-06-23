@@ -19,6 +19,7 @@ from strands.session import FileSessionManager, S3SessionManager
 from strands import tool
 from strands.agent.conversation_manager import SummarizingConversationManager
 from schedule_tools import query_schedule
+from strands.vended_plugins.skills import AgentSkills
 
 logger = logging.getLogger(__name__)
 
@@ -85,6 +86,8 @@ def build_session_manager(session_id: str) -> S3SessionManager | FileSessionMana
 
 def build_agent(session_manager: S3SessionManager | FileSessionManager | None = None) -> Agent:
     """Construct a Strands agent instance with the shared model and prompt."""
+
+    plugin = AgentSkills(skills=["./.agents/skills/course-scheduling-workflow/"])
     return Agent(
         model=model,
         system_prompt=(
@@ -105,6 +108,7 @@ def build_agent(session_manager: S3SessionManager | FileSessionManager | None = 
         conversation_manager=SummarizingConversationManager(
             proactive_compression=True,
         ),
+        plugins=[plugin],
     )
 
 
