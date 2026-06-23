@@ -1,0 +1,631 @@
+Class Session Code,Subject Area,Course Catalog Number,Class Number,Course Component Short Description,Class Start Date,End Date,Instruction Mode Description,Facility ID,Start Time,End Time,Derived Meeting Pattern,Instructor Name,Instructor Role Description
+1,AHLT-M,190,35281,Lecture,1/12/2026,5/8/2026,In Person, , , , ,"Townsend,Carolyn Sutton",Primary Instructor
+1,AHLT-R,182,26692,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC,8:00:00 AM,3:30:00 PM,TR,"Evelo,Anna Christine",Primary Instructor
+1,AHLT-R,200,26743,Lecture,1/12/2026,5/8/2026,In Person,HUNT101,2:30:00 PM,4:15:00 PM,T,"Hill,Shaton Doloris",Primary Instructor
+1,AHLT-R,201,26693,Lecture,1/12/2026,5/8/2026,In Person,HUNT101,8:30:00 AM,11:00:00 AM,W,"Sebastian,Heidi Michelle",Primary Instructor
+1,AHLT-R,201,27446,Laboratory,1/12/2026,5/8/2026,In Person,HUNT101,11:30:00 AM,1:30:00 PM,W,"Johnston,Amanda Lynn",Primary Instructor
+1,AHLT-R,201,27447,Laboratory,1/12/2026,5/8/2026,In Person,HUNT101,1:45:00 PM,3:45:00 PM,W,"Johnston,Amanda Lynn",Primary Instructor
+1,AHLT-R,202,26694,Lecture,1/12/2026,5/8/2026,In Person,HUNT101,8:30:00 AM,11:00:00 AM,M,"Evelo,Anna Christine",Primary Instructor
+1,AHLT-R,207,26740,Lecture,1/12/2026,5/8/2026,In Person,HUNT101,11:30:00 AM,2:00:00 PM,T,"Sebastian,Heidi Michelle",Primary Instructor
+1,AHLT-R,208,26695,Lecture,1/12/2026,5/8/2026,In Person,HUNT101,12:00:00 PM,2:00:00 PM,M,"Evelo,Anna Christine",Primary Instructor
+1,AHLT-R,260,26744,Lecture,1/12/2026,5/8/2026,In Person,HUNT101,8:00:00 AM,10:30:00 AM,T,"Sebastian,Heidi Michelle",Primary Instructor
+1,AHLT-R,290,26751,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC,8:00:00 AM,3:30:00 PM,MWF,"Johnston,Amanda Lynn",Primary Instructor
+1,AHLT-R,483,26749,Clinic,1/12/2026,5/8/2026,In Person, , , , ,"Sebastian,Heidi Michelle",Primary Instructor
+1,ANAT-A,215,26696,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,1:00:00 PM,2:15:00 PM,TR,"Rifai,Lina",Primary Instructor
+1,ANAT-A,215,26696,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,1:00:00 PM,2:15:00 PM,TR,"Houston,Nicole Christina",Secondary Instructor
+1,ANAT-A,215,26696,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,1:00:00 PM,2:15:00 PM,TR,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,26697,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,T,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,26697,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,T,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,26697,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,T,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,26698,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,T,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,26698,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,T,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,26698,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,T,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27059,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,5:30:00 PM,6:45:00 PM,TR,"Wysong,Brandon Carter",Primary Instructor
+1,ANAT-A,215,27059,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,5:30:00 PM,6:45:00 PM,TR,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27059,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,5:30:00 PM,6:45:00 PM,TR,"Houston,Nicole Christina",Secondary Instructor
+1,ANAT-A,215,27060,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,T,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,27060,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,T,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27060,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,T,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27061,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,T,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,27061,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,T,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27061,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,T,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27201,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,27201,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27201,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27202,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,27202,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27202,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27203,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,27203,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27203,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27204,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,27204,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27204,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27205,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,1:00:00 PM,2:15:00 PM,WF,"Wysong,Brandon Carter",Primary Instructor
+1,ANAT-A,215,27205,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,1:00:00 PM,2:15:00 PM,WF,"Houston,Nicole Christina",Secondary Instructor
+1,ANAT-A,215,27205,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,1:00:00 PM,2:15:00 PM,WF,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27206,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,T,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,27206,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,T,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27206,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,T,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27207,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,T,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,27207,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,T,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27207,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,T,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27208,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,27208,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27208,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27209,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,27209,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,27209,Laboratory,1/12/2026,5/8/2026,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Rifai,Lina",Secondary Instructor
+1,AST-A,110,28233,Lecture,1/12/2026,5/8/2026,In Person,OBLC101,2:30:00 PM,3:45:00 PM,TR,"Motl,Patrick Michael",Primary Instructor
+1,BIOL-L,121,27295,Lecture,1/12/2026,5/8/2026,In Person,KOMN201,1:00:00 PM,2:15:00 PM,MW,"Sullivan,T.J.",Primary Instructor
+1,BIOL-L,121,27320,Laboratory,1/12/2026,5/8/2026,In Person,HUNT125,10:00:00 AM,12:30:00 PM,F,"Church,Nick",Primary Instructor
+1,BIOL-L,121,27320,Laboratory,1/12/2026,5/8/2026,In Person,HUNT125,10:00:00 AM,12:30:00 PM,F,"Sullivan,T.J.",Secondary Instructor
+1,BIOL-L,121,29490,Laboratory,1/12/2026,5/8/2026,In Person,HUNT125,2:30:00 PM,5:00:00 PM,R,"Church,Nick",Primary Instructor
+1,BIOL-L,121,29490,Laboratory,1/12/2026,5/8/2026,In Person,HUNT125,2:30:00 PM,5:00:00 PM,R,"Sullivan,T.J.",Secondary Instructor
+1,BIOL-L,122,27296,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,8:30:00 AM,9:45:00 AM,MW,"Duffitt,Ashley Dawn",Primary Instructor
+1,BIOL-L,122,27321,Laboratory,1/12/2026,5/8/2026,In Person,HUNT125,10:00:00 AM,12:30:00 PM,W,"Church,Nick",Primary Instructor
+1,BIOL-L,122,27321,Laboratory,1/12/2026,5/8/2026,In Person,HUNT125,10:00:00 AM,12:30:00 PM,W,"Duffitt,Ashley Dawn",Secondary Instructor
+1,BIOL-L,122,27322,Laboratory,1/12/2026,5/8/2026,In Person,HUNT125,2:30:00 PM,5:00:00 PM,W,"Church,Nick",Primary Instructor
+1,BIOL-L,122,27322,Laboratory,1/12/2026,5/8/2026,In Person,HUNT125,2:30:00 PM,5:00:00 PM,W,"Duffitt,Ashley Dawn",Secondary Instructor
+1,BIOL-L,203,27142,Lecture,1/12/2026,5/8/2026,In Person,HUNT209,10:00:00 AM,11:15:00 AM,TR,"Rifai,Lina",Primary Instructor
+1,BIOL-L,336,28190,Lecture,1/12/2026,5/8/2026,In Person,KOMN110,1:00:00 PM,3:45:00 PM,W,"Rifai,Lina",Primary Instructor
+1,BIOL-L,364,26926,Lecture,1/12/2026,5/8/2026,In Person,KOMN206,10:00:00 AM,11:15:00 AM,MW,"Sullivan,T.J.",Primary Instructor
+8W2,BIOL-L,391,31972,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,HUNT209,11:30:00 AM,12:45:00 PM,F,"Jackson Overpeck,Leda Rene",Primary Instructor
+8W2,BIOL-L,391,31972,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,HUNT209,11:30:00 AM,12:45:00 PM,F,"Rifai,Lina",Primary Instructor
+8W2,BIOL-L,391,35760,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online, , , , ,"Jackson Overpeck,Leda Rene",Primary Instructor
+8W2,BIOL-L,391,35760,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online, , , , ,"Rifai,Lina",Primary Instructor
+1,BIOL-L,403,26840,Lecture,1/12/2026,5/8/2026,In Person,KOMN112,10:00:00 AM,12:45:00 PM,F,"Chauret,Christian",Primary Instructor
+1,BIOL-L,490,29880,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Chauret,Christian",Primary Instructor
+1,BIOL-L,490,34545,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Rifai,Lina",Primary Instructor
+1,BIOL-L,498,34098,Ind Study,1/12/2026,5/8/2026,In Person, , , , ,"Rifai,Lina",Primary Instructor
+8W2,BUKO-C,599,27360,Lecture,3/9/2026,5/8/2026,In Person, , , , ,"Krabbenhoft,Alan George",Primary Instructor
+8W1,BUKO-D,542,26702,Lecture,1/12/2026,3/6/2026,Hybrid-On Campus & Online,KOMN127,6:00:00 PM,8:45:00 PM,R,"Cox,Steve R",Primary Instructor
+8W2,BUKO-F,542,26703,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,KOMN127,6:00:00 PM,8:45:00 PM,R,"Cox,Steve R",Primary Instructor
+8W1,BUKO-K,542,27277,Lecture,1/12/2026,3/6/2026,Hybrid-On Campus & Online,KOMN127,6:00:00 PM,8:45:00 PM,T,"Chulkov,Dmitriy",Primary Instructor
+8W2,BUKO-M,570,27153,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,KOMN127,6:00:00 PM,8:45:00 PM,T,"Meybodi,Mohammad Z.",Primary Instructor
+1,BUS-A,201,26704,Lecture,1/12/2026,5/8/2026,In Person,KOMN113,11:30:00 AM,12:45:00 PM,TR,"Chimhanda,Tsarai Runyararo",Primary Instructor
+1,BUS-A,202,26705,Lecture,1/12/2026,5/8/2026,In Person,KOMN113,1:00:00 PM,2:15:00 PM,TR,"Chimhanda,Tsarai Runyararo",Primary Instructor
+1,BUS-A,312,26706,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN113,2:30:00 PM,3:45:00 PM,R,"Kim,Joungyeon",Primary Instructor
+1,BUS-A,337,26933,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KELL144,2:30:00 PM,3:45:00 PM,T,"Kim,Joungyeon",Primary Instructor
+1,BUS-D,301,26871,Lecture,1/12/2026,5/8/2026,In Person,KOMN127,11:30:00 AM,12:45:00 PM,TR,"Ameyaw,Abdul-Kadir",Primary Instructor
+1,BUS-F,301,26816,Lecture,1/12/2026,5/8/2026,In Person,KOMN113,2:30:00 PM,3:45:00 PM,TR,"Cox,Steve R",Primary Instructor
+1,BUS-F,420,26708,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KELL144,11:30:00 AM,12:45:00 PM,T,"Cao,Tim",Primary Instructor
+1,BUS-J,401,27316,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KELL144,10:00:00 AM,11:15:00 AM,T,"Ameyaw,Abdul-Kadir",Primary Instructor
+1,BUS-J,404,27432,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN106,10:00:00 AM,11:15:00 AM,R,"Gupta,Jyoti P.",Primary Instructor
+1,BUS-K,321,27433,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KELL144,4:00:00 PM,5:15:00 PM,R,"Zhukov,Konstantin",Primary Instructor
+1,BUS-K,353,27046,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KELL144,4:00:00 PM,5:15:00 PM,T,"Chulkov,Dmitriy",Primary Instructor
+1,BUS-L,201,26800,Lecture,1/12/2026,5/8/2026,In Person,KOMN113,11:30:00 AM,12:45:00 PM,MW,"Steele,Derick Wade",Primary Instructor
+1,BUS-L,201,28719,Lecture,1/12/2026,5/8/2026,In Person,KOMN287,10:00:00 AM,11:15:00 AM,TR,"Steele,Derick Wade",Primary Instructor
+1,BUS-L,406,27436,Lecture,1/12/2026,5/8/2026,In Person,KOMN108,4:00:00 PM,5:15:00 PM,TR,"Steele,Derick Wade",Primary Instructor
+1,BUS-M,301,27358,Lecture,1/12/2026,5/8/2026,In Person,KOMN108,10:00:00 AM,11:15:00 AM,TR,"Li,Yiping",Primary Instructor
+1,BUS-M,405,26801,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN127,2:30:00 PM,3:45:00 PM,T,"Preece,Gloria Lynn",Primary Instructor
+1,BUS-M,450,27576,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN127,2:30:00 PM,3:45:00 PM,R,"Li,Yiping",Primary Instructor
+1,BUS-M,491,35290,Intern,1/12/2026,5/8/2026,In Person, , , , ,"Leicht,Ashley Marie",Primary Instructor
+1,BUS-P,301,26712,Lecture,1/12/2026,5/8/2026,In Person,KOMN127,1:00:00 PM,2:15:00 PM,TR,"Meybodi,Mohammad Z.",Primary Instructor
+1,BUS-W,100,26849,Lecture,1/12/2026,5/8/2026,In Person,KOMN100,11:30:00 AM,12:45:00 PM,TR,"Leicht,Ashley Marie",Primary Instructor
+1,BUS-W,100,26959,Lecture,1/12/2026,5/8/2026,In Person,KOMN100,10:00:00 AM,11:15:00 AM,TR,"Leicht,Ashley Marie",Primary Instructor
+1,BUS-W,100,27019,Lecture,1/12/2026,5/8/2026,In Person,KOMN108,10:00:00 AM,11:15:00 AM,MW,"Byrd,Sarah",Primary Instructor
+1,BUS-W,100,27183,Lecture,1/12/2026,5/8/2026,In Person,KOMN204,1:00:00 PM,2:15:00 PM,TR,"Byrd,Sarah",Primary Instructor
+1,BUS-X,107,27152,Lecture,1/12/2026,5/8/2026,In Person,KELL144,11:30:00 AM,12:45:00 PM,MW,"Byrd,Sarah",Primary Instructor
+8W2,BUS-X,220,27100,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,KOMN100,2:30:00 PM,3:45:00 PM,T,"Leicht,Ashley Marie",Primary Instructor
+1,BUS-X,487,26713,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN100,2:30:00 PM,3:45:00 PM,R,"Geiger,James David",Primary Instructor
+1,BUS-Z,302,26817,Lecture,1/12/2026,5/8/2026,In Person,KOMN113,4:00:00 PM,5:15:00 PM,TR,"Clayton,Elizabeth Diane",Primary Instructor
+1,BUS-Z,447,27221,Lecture,1/12/2026,5/8/2026,In Person,KOMN100,1:00:00 PM,2:15:00 PM,TR,"Clayton,Elizabeth Diane",Primary Instructor
+1,BUS-Z,460,28721,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN102,11:30:00 AM,12:45:00 PM,R,"Gupta,Jyoti P.",Primary Instructor
+1,BUS-Z,470,27359,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN204,11:30:00 AM,12:45:00 PM,T,"Smith,Adam R",Primary Instructor
+1,CHEM-C,100,27283,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,11:30:00 AM,12:45:00 PM,TR,"Wilson,Linda Wright",Primary Instructor
+1,CHEM-C,106,26714,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,8:30:00 AM,9:45:00 AM,TR,"Kasem,Kasem Kamel",Primary Instructor
+1,CHEM-C,109,26785,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,11:30:00 AM,12:45:00 PM,MW,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,120,27423,Laboratory,1/12/2026,5/8/2026,In Person,HUNT226,2:30:00 PM,3:30:00 PM,M,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,120,27423,Laboratory,1/12/2026,5/8/2026,In Person,HUNT231,3:30:00 PM,5:00:00 PM,M,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,126,26715,Laboratory,1/12/2026,5/8/2026,In Person,HUNT226,10:00:00 AM,11:00:00 AM,T,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,126,26715,Laboratory,1/12/2026,5/8/2026,In Person,HUNT231,11:00:00 AM,12:30:00 PM,T,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,126,26716,Laboratory,1/12/2026,5/8/2026,In Person,HUNT226,10:00:00 AM,11:00:00 AM,R,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,126,26716,Laboratory,1/12/2026,5/8/2026,In Person,HUNT231,11:00:00 AM,12:30:00 PM,R,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,126,26848,Laboratory,1/12/2026,5/8/2026,In Person,HUNT226,2:30:00 PM,3:30:00 PM,R,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,126,26848,Laboratory,1/12/2026,5/8/2026,In Person,HUNT231,3:30:00 PM,5:00:00 PM,R,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,128,27410,Lecture,1/12/2026,5/8/2026,In Person,KOMN082,10:00:00 AM,11:15:00 AM,TR,"Tupa,Peter Robert",Primary Instructor
+1,CHEM-C,129,27156,Laboratory,1/12/2026,5/8/2026,In Person,HUNT226,2:30:00 PM,3:30:00 PM,W,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,129,27156,Laboratory,1/12/2026,5/8/2026,In Person,HUNT231,3:30:00 PM,5:00:00 PM,W,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,250,28230,Lecture,1/12/2026,5/8/2026,In Person,HUNT226,10:00:00 AM,11:15:00 AM,MW,"Masuda,Hisako",Primary Instructor
+1,CHEM-C,310,26717,Lecture,1/12/2026,5/8/2026,In Person,HUNT226,11:30:00 AM,12:45:00 PM,MW,"Kasem,Kasem Kamel",Primary Instructor
+1,CHEM-C,311,26718,Laboratory,1/12/2026,5/8/2026,In Person,HUNT228,1:00:00 PM,4:00:00 PM,T,"Kasem,Kasem Kamel",Primary Instructor
+1,CHEM-C,340,27143,Lecture,1/12/2026,5/8/2026,In Person,HUNT226,8:30:00 AM,9:45:00 AM,TR,"Masuda,Hisako",Primary Instructor
+1,CHEM-C,340,27187,Laboratory,1/12/2026,5/8/2026,In Person,HUNT227,10:00:00 AM,12:30:00 PM,T,"Masuda,Hisako",Primary Instructor
+1,CHEM-C,340,27187,Laboratory,1/12/2026,5/8/2026,In Person,HUNT227,10:00:00 AM,12:30:00 PM,R,"Masuda,Hisako",Primary Instructor
+1,CHEM-C,342,27411,Lecture,1/12/2026,5/8/2026,In Person,KOMN101,10:00:00 AM,11:15:00 AM,TRF,"Hossain,Mohammad",Primary Instructor
+1,CHEM-C,344,26719,Laboratory,1/12/2026,5/8/2026,In Person,HUNT232,1:30:00 PM,4:30:00 PM,W,"Hossain,Mohammad",Primary Instructor
+1,CHEM-C,344,26719,Laboratory,1/12/2026,5/8/2026,In Person,KOMN101,11:30:00 AM,12:30:00 PM,T,"Hossain,Mohammad",Primary Instructor
+1,CHEM-C,344,26815,Laboratory,1/12/2026,5/8/2026,In Person,HUNT232,1:30:00 PM,4:30:00 PM,R,"Hossain,Mohammad",Primary Instructor
+1,CHEM-C,344,26815,Laboratory,1/12/2026,5/8/2026,In Person,KOMN101,11:30:00 AM,12:30:00 PM,T,"Hossain,Mohammad",Primary Instructor
+1,CHEM-C,409,34093,Research,1/12/2026,5/8/2026,In Person, , , , ,"Kasem,Kasem Kamel",Primary Instructor
+1,CJHS-J,101,26807,Lecture,1/12/2026,5/8/2026,In Person,KOE103,10:00:00 AM,11:15:00 AM,MW,"Fisher,Kelly Lynn",Primary Instructor
+1,CJHS-J,101,27200,Lecture,1/12/2026,5/8/2026,In Person,KOE103,1:00:00 PM,2:15:00 PM,MW,"Fisher,Kelly Lynn",Primary Instructor
+1,CJHS-J,320,26798,Lecture,1/12/2026,5/8/2026,In Person,KOE103,2:30:00 PM,3:45:00 PM,TR,"Kinney,Sean P",Primary Instructor
+1,CSCI-B,100,26977,Lecture,1/12/2026,5/8/2026,In Person,HUNT201,7:00:00 PM,8:45:00 PM,MW,"Grant,Johnathan E",Primary Instructor
+1,CSCI-C,101,26929,Lecture,1/12/2026,5/8/2026,In Person,HUNT201,11:00:00 AM,12:45:00 PM,TR,"Alnusair,Awny",Primary Instructor
+1,CSCI-C,201,26964,Lecture,1/12/2026,5/8/2026,In Person,HUNT201,8:30:00 AM,10:15:00 AM,TR,"Mairaj,Aakif",Primary Instructor
+1,CSCI-C,201,28529,Lecture,1/12/2026,5/8/2026,In Person, , , , ,"Mairaj,Aakif",Primary Instructor
+1,CSCI-C,311,27038,Lecture,1/12/2026,5/8/2026,In Person,HUNT224,2:30:00 PM,3:45:00 PM,TR,"Mairaj,Aakif",Primary Instructor
+1,CSCI-C,335,27039,Lecture,1/12/2026,5/8/2026,In Person,HUNT224,1:00:00 PM,2:15:00 PM,TR,"Aktaruzzaman,Md",Primary Instructor
+1,CSCI-C,400,27040,Lecture,1/12/2026,5/8/2026,In Person,HUNT201,1:00:00 PM,2:15:00 PM,MW,"Aktaruzzaman,Md",Primary Instructor
+1,CSCI-C,442,27092,Lecture,1/12/2026,5/8/2026,In Person,HUNT224,2:30:00 PM,3:45:00 PM,MW,"Liu,Yang",Primary Instructor
+1,CSCI-C,455,27093,Lecture,1/12/2026,5/8/2026,In Person,HUNT224,4:00:00 PM,5:15:00 PM,MW,"Mairaj,Aakif",Primary Instructor
+1,CSCI-C,486,31039,Research,1/12/2026,5/8/2026,Independent/Directed Study,OLONLINE, , , ,"Yu,Liguo",Primary Instructor
+1,CSCI-C,490,27041,Lecture,1/12/2026,5/8/2026,In Person,HUNT224,11:30:00 AM,12:45:00 PM,TR,"Aktaruzzaman,Md",Primary Instructor
+1,ECON-E,201,27184,Lecture,1/12/2026,5/8/2026,In Person,KOMN102,1:00:00 PM,2:15:00 PM,TR,"Zhukov,Konstantin",Primary Instructor
+1,ECON-E,202,26721,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,10:00:00 AM,11:15:00 AM,MW,"Geiger,James David",Primary Instructor
+1,ECON-E,270,27021,Lecture,1/12/2026,5/8/2026,In Person,KELL114,1:00:00 PM,2:15:00 PM,MW,"Geiger,James David",Primary Instructor
+8W1,EDUC-E,325,27476,Lecture,1/12/2026,3/6/2026,Hybrid-On Campus & Online,KOMN104,6:30:00 PM,8:15:00 PM,M,"Huber,Natalie Michelle",Primary Instructor
+1,EDUC-E,328,28383,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN176,4:45:00 PM,6:00:00 PM,T,"Wang,Lu",Primary Instructor
+1,EDUC-E,328,28384,Practicum,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN176,8:30:00 AM,12:00:00 PM,W,"Wang,Lu",Primary Instructor
+8W1,EDUC-E,328,31736,Lecture,1/12/2026,3/6/2026,Hybrid-On Campus & Online,KOMN176,6:30:00 PM,8:15:00 PM,M,"Wang,Lu",Primary Instructor
+8W1,EDUC-E,328,31737,Practicum,1/12/2026,3/6/2026,In Person, , , , ,"Wang,Lu",Primary Instructor
+1,EDUC-E,337,27070,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN176,12:00:00 PM,2:00:00 PM,R,"Hanson,Amanda",Primary Instructor
+1,EDUC-E,339,27477,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN113,4:45:00 PM,6:15:00 PM,M,"Michels,Brenna Lynne",Primary Instructor
+1,EDUC-E,339,27478,Practicum,1/12/2026,5/8/2026,Hybrid-On Campus & Online, , , , ,"Michels,Brenna Lynne",Primary Instructor
+1,EDUC-E,340,27479,Lecture,1/12/2026,5/8/2026,In Person,KOMN106,5:00:00 PM,7:45:00 PM,T,"Acton,Lindsey L",Primary Instructor
+1,EDUC-E,340,27479,Lecture,1/12/2026,5/8/2026,In Person,KOMN106,5:00:00 PM,7:45:00 PM,T,"Saam,Julie Reinhardt",Grading Proxy
+1,EDUC-E,340,27482,Practicum,1/12/2026,5/8/2026,Internship/Practica,KOMN104,8:30:00 AM,12:00:00 PM,W,"Acton,Lindsey L",Primary Instructor
+1,EDUC-E,341,27483,Lecture,1/12/2026,5/8/2026,In Person,KOMN281,10:00:00 AM,12:45:00 PM,M,"Gillam,Holly Beth",Primary Instructor
+1,EDUC-E,343,29411,Lecture,1/12/2026,5/8/2026,In Person,KOMN176,6:15:00 PM,7:30:00 PM,T,"Wang,Lu",Primary Instructor
+1,EDUC-E,343,31743,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN179,4:45:00 PM,6:15:00 PM,M,"Smith,Amy Linn",Primary Instructor
+1,EDUC-E,343,31744,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Smith,Amy Linn",Primary Instructor
+1,EDUC-E,349,27485,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN176,5:00:00 PM,6:30:00 PM,R,"Maxwell,Bailley",Primary Instructor
+1,EDUC-E,513,27352,Lecture,1/12/2026,5/8/2026,Hybrid-Distance Video & Online,KOWBWEB, , , ,"Freestone,Erin Renee",Primary Instructor
+1,EDUC-F,205,26914,Lecture,1/12/2026,5/8/2026,In Person,KOMN201,4:00:00 PM,6:00:00 PM,M,"Maurer,Randy Joseph",Primary Instructor
+1,EDUC-F,205,26914,Lecture,1/12/2026,5/8/2026,In Person,KOMN201,4:00:00 PM,6:00:00 PM,M,"Saam,Julie Reinhardt",Grading Proxy
+1,EDUC-F,401,27120,Lecture,1/12/2026,5/8/2026,In Person,KOMN176,10:30:00 AM,11:45:00 AM,TR,"Fortner,Shelbi Ann",Primary Instructor
+1,EDUC-F,401,34635,Lecture,1/12/2026,5/8/2026,Hybrid-Distance Video & Online,KOWBWEB,5:00:00 PM,7:00:00 PM,W,"Smith,Amy Linn",Primary Instructor
+1,EDUC-F,501,31746,Lecture,1/12/2026,5/8/2026,Hybrid-Distance Video & Online,KOWBWEB,5:00:00 PM,7:00:00 PM,W,"Smith,Amy Linn",Primary Instructor
+1,EDUC-F,501,31748,Lecture,1/12/2026,5/8/2026,Hybrid-Distance Video & Online,KOWBWEB,5:00:00 PM,7:00:00 PM,W,"Smith,Amy Linn",Primary Instructor
+1,EDUC-H,340,26829,Lecture,1/12/2026,5/8/2026,In Person,KOMN281,12:30:00 PM,3:15:00 PM,R,"Grubb,Sarrah Jean",Primary Instructor
+1,EDUC-K,205,27065,Lecture,1/12/2026,5/8/2026,In Person,KOMN104,2:30:00 PM,5:15:00 PM,M,"Beyioku,Cheryl",Primary Instructor
+1,EDUC-K,205,27066,Lecture,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Smith,Amy Linn",Primary Instructor
+1,EDUC-K,205,27177,Lecture,1/12/2026,5/8/2026,In Person,KOMN176,9:00:00 AM,11:30:00 AM,M,"Beyioku,Cheryl",Primary Instructor
+1,EDUC-K,205,27571,Lecture,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Newman,Ryan Scott",Primary Instructor
+1,EDUC-K,306,27127,Lecture,1/12/2026,5/8/2026,In Person,KOMN176,5:00:00 PM,7:30:00 PM,W,"Helmberger,Tenicia Rae",Primary Instructor
+1,EDUC-K,343,27068,Lecture,1/12/2026,5/8/2026,76-99% Online Interactive,KOWBWEB,6:45:00 PM,8:30:00 PM,R,"Wilburn,Marcee M.",Primary Instructor
+1,EDUC-K,344,35174,Lecture,1/12/2026,5/8/2026,In Person,KOMN104,1:00:00 PM,3:45:00 PM,R,"Mihai,Alina",Primary Instructor
+8W2,EDUC-K,352,27069,Methods,3/9/2026,5/8/2026,Hybrid-On Campus & Online,KOMN104,6:30:00 PM,8:15:00 PM,M,"Beyioku,Cheryl",Primary Instructor
+1,EDUC-K,362,27067,Lecture,1/12/2026,5/8/2026,76-99% Online Interactive,KOWBWEB,5:00:00 PM,6:44:00 PM,R,"Stayer,Leah N",Primary Instructor
+1,EDUC-K,488,27175,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Marler,Dee Richard",Primary Instructor
+1,EDUC-L,403,33537,Lecture,1/12/2026,5/10/2026,Hybrid-Distance Video & Online,OLONLINE,3:15:00 PM,5:55:00 PM,T,"Liu,Laura Blythe",Primary Instructor
+1,EDUC-L,441,30593,Lecture,1/12/2026,5/10/2026,Hybrid-Distance Video & Online,OLONLINE,6:00:00 PM,8:40:00 PM,T,"Liu,Laura Blythe",Primary Instructor
+1,EDUC-M,300,26762,Lecture,1/12/2026,5/8/2026,In Person,KOMN206,11:30:00 AM,12:45:00 PM,TR,"Newman,Ryan Scott",Primary Instructor
+8W2,EDUC-M,324,27354,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,KOMN176,4:30:00 PM,7:15:00 PM,M,"Hankins,Amber",Primary Instructor
+1,EDUC-M,423,27014,Practicum,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Marler,Dee Richard",Primary Instructor
+1,EDUC-M,425,26726,Practicum,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Marler,Dee Richard",Primary Instructor
+1,EDUC-M,425,26761,Practicum,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Marler,Dee Richard",Primary Instructor
+1,EDUC-M,440,26966,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN103,5:00:00 PM,7:00:00 PM,M,"Grubb,Sarrah Jean",Primary Instructor
+1,EDUC-M,440,31754,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN052,5:00:00 PM,7:00:00 PM,M,"French,Jenny",Primary Instructor
+1,EDUC-M,440,34636,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Smith,Amy Linn",Primary Instructor
+8W2,EDUC-M,470,35433,Practicum,3/9/2026,5/8/2026,In Person, , , , ,"Marler,Dee Richard",Primary Instructor
+1,EDUC-M,480,26763,Practicum,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Marler,Dee Richard",Primary Instructor
+1,EDUC-M,550,26814,Practicum,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Marler,Dee Richard",Primary Instructor
+1,EDUC-P,214,27063,Lecture,1/12/2026,5/8/2026,In Person,KOMN281,11:30:00 AM,12:45:00 PM,W,"Marley,Melody Estelle",Primary Instructor
+1,EDUC-P,214,27546,Lecture,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Newman,Ryan Scott",Primary Instructor
+1,EDUC-P,214,27547,Lecture,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Smith,Amy Linn",Primary Instructor
+1,EDUC-P,214,27548,Lecture,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Smith,Amy Linn",Primary Instructor
+8W1,EDUC-P,250,28385,Lecture,1/12/2026,3/6/2026,Hybrid-On Campus & Online,KOMN072,10:00:00 AM,11:15:00 AM,TR,"McNeany,Jennifer Ruth",Primary Instructor
+1,EDUC-P,290,26754,Lecture,1/12/2026,5/8/2026,In Person,KOOCOC,4:30:00 PM,5:45:00 PM,W,"Eby,Stephen",Primary Instructor
+1,EDUC-P,320,27572,Lecture,1/12/2026,5/8/2026,In Person,KOMN176,12:30:00 PM,3:15:00 PM,T,"McNeany,Jennifer Ruth",Primary Instructor
+1,EDUC-P,606,34368,Lecture,1/12/2026,5/8/2026,Distance Synchronous Video,OLONLINE,5:00:00 PM,6:30:00 PM,M,"Marley,Melody Estelle",Primary Instructor
+8W2,EDUC-P,612,29239,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,KOMN100,6:30:00 PM,8:00:00 PM,T,"Abell,Amy Kathleen",Primary Instructor
+1,EDUC-W,200,26778,Lecture,1/12/2026,5/8/2026,In Person,KOMN204,2:30:00 PM,5:15:00 PM,R,"Hanson,Amanda",Primary Instructor
+1,EDUC-W,200,27012,Lecture,1/12/2026,5/8/2026,In Person,KOMN202,2:30:00 PM,5:15:00 PM,R,"Romero,Christina Louise",Primary Instructor
+1,EDUC-X,530,27356,Methods,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN108,5:00:00 PM,7:45:00 PM,M,"Gill,Melissa C",Primary Instructor
+8W1,EDUC-Y,650,34372,Lecture,1/12/2026,3/6/2026,Hybrid-Distance Video & Online,OLONLINE,4:30:00 PM,6:00:00 PM,T,"Marley,Melody Estelle",Primary Instructor
+1,ENG-L,207,29722,Lecture,1/12/2026,5/8/2026,In Person,KOMN102,10:00:00 AM,11:15:00 AM,TR,"White,Eva Roa",Primary Instructor
+1,ENG-L,315,29515,Lecture,1/12/2026,5/8/2026,In Person,KOMN105,11:30:00 AM,12:45:00 PM,MW,"Keener,Joe",Primary Instructor
+1,ENG-L,371,27219,Lecture,1/12/2026,5/8/2026,In Person,KOMN105,8:30:00 AM,9:45:00 AM,MW,"Keener,Joe",Primary Instructor
+8W2,ENG-L,495,34832,Lecture,3/9/2026,5/8/2026,In Person, , , , ,"Coby,Jim",Primary Instructor
+1,ENG-W,130,27402,Lecture,1/12/2026,5/8/2026,In Person,KOMN200,10:00:00 AM,11:15:00 AM,W,"Kennelly,Mary K",Primary Instructor
+1,ENG-W,130,27555,Lecture,1/12/2026,5/8/2026,In Person,KOMN200,11:30:00 AM,12:45:00 PM,R,"Amos,Molly M",Primary Instructor
+1,ENG-W,130,32569,Lecture,1/12/2026,5/8/2026,In Person,KOMN111,11:30:00 AM,12:45:00 PM,R,"Westervelt,Michelle",Primary Instructor
+1,ENG-W,131,26806,Lecture,1/12/2026,5/8/2026,In Person,KOMN111,10:00:00 AM,11:15:00 AM,TR,"Westervelt,Michelle",Primary Instructor
+1,ENG-W,131,27062,Lecture,1/12/2026,5/8/2026,In Person,KOMN200,8:30:00 AM,9:45:00 AM,MW,"Kennelly,Mary K",Primary Instructor
+1,ENG-W,131,27193,Lecture,1/12/2026,5/8/2026,In Person,KOMN200,10:00:00 AM,11:15:00 AM,TR,"Amos,Molly M",Primary Instructor
+1,ENG-W,131,27556,Lecture,1/12/2026,5/8/2026,In Person,KOMN111,1:00:00 PM,2:15:00 PM,TR,"Westervelt,Michelle",Primary Instructor
+1,ENG-W,131,32573,Lecture,1/12/2026,5/8/2026,In Person,KOMN200,1:00:00 PM,2:15:00 PM,MW,"Kennelly,Mary K",Primary Instructor
+1,ENG-W,131,32574,Lecture,1/12/2026,5/8/2026,In Person,KOMN200,1:00:00 PM,2:15:00 PM,TR,"Amos,Molly M",Primary Instructor
+1,ENG-W,131,32827,Lecture,1/12/2026,5/8/2026,In Person,KOMN111,11:30:00 AM,12:45:00 PM,MW,"Nestor,Sarah",Primary Instructor
+1,ENG-W,221,27298,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN111,2:30:00 PM,3:45:00 PM,T,"Westervelt,Michelle",Primary Instructor
+1,FINA-A,200,32958,Lecture,1/12/2026,5/8/2026,In Person,CNED105,12:00:00 PM,2:00:00 PM,TR,"Douglas,Minda",Primary Instructor
+1,FINA-S,400,27268,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Douglas,Minda",Primary Instructor
+1,FREN-F,132,33940,Lecture,1/12/2026,5/10/2026,Hybrid-Distance Video & Online,OLONLINE, , , ,"Lauten,Kathryn M",Primary Instructor
+8W2,GEOL-G,421,31973,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,HUNT209,10:00:00 AM,11:15:00 AM,F,"Rifai,Lina",Primary Instructor
+8W2,GEOL-G,421,31973,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,HUNT209,10:00:00 AM,11:15:00 AM,F,"Jackson Overpeck,Leda Rene",Primary Instructor
+8W2,GEOL-G,421,35759,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online, , , , ,"Jackson Overpeck,Leda Rene",Primary Instructor
+8W2,GEOL-G,421,35759,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online, , , , ,"Rifai,Lina",Primary Instructor
+1,HIST-B,353,28496,Lecture,1/12/2026,5/8/2026,In Person,KOMN150,10:00:00 AM,11:15:00 AM,MW,"Sposato,Peter",Primary Instructor
+1,HIST-B,353,34910,Field,1/12/2026,5/8/2026,In Person,KOMN150,10:00:00 AM,11:15:00 AM,MW,"Sposato,Peter",Primary Instructor
+1,HIST-H,106,26728,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN104,10:00:00 AM,11:15:00 AM,TR,"Moskowitz,Kevin A",Primary Instructor
+1,HIST-H,405,28493,Seminar,1/12/2026,5/8/2026,In Person,KOMN106,11:30:00 AM,12:45:00 PM,MW,"McFarland,Andrew M",Primary Instructor
+1,HON-H,275,35736,Lecture,1/12/2026,5/8/2026,In Person, ,10:00:00 AM,11:15:00 AM,TR,"Rifai,Lina",Primary Instructor
+1,HON-H,375,35691,Lecture,1/12/2026,5/8/2026,In Person, ,1:00:00 PM,2:15:00 PM,MW,"Tuholski,Andy",Primary Instructor
+1,HON-H,375,35692,Lecture,1/12/2026,5/8/2026,In Person, ,1:30:00 PM,2:30:00 PM,M,"Negron,Jennifer",Primary Instructor
+1,HON-H,375,35693,Laboratory,1/12/2026,5/8/2026,In Person, ,8:00:00 AM,10:00:00 AM,W,"Negron,Jennifer",Primary Instructor
+1,HON-H,375,35695,Lecture,1/12/2026,5/8/2026,In Person, ,10:00:00 AM,11:15:00 AM,MW,"Sills,Liz",Primary Instructor
+1,HON-H,375,35696,Lecture,1/12/2026,5/8/2026,In Person, ,10:00:00 AM,11:15:00 AM,MW,"Coppola,Angela",Primary Instructor
+1,HON-H,375,35722,Lecture,1/12/2026,5/8/2026,In Person, ,8:15:00 AM,11:15:00 AM,T,"Sposato,Margaret Fallon Van Brunt",Primary Instructor
+1,HON-H,375,35723,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Primary Instructor
+1,HON-H,375,35737,Lecture,1/12/2026,5/8/2026,In Person, ,10:00:00 AM,11:15:00 AM,MW,"Carter,Jim",Primary Instructor
+1,HON-H,375,35743,Lecture,1/12/2026,5/8/2026,In Person, ,5:30:00 PM,6:45:00 PM,MW,"Chauret,Christian",Primary Instructor
+1,HON-H,375,35780,Lecture,1/12/2026,5/8/2026,In Person, ,10:00:00 AM,11:15:00 AM,MW,"Sullivan,T.J.",Primary Instructor
+1,HON-H,399,29358,Lecture,1/12/2026,5/8/2026,In Person,KOMN112,11:30:00 AM,12:45:00 PM,TR,"Blackwell,Scott",Primary Instructor
+1,HON-H,475,35724,Lecture,1/12/2026,5/8/2026,In Person, ,8:15:00 AM,11:15:00 AM,W,"Rosales,Stacy Ann",Primary Instructor
+1,HON-H,475,35725,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Bortone,Christy JoeAnn",Primary Instructor
+1,HON-H,475,35725,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Rosales,Stacy Ann",Primary Instructor
+1,HON-H,475,35726,Lecture,1/12/2026,5/8/2026,In Person, ,8:15:00 AM,11:15:00 AM,T,"Plough,Susan Elaine",Primary Instructor
+1,HON-H,475,35727,Clinic,1/12/2026,5/8/2026,In Person, , , , ,"Plough,Susan Elaine",Primary Instructor
+1,HON-H,475,35728,Seminar,1/12/2026,5/8/2026,Hybrid-On Campus & Online, , , , ,"Geiselman,Erin Lee",Primary Instructor
+1,HON-H,475,35729,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online, ,1:00:00 PM,4:00:00 PM,T,"Townsend,Carolyn Sutton",Primary Instructor
+1,HON-H,475,35730,Lecture,1/12/2026,5/8/2026,In Person, ,10:00:00 AM,11:15:00 AM,TR,"Sills,Liz",Primary Instructor
+1,HON-H,475,35742,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Fouts,Samantha Jo",Primary Instructor
+1,HON-H,475,35742,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Green,Sonya Leigh",Primary Instructor
+1,HON-H,475,35742,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Plough,Susan Elaine",Primary Instructor
+8W2,HSCI-E,100,27170,Activity,3/9/2026,5/8/2026,In Person,KOLB038,8:30:00 AM,9:30:00 AM,MW,"Kretz,Amy",Primary Instructor
+8W2,HSCI-E,100,27237,Activity,3/9/2026,5/8/2026,In Person,KOLB038,2:30:00 PM,3:30:00 PM,TR,"Bultman,Joanna Christine",Primary Instructor
+8W1,HSCI-E,121,27173,Activity,1/12/2026,3/6/2026,In Person,KOLB038,10:00:00 AM,11:00:00 AM,MW,"Kretz,Amy",Primary Instructor
+8W2,HSCI-E,121,27334,Activity,3/9/2026,5/8/2026,In Person,KOLB038,10:00:00 AM,11:00:00 AM,TR,"Kretz,Amy",Primary Instructor
+8W1,HSCI-E,121,28516,Lecture,1/12/2026,3/6/2026,In Person,KOLB038,1:00:00 PM,2:00:00 PM,TR,"Kretz,Amy",Primary Instructor
+8W1,HSCI-E,190,27165,Activity,1/12/2026,3/6/2026,In Person,KOLB024,2:30:00 PM,3:30:00 PM,MW,"Duffitt,Allison",Primary Instructor
+8W1,HSCI-E,190,27167,Activity,1/12/2026,3/6/2026,In Person,KOLB024,4:00:00 PM,5:00:00 PM,TR,"Duffitt,Allison",Primary Instructor
+8W1,HSCI-E,190,27241,Activity,1/12/2026,3/6/2026,In Person,KOLB024,11:30:00 AM,12:30:00 PM,MW,"Duffitt,Allison",Primary Instructor
+8W2,HSCI-E,190,27242,Activity,3/9/2026,5/8/2026,In Person,KOLB024,2:30:00 PM,3:30:00 PM,MW,"Duffitt,Allison",Primary Instructor
+8W1,HSCI-E,190,27308,Activity,1/12/2026,3/6/2026,In Person,KOLB024,8:45:00 AM,9:45:00 AM,TR,"Duffitt,Allison",Primary Instructor
+8W2,HSCI-E,190,27309,Activity,3/9/2026,5/8/2026,In Person,KOLB024,8:45:00 AM,9:45:00 AM,TR,"Duffitt,Allison",Primary Instructor
+8W2,HSCI-E,200,27252,Activity,3/9/2026,5/8/2026,In Person,KOLB038,8:30:00 AM,9:30:00 AM,MW,"Kretz,Amy",Primary Instructor
+8W1,HSCI-E,221,27239,Activity,1/12/2026,3/6/2026,In Person,KOLB038,10:00:00 AM,11:00:00 AM,MW,"Kretz,Amy",Primary Instructor
+8W1,HSCI-E,221,27335,Activity,1/12/2026,3/6/2026,In Person,KOLB038,1:00:00 PM,2:00:00 PM,TR,"Kretz,Amy",Primary Instructor
+8W2,HSCI-E,221,27336,Activity,3/9/2026,5/8/2026,In Person,KOLB038,10:00:00 AM,11:00:00 AM,TR,"Kretz,Amy",Primary Instructor
+8W1,HSCI-E,290,27244,Activity,1/12/2026,3/6/2026,In Person,KOLB024,2:30:00 PM,3:30:00 PM,MW,"Duffitt,Allison",Primary Instructor
+8W1,HSCI-E,290,27246,Activity,1/12/2026,3/6/2026,In Person,KOLB024,11:30:00 AM,12:30:00 PM,MW,"Duffitt,Allison",Primary Instructor
+8W2,HSCI-E,290,27247,Activity,3/9/2026,5/8/2026,In Person,KOLB024,2:30:00 PM,3:30:00 PM,MW,"Duffitt,Allison",Primary Instructor
+8W1,HSCI-E,290,27310,Activity,1/12/2026,3/6/2026,In Person,KOLB024,8:45:00 AM,9:45:00 AM,TR,"Duffitt,Allison",Primary Instructor
+8W2,HSCI-E,290,27311,Activity,3/9/2026,5/8/2026,In Person,KOLB024,8:45:00 AM,9:45:00 AM,TR,"Duffitt,Allison",Primary Instructor
+1,HSCI-H,120,26824,Lecture,1/12/2026,5/8/2026,In Person,KOLB007,11:30:00 AM,12:45:00 PM,MW,"Coppola,Angela",Primary Instructor
+1,HSCI-H,130,28412,Lecture,1/12/2026,5/8/2026,In Person,KOMN179,2:30:00 PM,5:15:00 PM,W,"Mossburg,Kim",Primary Instructor
+1,HSCI-H,144,26794,Lecture,1/12/2026,5/8/2026,In Person,KOLB007,4:00:00 PM,5:15:00 PM,TR,"Shaffer,Andy B",Primary Instructor
+1,HSCI-H,144,34405,Lecture,1/12/2026,5/8/2026,In Person,KOLB007,10:00:00 AM,11:15:00 AM,TR,"Zhu,Huiying",Primary Instructor
+1,HSCI-H,212,27161,Lecture,1/12/2026,5/8/2026,In Person,KOLB007,1:00:00 PM,2:15:00 PM,MW,"Mossburg,Kim",Primary Instructor
+1,HSCI-H,220,27164,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN179,11:30:00 AM,12:45:00 PM,TR,"Mossburg,Kim",Primary Instructor
+1,HSCI-H,255,35615,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online, , , , ,"Alshuwaiyer,Ghadah",Primary Instructor
+1,HSCI-H,321,26962,Lecture,1/12/2026,5/8/2026,In Person,KOMN103,11:30:00 AM,2:15:00 PM,W,"Acharya,Lalatendu",Primary Instructor
+1,HSCI-H,333,27118,Lecture,1/12/2026,5/8/2026,In Person,KOMN105,10:00:00 AM,11:15:00 AM,MW,"Coppola,Angela",Primary Instructor
+1,HSCI-H,360,26805,Lecture,1/12/2026,5/8/2026,In Person,KOMN110,10:00:00 AM,11:15:00 AM,TR,"Echelbarger,Eric",Primary Instructor
+1,HSCI-H,364,26853,Lecture,1/12/2026,5/8/2026,In Person,KOMN103,1:00:00 PM,2:15:00 PM,TR,"Coppola,Angela",Primary Instructor
+8W2,HSCI-H,411,27276,Lecture,3/9/2026,5/8/2026,In Person, , , , ,"Acharya,Lalatendu",Primary Instructor
+1,HSCI-H,452,27162,Lecture,1/12/2026,5/8/2026,In Person,KOLB007,11:30:00 AM,12:45:00 PM,TR,"Zhu,Huiying",Primary Instructor
+1,HSCI-H,492,33491,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Zhu,Huiying",Primary Instructor
+1,HSCI-H,499,27305,Lecture,1/12/2026,5/8/2026,In Person, , , , ,"Alshuwaiyer,Ghadah",Primary Instructor
+1,HSS-S,410,29881,Lecture,1/12/2026,5/8/2026,In Person,KOMN175,4:00:00 PM,6:30:00 PM,W,"Pico,J. R.",Primary Instructor
+1,HTM-T,181,26830,Lecture,1/12/2026,5/8/2026,In Person,KOMN127,10:00:00 AM,11:15:00 AM,TR,"Meng,Mark Z.",Primary Instructor
+1,HTM-T,325,28521,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN108,11:30:00 AM,12:45:00 PM,R,"Meng,Mark Z.",Primary Instructor
+1,HTM-T,362,27232,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN108,11:30:00 AM,12:45:00 PM,T,"Meng,Mark Z.",Primary Instructor
+1,HTM-T,425,28520,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN108,2:30:00 PM,3:45:00 PM,T,"Schoen,Esra",Primary Instructor
+1,HTM-T,444,27425,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN108,2:30:00 PM,3:45:00 PM,R,"Schoen,Esra",Primary Instructor
+1,INFO-I,101,26927,Lecture,1/12/2026,5/8/2026,In Person,HUNT201,7:00:00 PM,8:45:00 PM,MW,"Grant,Johnathan E",Primary Instructor
+1,INFO-I,201,27091,Lecture,1/12/2026,5/8/2026,In Person,HUNT201,10:00:00 AM,11:45:00 AM,MW,"Liu,Yang",Primary Instructor
+1,INFO-I,202,26811,Lecture,1/12/2026,5/8/2026,In Person,HUNT201,4:00:00 PM,5:15:00 PM,MW,"Dodd,Cherie M",Primary Instructor
+1,INFO-I,210,26963,Lecture,1/12/2026,5/8/2026,In Person,HUNT201,11:00:00 AM,12:45:00 PM,TR,"Alnusair,Awny",Primary Instructor
+1,INFO-I,211,26930,Lecture,1/12/2026,5/8/2026,In Person,HUNT201,8:30:00 AM,10:15:00 AM,TR,"Mairaj,Aakif",Primary Instructor
+1,INFO-I,303,26869,Lecture,1/12/2026,5/8/2026,In Person,HUNT201,6:00:00 PM,9:00:00 PM,R,"Gherfal,Sam",Primary Instructor
+1,INFO-I,308,26825,Lecture,1/12/2026,5/8/2026,In Person,HUNT224,8:30:00 AM,9:45:00 AM,TR,"Zhang,Lei",Primary Instructor
+1,INFO-I,451,27300,Lecture,1/12/2026,5/8/2026,In Person,HUNT224,11:30:00 AM,12:45:00 PM,TR,"Aktaruzzaman,Md",Primary Instructor
+1,LBST-D,600,34001,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Lidinsky,April",Primary Instructor
+1,LBST-D,601,33997,Lecture,1/12/2026,5/8/2026,Distance Synchronous Video,OLONLINE,6:00:00 PM,8:30:00 PM,M,"Walsh,Sara",Primary Instructor
+1,MATH-K,310,26752,Lecture,1/12/2026,5/8/2026,In Person,KOMN072,11:30:00 AM,12:45:00 PM,MW,"Krause,Linda",Primary Instructor
+1,MATH-M,104,26880,Lecture,1/12/2026,5/8/2026,In Person,KOMN080,1:00:00 PM,2:15:00 PM,MW,"Duncan,Timothy Alan",Primary Instructor
+1,MATH-M,104,26881,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,2:30:00 PM,3:45:00 PM,M,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,104,26882,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,2:30:00 PM,3:45:00 PM,W,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,104,27140,Lecture,1/12/2026,5/8/2026,In Person,KOMN080,11:30:00 AM,12:45:00 PM,TR,"Pennington,Carl Bates",Primary Instructor
+1,MATH-M,104,27141,Lecture,1/12/2026,5/8/2026,In Person,KOMN080,2:30:00 PM,3:45:00 PM,TR,"Pennington,Carl Bates",Primary Instructor
+1,MATH-M,104,27157,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,1:00:00 PM,2:15:00 PM,T,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,104,27158,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,1:00:00 PM,2:15:00 PM,R,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,104,27159,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,4:00:00 PM,5:15:00 PM,T,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,104,27160,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,4:00:00 PM,5:15:00 PM,R,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,104,27449,Lecture,1/12/2026,5/8/2026,In Person,KOMN080,4:00:00 PM,5:15:00 PM,MW,"Pennington,Carl Bates",Primary Instructor
+1,MATH-M,104,27450,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,5:30:00 PM,6:45:00 PM,M,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,104,27451,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,5:30:00 PM,6:45:00 PM,W,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,104,27566,Lecture,1/12/2026,5/8/2026,In Person,KOMN072,8:30:00 AM,9:45:00 AM,TR,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,27567,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,10:00:00 AM,11:15:00 AM,T,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,104,27568,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,10:00:00 AM,11:15:00 AM,R,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,26886,Lecture,1/12/2026,5/8/2026,In Person,KOMN080,10:00:00 AM,11:15:00 AM,MW,"Hampshire,Diane Marie",Primary Instructor
+1,MATH-M,105,26887,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,11:30:00 AM,12:45:00 PM,M,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,26888,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,11:30:00 AM,12:45:00 PM,W,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,26889,Lecture,1/12/2026,5/8/2026,In Person,KOMN080,11:30:00 AM,12:45:00 PM,MW,"Duncan,Timothy Alan",Primary Instructor
+1,MATH-M,105,26890,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,1:00:00 PM,2:15:00 PM,M,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,26891,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,1:00:00 PM,2:15:00 PM,W,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,26892,Lecture,1/12/2026,5/8/2026,In Person,KOMN080,4:00:00 PM,5:15:00 PM,TR,"Cole,Amy Rae",Primary Instructor
+1,MATH-M,105,26893,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,5:30:00 PM,6:45:00 PM,T,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,26894,Lecture,1/12/2026,5/8/2026,In Person,KOMN080,10:00:00 AM,11:15:00 AM,TR,"Burnett,Tifany",Primary Instructor
+1,MATH-M,105,26895,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,11:30:00 AM,12:45:00 PM,T,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,26896,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,11:30:00 AM,12:45:00 PM,R,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,26897,Lecture,1/12/2026,5/8/2026,In Person,KOMN080,1:00:00 PM,2:15:00 PM,TR,"Burnett,Tifany",Primary Instructor
+1,MATH-M,105,26898,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,2:30:00 PM,3:45:00 PM,T,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,26899,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,2:30:00 PM,3:45:00 PM,R,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,33854,Lecture,1/12/2026,5/8/2026,In Person,KOMN080,2:30:00 PM,3:45:00 PM,MW,"Duncan,Timothy Alan",Primary Instructor
+1,MATH-M,105,33855,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,4:00:00 PM,5:15:00 PM,M,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,105,33856,Laboratory,1/12/2026,5/8/2026,In Person,KOMN054,4:00:00 PM,5:15:00 PM,W,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,113,27094,Lecture,1/12/2026,5/8/2026,In Person,KOMN082,10:00:00 AM,11:15:00 AM,MW,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,118,26767,Lecture,1/12/2026,5/8/2026,In Person,KOMN072,1:00:00 PM,2:15:00 PM,TR,"Krause,Linda",Primary Instructor
+1,MATH-M,118,26865,Lecture,1/12/2026,5/8/2026,In Person,KOMN072,10:00:00 AM,11:15:00 AM,MW,"Krause,Linda",Primary Instructor
+1,MATH-M,125,26760,Lecture,1/12/2026,5/8/2026,In Person,KOMN082,1:00:00 PM,2:15:00 PM,MWF,"Hampshire,Diane Marie",Primary Instructor
+1,MATH-M,126,26729,Lecture,1/12/2026,5/8/2026,In Person,KOMN082,1:00:00 PM,2:15:00 PM,TR,"Hampshire,Diane Marie",Primary Instructor
+1,MATH-M,215,26841,Lecture,1/12/2026,5/8/2026,In Person,KOMN072,12:55:00 PM,2:20:00 PM,MWF,"Caruvana,Christopher",Primary Instructor
+1,MATH-M,216,28619,Lecture,1/12/2026,5/8/2026,In Person,KOMN052,12:55:00 PM,2:20:00 PM,MWF,"Carter,Jim",Primary Instructor
+1,MATH-M,311,26866,Ind Study,1/12/2026,5/8/2026,In Person,KOMN052,10:00:00 AM,11:40:00 AM,TR,"Tebbe,Amelia Nora",Primary Instructor
+1,MATH-M,313,28620,Lecture,1/12/2026,5/8/2026,In Person,KOMN052,10:00:00 AM,11:15:00 AM,MW,"Carter,Jim",Primary Instructor
+1,MATH-M,404,28621,Lecture,1/12/2026,5/8/2026,In Person,KOMN052,4:00:00 PM,5:15:00 PM,TR,"Caruvana,Christopher",Primary Instructor
+1,MATH-T,102,33060,Lecture,1/12/2026,5/8/2026,In Person,KOMN072,2:30:00 PM,3:45:00 PM,TR,"Krause,Linda",Primary Instructor
+1,MICR-J,200,26786,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,HUNT116,1:00:00 PM,2:15:00 PM,M,"Duffitt,Ashley Dawn",Primary Instructor
+1,MICR-J,201,26741,Laboratory,1/12/2026,5/8/2026,In Person,HUNT130,2:30:00 PM,5:00:00 PM,M,"Church,Nick",Primary Instructor
+1,MICR-J,201,26742,Laboratory,1/12/2026,5/8/2026,In Person,HUNT130,10:00:00 AM,12:30:00 PM,T,"Church,Nick",Primary Instructor
+1,MICR-J,201,27037,Laboratory,1/12/2026,5/8/2026,In Person,HUNT130,10:00:00 AM,12:30:00 PM,M,"Church,Nick",Primary Instructor
+1,MICR-J,201,27424,Laboratory,1/12/2026,5/8/2026,In Person,HUNT130,2:30:00 PM,5:00:00 PM,F,"Church,Nick",Primary Instructor
+1,MICR-M,310,26821,Lecture,1/12/2026,5/8/2026,In Person,KOMN072,5:30:00 PM,6:45:00 PM,MW,"Chauret,Christian",Primary Instructor
+1,MICR-M,315,26822,Laboratory,1/12/2026,5/8/2026,In Person,HUNT130,4:00:00 PM,6:00:00 PM,TR,"Chauret,Christian",Primary Instructor
+1,MUS-B,340,27323,Activity,1/12/2026,5/8/2026,In Person, , , , ,"Pinson,John A.",Primary Instructor
+1,MUS-D,300,27279,Activity,1/12/2026,5/8/2026,In Person, , , , ,"Anderson,Brandon Wayne",Primary Instructor
+1,MUS-M,174,26983,Lecture,1/12/2026,5/8/2026,In Person,OBLC101,10:00:00 AM,11:15:00 AM,MW,"Karst,George Lowery",Primary Instructor
+1,MUS-P,300,27573,Activity,1/12/2026,5/8/2026,In Person, , , , ,"Britton,David Lynn",Primary Instructor
+1,MUS-P,300,27574,Activity,1/12/2026,5/8/2026,In Person, , , , ,"Britton,David Lynn",Primary Instructor
+1,MUS-R,472,29695,Lecture,1/12/2026,5/8/2026,In Person, , , , ,"Huber,Anna Noelle",Primary Instructor
+1,MUS-R,472,29695,Lecture,1/12/2026,5/8/2026,In Person, , , , ,"Doss,Erin F",Secondary Instructor
+1,MUS-S,315,26960,Activity,1/12/2026,5/8/2026,In Person, , , , ,"White,Joan C",Primary Instructor
+1,MUS-S,315,27330,Activity,1/12/2026,5/8/2026,In Person, , , , ,"White,Joan C",Primary Instructor
+1,MUS-T,113,27007,Lecture,1/12/2026,5/8/2026,In Person,OBLC101,11:30:00 AM,12:45:00 PM,MW,"Karst,George Lowery",Primary Instructor
+1,MUS-V,300,26867,Activity,1/12/2026,5/8/2026,In Person, , , , ,"Anton,Nathan A",Primary Instructor
+1,MUS-W,110,35280,Activity,1/12/2026,5/8/2026,In Person, , , , ,"Pinson,John A.",Primary Instructor
+1,MUS-W,310,27375,Activity,1/12/2026,5/8/2026,In Person, , , , ,"Whitford,Trudy Ann",Primary Instructor
+1,MUS-X,40,26813,Activity,1/12/2026,5/8/2026,In Person,KOLB105,6:00:00 PM,7:30:00 PM,W,"Pinson,John A.",Primary Instructor
+1,MUS-X,40,26971,Activity,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Anderson,Brandon Wayne",Primary Instructor
+1,MUS-X,40,26972,Activity,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Thornbury,Eric J",Primary Instructor
+1,MUS-X,40,27213,Lecture,1/12/2026,5/8/2026,In Person,KOMN148,6:00:00 PM,7:00:00 PM,TR,"Whitford,Trudy Ann",Primary Instructor
+1,MUS-X,70,26753,Activity,1/12/2026,5/8/2026,In Person,KOMN150,4:00:00 PM,5:15:00 PM,TR,"Gerhard,Matt",Primary Instructor
+8W2,MUS-Z,111,27294,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,OBLC101,4:00:00 PM,5:15:00 PM,MW,"Pinson,John A.",Primary Instructor
+1,MUS-Z,281,32835,Lecture,1/12/2026,5/8/2026,In Person,OBLC101,1:00:00 PM,2:15:00 PM,MW,"Karst,George Lowery",Primary Instructor
+8W2,MUS-Z,315,34007,Lecture,3/9/2026,5/8/2026,In Person,HUNT116,2:30:00 PM,5:15:00 PM,R,"Withers,Ron E",Primary Instructor
+1,MUS-Z,320,27504,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOLB024,7:00:00 PM,9:15:00 PM,W,"Huber,Anna Noelle",Primary Instructor
+1,MUS-Z,320,27504,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOLB024,7:00:00 PM,9:15:00 PM,W,"Doss,Erin F",Secondary Instructor
+1,NMAT-D,257,27509,Lecture,1/12/2026,5/8/2026,In Person,KOMN208,2:30:00 PM,3:45:00 PM,TR,"Gaines Hall,Megan Marie",Primary Instructor
+1,NMAT-D,316,27267,Lecture,1/12/2026,5/8/2026,In Person,KELL144,5:30:00 PM,6:45:00 PM,TR,"Glassburn,Michael Paul",Primary Instructor
+1,NMAT-D,326,26925,Lecture,1/12/2026,5/8/2026,In Person,KOMN208,9:30:00 AM,12:15:00 PM,F,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-D,346,29600,Lecture,1/12/2026,5/8/2026,In Person,KOMN208,8:30:00 AM,11:15:00 AM,TR,"Pickens,Aaron",Primary Instructor
+1,NMAT-D,367,27217,Lecture,1/12/2026,5/8/2026,In Person,KOMN208,9:30:00 AM,10:45:00 AM,MW,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-D,416,35584,Lecture,1/12/2026,5/8/2026,In Person,KELL144,5:30:00 PM,6:45:00 PM,TR,"Glassburn,Michael Paul",Primary Instructor
+1,NMAT-D,426,26845,Lecture,1/12/2026,5/8/2026,In Person,KOMN208,9:30:00 AM,12:15:00 PM,F,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-D,467,27392,Lecture,1/12/2026,5/8/2026,In Person,KOMN208,11:30:00 AM,12:45:00 PM,MW,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-F,101,27397,Lecture,1/12/2026,5/8/2026,In Person,CNED105,5:30:00 PM,7:30:00 PM,MW,"Applegate,Mike J",Primary Instructor
+1,NMAT-F,102,27394,Laboratory,1/12/2026,5/8/2026,In Person,KOFA115,11:30:00 AM,1:30:00 PM,TR,"Snoddy,Stuart",Primary Instructor
+1,NMAT-F,103,27508,Studio,1/12/2026,5/8/2026,In Person,KOFA125,2:30:00 PM,4:30:00 PM,TR,"Snoddy,Stuart",Primary Instructor
+NON,NMAT-F,250,27016,Lecture,2/27/2026,5/10/2026,In Person, , , , ,"Pickens,Aaron",Primary Instructor
+1,NMAT-G,341,27376,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-G,341,34725,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Douglas,Minda",Primary Instructor
+1,NMAT-G,405,26982,Lecture,1/12/2026,5/8/2026,In Person,KOFA125,10:00:00 AM,11:15:00 AM,TR,"Steel,Gregory",Primary Instructor
+1,NMAT-G,499,26978,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Steel,Gregory",Primary Instructor
+1,NMAT-G,499,26979,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Douglas,Minda",Primary Instructor
+1,NMAT-G,499,26980,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Pickens,Aaron",Primary Instructor
+1,NMAT-G,499,26981,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-S,200,34696,Lecture,1/12/2026,5/8/2026,In Person,CNED105,2:30:00 PM,5:15:00 PM,TR,"Douglas,Minda",Primary Instructor
+1,NMAT-S,230,26846,Lecture,1/12/2026,5/8/2026,In Person,KOFA115,8:30:00 AM,11:15:00 AM,MW,"Pickens,Aaron",Primary Instructor
+1,NMAT-S,270,27144,Lecture,1/12/2026,5/8/2026,In Person,KOFA125,11:30:00 AM,2:15:00 PM,TR,"Steel,Gregory",Primary Instructor
+1,NMAT-S,300,34697,Lecture,1/12/2026,5/8/2026,In Person,CNED105,2:30:00 PM,5:15:00 PM,TR,"Douglas,Minda",Primary Instructor
+1,NMAT-S,302,27391,Lecture,1/12/2026,5/8/2026,In Person,CNED105,2:30:00 PM,5:15:00 PM,TR,"Douglas,Minda",Primary Instructor
+1,NMAT-S,322,27215,Lecture,1/12/2026,5/8/2026,In Person,KOFA101,2:30:00 PM,5:15:00 PM,MW,"Douglas,Minda",Primary Instructor
+1,NMAT-S,330,26847,Lecture,1/12/2026,5/8/2026,In Person,KOFA115,8:30:00 AM,11:15:00 AM,MW,"Pickens,Aaron",Primary Instructor
+1,NMAT-S,344,28371,Lecture,1/12/2026,5/8/2026,In Person,KOFA101,11:30:00 AM,2:15:00 PM,MW,"Douglas,Minda",Primary Instructor
+1,NMAT-S,370,27145,Lecture,1/12/2026,5/8/2026,In Person,KOFA125,9:00:00 AM,11:45:00 AM,F,"Steel,Gregory",Primary Instructor
+1,NMAT-S,370,27145,Lecture,1/12/2026,5/8/2026,In Person,KOFA125,12:30:00 PM,2:15:00 PM,F,"Steel,Gregory",Primary Instructor
+1,NMAT-S,430,34407,Lecture,1/12/2026,5/8/2026,In Person,KOFA115,8:30:00 AM,11:15:00 AM,MW,"Pickens,Aaron",Primary Instructor
+1,NMAT-S,444,28372,Lecture,1/12/2026,5/8/2026,In Person,KOFA101,11:30:00 AM,2:15:00 PM,MW,"Douglas,Minda",Primary Instructor
+1,NMAT-S,470,27385,Lecture,1/12/2026,5/8/2026,In Person,KOFA125,9:00:00 AM,11:45:00 AM,F,"Steel,Gregory",Primary Instructor
+1,NMAT-S,470,27385,Lecture,1/12/2026,5/8/2026,In Person,KOFA125,12:30:00 PM,2:15:00 PM,F,"Steel,Gregory",Primary Instructor
+1,NMAT-S,472,27146,Lecture,1/12/2026,5/8/2026,In Person,KOFA125,9:00:00 AM,11:45:00 AM,F,"Steel,Gregory",Primary Instructor
+1,NMAT-S,472,27146,Lecture,1/12/2026,5/8/2026,In Person,KOFA125,12:30:00 PM,2:15:00 PM,F,"Steel,Gregory",Primary Instructor
+1,NURS-A,190,27073,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN204,10:00:00 AM,12:00:00 PM,W,"Pratt,Stephanie Nicole",Primary Instructor
+1,NURS-B,222,26876,Lecture,1/12/2026,5/8/2026,In Person,KOE125,8:15:00 AM,11:15:00 AM,M,"Swartzendruber,Leigh Erin",Primary Instructor
+1,NURS-B,222,26877,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,8:00:00 AM,1:00:00 PM,T,"Swartzendruber,Leigh Erin",Secondary Instructor
+1,NURS-B,222,26877,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,8:00:00 AM,1:00:00 PM,T,"Mouser,April Lynne",Primary Instructor
+1,NURS-B,222,27326,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,1:00:00 PM,6:00:00 PM,T,"Leatherman Grubbs,Amanda Priest",Primary Instructor
+1,NURS-B,222,27326,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,1:00:00 PM,6:00:00 PM,T,"Swartzendruber,Leigh Erin",Secondary Instructor
+1,NURS-B,222,29579,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,1:00:00 PM,6:00:00 PM,R,"Hunt,Jill",Primary Instructor
+1,NURS-B,222,29579,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,1:00:00 PM,6:00:00 PM,R,"Swartzendruber,Leigh Erin",Secondary Instructor
+1,NURS-B,222,29580,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,9:00:00 AM,2:00:00 PM,F,"Bryant,Olivia",Primary Instructor
+1,NURS-B,222,29580,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,9:00:00 AM,2:00:00 PM,F,"Swartzendruber,Leigh Erin",Secondary Instructor
+1,NURS-B,222,35060,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,7:00:00 AM,11:59:00 AM,W,"Swartzendruber,Leigh Erin",Primary Instructor
+1,NURS-B,223,26879,Lecture,1/12/2026,5/8/2026,In Person,KOE125,2:30:00 PM,4:30:00 PM,M,"Chou,Alessandra Jeanae",Primary Instructor
+1,NURS-B,223,26879,Lecture,1/12/2026,5/8/2026,In Person,KOE125,12:00:00 PM,2:00:00 PM,W,"Chou,Alessandra Jeanae",Primary Instructor
+1,NURS-B,237,27104,Lecture,1/12/2026,5/8/2026,In Person,KOMN103,1:00:00 PM,4:00:00 PM,M,"Fouts,Samantha Jo",Primary Instructor
+1,NURS-B,253,26873,Lecture,1/12/2026,5/8/2026,In Person,KOE125,8:30:00 AM,11:30:00 AM,R,"Hunt,Jill",Primary Instructor
+1,NURS-B,260,26902,Lecture,1/12/2026,5/8/2026,In Person,KOE125,8:15:00 AM,11:15:00 AM,T,"Freeman,Andrea Beth",Primary Instructor
+1,NURS-B,260,26904,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,12:00:00 PM,4:00:00 PM,T,"Freeman,Andrea Beth",Primary Instructor
+1,NURS-B,260,26905,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,4:00:00 PM,8:00:00 PM,W,"Freeman,Andrea Beth",Secondary Instructor
+1,NURS-B,260,26905,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,4:00:00 PM,8:00:00 PM,W,"Hunt,Jill",Primary Instructor
+1,NURS-B,260,26906,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,11:00:00 AM,3:00:00 PM,W,"Freeman,Andrea Beth",Secondary Instructor
+1,NURS-B,260,26906,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,11:00:00 AM,3:00:00 PM,W,"Plough,Susan Elaine",Primary Instructor
+1,NURS-B,260,26907,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,8:00:00 AM,12:00:00 PM,R,"Freeman,Andrea Beth",Secondary Instructor
+1,NURS-B,260,26907,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,8:00:00 AM,12:00:00 PM,R,"Ledbetter,Tamera Louise",Primary Instructor
+1,NURS-B,260,26907,Laboratory,1/12/2026,5/8/2026,In Person,KOE207,8:00:00 AM,12:00:00 PM,R,"Hunt,Jill",Primary Instructor
+1,NURS-B,261,26900,Lecture,1/12/2026,5/8/2026,In Person,KOMN202,8:30:00 AM,10:30:00 AM,MW,"Mouser,April Lynne",Primary Instructor
+1,NURS-B,334,26937,Lecture,1/12/2026,5/8/2026,In Person,KOMN202,8:15:00 AM,11:15:00 AM,T,"Sposato,Margaret Fallon Van Brunt",Primary Instructor
+1,NURS-B,334,26938,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Secondary Instructor
+1,NURS-B,334,26938,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Rosales,Stacy Ann",Primary Instructor
+1,NURS-B,334,26940,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Primary Instructor
+1,NURS-B,334,26941,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Secondary Instructor
+1,NURS-B,334,26941,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Rosales,Stacy Ann",Primary Instructor
+1,NURS-B,334,26946,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Primary Instructor
+1,NURS-B,334,27179,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Secondary Instructor
+1,NURS-B,334,27179,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Hare,Heather",Primary Instructor
+1,NURS-B,334,27180,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Primary Instructor
+1,NURS-B,334,27180,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Hare,Heather",Primary Instructor
+1,NURS-B,444,26985,Lecture,1/12/2026,5/8/2026,In Person,KOMN102,8:15:00 AM,11:15:00 AM,W,"Rosales,Stacy Ann",Primary Instructor
+1,NURS-B,444,26987,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Rosales,Stacy Ann",Primary Instructor
+1,NURS-B,444,26987,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Bortone,Christy JoeAnn",Primary Instructor
+1,NURS-B,444,26988,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Bortone,Christy JoeAnn",Primary Instructor
+1,NURS-B,444,26988,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Rosales,Stacy Ann",Secondary Instructor
+1,NURS-B,444,27058,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Rosales,Stacy Ann",Primary Instructor
+1,NURS-F,578,32048,Lecture,1/12/2026,5/8/2026,In Person, , , , ,"Kent,Dea J",Primary Instructor
+1,NURS-F,578,32049,Clinic,1/12/2026,5/8/2026,In Person, , , , ,"Shively,Cheryl L",Primary Instructor
+1,NURS-F,580,27496,Lecture,1/12/2026,5/8/2026,In Person,KOMN125,10:00:00 AM,1:00:00 PM,R,"Kent,Dea J",Primary Instructor
+1,NURS-F,580,27517,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Huffman,Gretchen Nicole",Primary Instructor
+1,NURS-F,580,27517,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Kent,Dea J",Secondary Instructor
+1,NURS-F,580,33073,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Huffman,Gretchen Nicole",Primary Instructor
+1,NURS-F,580,33073,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Kent,Dea J",Secondary Instructor
+1,NURS-H,355,26809,Lecture,1/12/2026,5/8/2026,In Person,KOMN101,2:30:00 PM,5:30:00 PM,M,"Bourke,Mary P",Primary Instructor
+1,NURS-H,356,26917,Lecture,1/12/2026,5/8/2026,In Person,KOMN281,12:00:00 PM,3:00:00 PM,T,"Jones,Naomi Jean",Primary Instructor
+1,NURS-H,356,26919,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Jones,Naomi Jean",Secondary Instructor
+1,NURS-H,356,26919,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Clem,Kassi Jo",Primary Instructor
+1,NURS-H,356,26920,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Jones,Naomi Jean",Secondary Instructor
+1,NURS-H,356,26920,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Clem,Kassi Jo",Primary Instructor
+1,NURS-H,356,27056,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Jones,Naomi Jean",Secondary Instructor
+1,NURS-H,356,27056,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Taylor,Ashley Marie",Primary Instructor
+8W1,NURS-H,356,27112,Lecture,1/12/2026,3/6/2026,In Person,KOMN179,8:30:00 AM,11:30:00 AM,MW,"Jones,Naomi Jean",Primary Instructor
+8W1,NURS-H,356,27113,Clinic,1/12/2026,3/6/2026,In Person,KOOCOC, , , ,"Jones,Naomi Jean",Secondary Instructor
+8W1,NURS-H,356,27249,Clinic,1/12/2026,3/6/2026,In Person,KOOCOC, , , ,"Jones,Naomi Jean",Secondary Instructor
+8W1,NURS-H,356,27249,Clinic,1/12/2026,3/6/2026,In Person,KOOCOC, , , ,"Henry-Hollingsworth,Joyce Anne",Primary Instructor
+1,NURS-H,360,26934,Lecture,1/12/2026,5/8/2026,In Person,KOMN104,1:00:00 PM,4:00:00 PM,W,"Arwood,Brian Ashley",Primary Instructor
+1,NURS-H,360,26935,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Arwood,Brian Ashley",Primary Instructor
+1,NURS-H,360,26936,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Hare,Heather",Primary Instructor
+1,NURS-H,360,26936,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Arwood,Brian Ashley",Secondary Instructor
+1,NURS-H,360,27178,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Arwood,Brian Ashley",Secondary Instructor
+1,NURS-H,360,27178,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Green,Sonya Leigh",Primary Instructor
+1,NURS-H,371,26948,Lecture,1/12/2026,5/8/2026,In Person,KOMN204,1:00:00 PM,4:00:00 PM,W,"Pixley,Melissa",Secondary Instructor
+1,NURS-H,371,26948,Lecture,1/12/2026,5/8/2026,In Person,KOMN204,1:00:00 PM,4:00:00 PM,W,"Clem,Kassi Jo",Primary Instructor
+1,NURS-H,371,26949,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Pixley,Melissa",Secondary Instructor
+1,NURS-H,371,26949,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Chou,Alessandra Jeanae",Primary Instructor
+1,NURS-H,371,26950,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Pixley,Melissa",Secondary Instructor
+1,NURS-H,371,26950,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Taylor,Ashley Marie",Primary Instructor
+1,NURS-H,371,26951,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Pixley,Melissa",Secondary Instructor
+1,NURS-H,371,26951,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Chou,Alessandra Jeanae",Primary Instructor
+1,NURS-H,371,26957,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Pixley,Melissa",Secondary Instructor
+8W2,NURS-H,371,27114,Lecture,3/9/2026,5/8/2026,In Person,KOMN179,8:30:00 AM,11:30:00 AM,MW,"Pixley,Melissa",Primary Instructor
+8W2,NURS-H,371,27115,Clinic,3/9/2026,5/8/2026,In Person,KOOCOC, , , ,"Pixley,Melissa",Secondary Instructor
+8W2,NURS-H,371,27115,Clinic,3/9/2026,5/8/2026,In Person,KOOCOC, , , ,"Jones,Naomi Jean",Primary Instructor
+8W2,NURS-H,371,27250,Clinic,3/9/2026,5/8/2026,In Person,KOOCOC, , , ,"Henry-Hollingsworth,Joyce Anne",Primary Instructor
+8W2,NURS-H,371,27250,Clinic,3/9/2026,5/8/2026,In Person,KOOCOC, , , ,"Pixley,Melissa",Secondary Instructor
+1,NURS-H,371,27284,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Pixley,Melissa",Secondary Instructor
+NON,NURS-H,401,27124,Lecture,1/12/2026,5/8/2026,In Person,KOMN127,9:00:00 AM,11:00:00 AM,M,"Chou,Alessandra Jeanae",Primary Instructor
+1,NURS-H,476,26989,Lecture,1/12/2026,5/8/2026,In Person,KOMN204,1:00:00 PM,4:00:00 PM,M,"Woody,Heather Marie",Primary Instructor
+1,NURS-H,476,26990,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Woody,Heather Marie",Primary Instructor
+1,NURS-H,476,26991,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Fouts,Samantha Jo",Primary Instructor
+1,NURS-H,476,26991,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Woody,Heather Marie",Secondary Instructor
+1,NURS-H,476,26992,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC,6:30:00 AM,6:30:00 PM,R,"Woody,Heather Marie",Primary Instructor
+1,NURS-H,476,26993,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Fouts,Samantha Jo",Primary Instructor
+1,NURS-H,476,26993,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Woody,Heather Marie",Secondary Instructor
+1,NURS-L,230,26901,Lecture,1/12/2026,5/8/2026,In Person,KOMN202,2:30:00 PM,5:30:00 PM,M,"Clem,Kassi Jo",Primary Instructor
+1,NURS-L,430,26999,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN204,8:15:00 AM,11:15:00 AM,T,"Plough,Susan Elaine",Primary Instructor
+1,NURS-L,430,27000,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Plough,Susan Elaine",Primary Instructor
+1,NURS-L,430,27001,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Plough,Susan Elaine",Secondary Instructor
+1,NURS-L,430,27001,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Sell,Dawn Michele",Primary Instructor
+1,NURS-L,430,27001,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Woody,Heather Marie",Primary Instructor
+1,NURS-L,430,27002,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Plough,Susan Elaine",Secondary Instructor
+1,NURS-L,430,27002,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Miller,Craig Brandon",Primary Instructor
+1,NURS-L,430,27003,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Plough,Susan Elaine",Primary Instructor
+1,NURS-L,430,27003,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Green,Sonya Leigh",Primary Instructor
+1,NURS-L,430,27003,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Fouts,Samantha Jo",Primary Instructor
+1,NURS-R,375,26915,Lecture,1/12/2026,5/8/2026,In Person,KOMN204,8:15:00 AM,11:15:00 AM,M,"Geiselman,Erin Lee",Primary Instructor
+1,NURS-R,375,27103,Lecture,1/12/2026,5/8/2026,In Person,KOMN101,12:30:00 PM,3:30:00 PM,W,"Bourke,Mary P",Primary Instructor
+1,NURS-R,500,26818,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOE125,2:00:00 PM,5:00:00 PM,R,"Kent,Dea J",Primary Instructor
+1,NURS-R,590,27262,Lecture,1/12/2026,5/8/2026,In Person, , , , ,"Kent,Dea J",Primary Instructor
+1,NURS-S,474,26998,Lecture,1/12/2026,5/8/2026,In Person,KOMN202,1:00:00 PM,3:00:00 PM,W,"Swartzendruber,Leigh Erin",Primary Instructor
+1,NURS-S,483,26730,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Plough,Susan Elaine",Secondary Instructor
+1,NURS-S,483,26730,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Miller,Craig Brandon",Primary Instructor
+1,NURS-S,483,26747,Clinic,1/12/2026,5/8/2026,In Person, , , , ,"Plough,Susan Elaine",Primary Instructor
+1,NURS-S,483,26756,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Plough,Susan Elaine",Secondary Instructor
+1,NURS-S,483,26756,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Sell,Dawn Michele",Primary Instructor
+1,NURS-S,483,26756,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Woody,Heather Marie",Primary Instructor
+1,NURS-S,483,26759,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Plough,Susan Elaine",Secondary Instructor
+1,NURS-S,483,26759,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Fouts,Samantha Jo",Primary Instructor
+1,NURS-S,483,26759,Clinic,1/12/2026,5/8/2026,In Person,KOOCOC, , , ,"Green,Sonya Leigh",Primary Instructor
+1,NURS-S,488,26974,Seminar,1/12/2026,5/8/2026,Hybrid-On Campus & Online, , , , ,"Geiselman,Erin Lee",Primary Instructor
+1,NURS-S,491,27018,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOE125,1:00:00 PM,4:00:00 PM,T,"Townsend,Carolyn Sutton",Primary Instructor
+1,OCTH-K,331,27344,Lecture,1/12/2026,5/8/2026,In Person,KOMN106,8:15:00 AM,11:15:00 AM,T,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,342,27345,Lecture,1/12/2026,5/8/2026,In Person,KOMN106,1:30:00 PM,2:30:00 PM,M,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,342,27346,Laboratory,1/12/2026,5/8/2026,In Person,KOE206,10:00:00 AM,12:00:00 PM,W,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,342,32761,Laboratory,1/12/2026,5/8/2026,In Person,KOE206,8:00:00 AM,10:00:00 AM,W,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,360,27347,Lecture,1/12/2026,5/8/2026,In Person,KOMN106,2:31:00 PM,4:31:00 PM,M,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,360,27351,Laboratory,1/12/2026,5/8/2026,In Person,KOE208,12:58:00 PM,2:58:00 PM,T,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,360,32762,Laboratory,1/12/2026,5/8/2026,In Person,KOE208,3:01:00 PM,5:01:00 PM,T,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,371,27348,Lecture,1/12/2026,5/8/2026,In Person,KOMN106,8:15:00 AM,11:15:00 AM,M,"Douglas,Christy",Primary Instructor
+1,OCTH-K,371,27349,Laboratory,1/12/2026,5/8/2026,In Person,KOE206,1:00:00 PM,3:00:00 PM,T,"Fulk,Morgan",Primary Instructor
+1,OCTH-K,371,32764,Laboratory,1/12/2026,5/8/2026,In Person,KOE206,2:59:00 PM,5:01:00 PM,T,"Fulk,Morgan",Primary Instructor
+1,OCTH-K,382,27350,Practicum,1/12/2026,5/8/2026,In Person,KOMN106,1:00:00 PM,5:00:00 PM,W,"Davis,Christine Elaine DuPouy",Primary Instructor
+8W1,OCTH-K,473,27455,Lecture,1/12/2026,3/6/2026,In Person,KOMN113,8:15:00 AM,11:15:00 AM,MW,"Davis,Christine Elaine DuPouy",Primary Instructor
+8W1,OCTH-K,473,27456,Laboratory,1/12/2026,3/6/2026,In Person,KOE208,3:00:00 PM,5:00:00 PM,MW,"Sood,Seema",Primary Instructor
+8W2,OCTH-K,484,27458,Practicum,3/9/2026,5/8/2026,In Person, , , , ,"Davis,Christine Elaine DuPouy",Primary Instructor
+8W1,OCTH-K,490,27457,Lecture,1/12/2026,3/6/2026,In Person,KOMN102,1:00:00 PM,3:00:00 PM,MW,"Douglas,Christy",Primary Instructor
+8W2,PAHM-V,370,27263,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,KOMN113,4:00:00 PM,5:15:00 PM,W,"Hur,Hyunkang",Primary Instructor
+8W2,PAHM-V,506,26868,Lecture,3/9/2026,5/8/2026,Hybrid-On Campus & Online,KOMN113,6:00:00 PM,8:45:00 PM,W,"Hur,Hyunkang",Primary Instructor
+8W1,PAHM-V,569,27471,Lecture,1/12/2026,3/6/2026,Hybrid-On Campus & Online,KOMN113,6:00:00 PM,8:45:00 PM,W,"Stanley,Melinda Lee",Primary Instructor
+1,PHIL-P,100,32881,Lecture,1/12/2026,5/8/2026,In Person,KOMN106,1:00:00 PM,2:15:00 PM,TR,"Buckman,Christopher",Primary Instructor
+1,PHIL-P,140,26758,Lecture,1/12/2026,5/8/2026,In Person,KOMN113,2:30:00 PM,3:45:00 PM,MW,"Blackwell,Scott",Primary Instructor
+1,PHIL-P,345,28485,Lecture,1/12/2026,5/8/2026,In Person,KOMN113,10:00:00 AM,11:15:00 AM,TR,"Buckman,Christopher",Primary Instructor
+1,PHSL-P,215,26734,Laboratory,1/12/2026,5/8/2026,In Person,HUNT126,2:30:00 PM,5:00:00 PM,R,"Houston,Nicole Christina",Primary Instructor
+1,PHSL-P,215,26734,Laboratory,1/12/2026,5/8/2026,In Person,HUNT126,2:30:00 PM,5:00:00 PM,R,"Wysong,Brandon Carter",Secondary Instructor
+1,PHSL-P,215,26973,Lecture,1/12/2026,5/8/2026,In Person,KOMN202,1:00:00 PM,2:15:00 PM,TR,"Wysong,Brandon Carter",Primary Instructor
+1,PHSL-P,215,26973,Lecture,1/12/2026,5/8/2026,In Person,KOMN202,1:00:00 PM,2:15:00 PM,TR,"Houston,Nicole Christina",Secondary Instructor
+1,PHSL-P,215,26976,Laboratory,1/12/2026,5/8/2026,In Person,HUNT126,10:00:00 AM,12:30:00 PM,R,"Houston,Nicole Christina",Primary Instructor
+1,PHSL-P,215,26976,Laboratory,1/12/2026,5/8/2026,In Person,HUNT126,10:00:00 AM,12:30:00 PM,R,"Wysong,Brandon Carter",Secondary Instructor
+1,PHSL-P,215,27492,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,10:00:00 AM,11:15:00 AM,TR,"Finkler,Michael S.",Primary Instructor
+1,PHSL-P,215,27495,Laboratory,1/12/2026,5/8/2026,In Person,HUNT126,5:30:00 PM,8:00:00 PM,R,"Anderson,Daniel",Primary Instructor
+1,PHSL-P,215,27495,Laboratory,1/12/2026,5/8/2026,In Person,HUNT126,5:30:00 PM,8:00:00 PM,R,"Finkler,Michael S.",Secondary Instructor
+1,PHSL-P,416,27415,Lecture,1/12/2026,5/8/2026,In Person,HUNT226,1:00:00 PM,2:15:00 PM,MW,"Finkler,Michael S.",Primary Instructor
+1,PHSL-P,418,27416,Laboratory,1/12/2026,5/8/2026,In Person,HUNT126,2:30:00 PM,3:20:00 PM,M,"Finkler,Michael S.",Primary Instructor
+1,PHSL-P,418,27416,Laboratory,1/12/2026,5/8/2026,In Person,HUNT126,2:30:00 PM,5:00:00 PM,W,"Finkler,Michael S.",Primary Instructor
+1,PHYS-P,202,27095,Lecture,1/12/2026,5/8/2026,In Person,HUNT116,2:30:00 PM,3:45:00 PM,MWF,"Tupa,Peter Robert",Primary Instructor
+1,PHYS-P,202,27102,Laboratory,1/12/2026,5/8/2026,In Person,HUNT109,4:00:00 PM,6:00:00 PM,W,"Detchon,Joel C",Primary Instructor
+1,PHYS-P,202,29504,Laboratory,1/12/2026,5/8/2026,In Person,HUNT109,12:00:00 PM,2:00:00 PM,F,"Detchon,Joel C",Primary Instructor
+1,PHYS-P,453,33256,Lecture,1/12/2026,5/8/2026,Distance Synchronous Video,OLONLINE,2:30:00 PM,3:45:00 PM,MW,"Schimmrigk,Rolf K",Primary Instructor
+1,POLS-Y,215,29509,Lecture,1/12/2026,5/8/2026,In Person,KOMN113,10:00:00 AM,11:15:00 AM,TR,"Buckman,Christopher",Primary Instructor
+1,POLS-Y,304,28498,Lecture,1/12/2026,5/8/2026,In Person,KOMN113,1:00:00 PM,2:15:00 PM,MW,"Tuholski,Andy",Primary Instructor
+1,POLS-Y,481,31577,Lecture,1/12/2026,5/8/2026,In Person, , , , ,"Tuholski,Andy",Primary Instructor
+1,PSY-G,550,33063,Intern,1/12/2026,5/8/2026,Internship/Practica,KOMN105,5:30:00 PM,8:15:00 PM,T,"Waters,Joseph Michael",Primary Instructor
+1,PSY-G,550,33079,Intern,1/12/2026,5/8/2026,Internship/Practica,KOMN100,5:30:00 PM,8:15:00 PM,M,"Davis,Rosalyn Diane",Primary Instructor
+1,PSY-I,669,29734,Lecture,1/12/2026,5/8/2026,In Person,KOMN106,5:30:00 PM,8:15:00 PM,W,"Davis,Rosalyn Diane",Primary Instructor
+1,PSY-K,300,26735,Lecture,1/12/2026,5/8/2026,In Person,KOMN105,1:00:00 PM,2:15:00 PM,TR,"Tobin,Julie Ann",Primary Instructor
+1,PSY-P,103,26764,Lecture,1/12/2026,5/8/2026,In Person,KOMN203,10:00:00 AM,11:15:00 AM,MW,"Holcomb,Kathryn M.",Primary Instructor
+1,PSY-P,103,26850,Lecture,1/12/2026,5/8/2026,In Person,KOMN203,10:00:00 AM,11:15:00 AM,TR,"Komar,Brooke D",Primary Instructor
+1,PSY-P,103,26931,Lecture,1/12/2026,5/8/2026,In Person,KOMN203,1:00:00 PM,2:15:00 PM,MW,"Nichols,Steven",Primary Instructor
+1,PSY-P,103,27045,Lecture,1/12/2026,5/8/2026,In Person,KOMN203,11:30:00 AM,12:45:00 PM,TR,"Agalar,Afra",Primary Instructor
+1,PSY-P,103,29729,Lecture,1/12/2026,5/8/2026,In Person,KOMN203,1:00:00 PM,2:15:00 PM,TR,"Agalar,Afra",Primary Instructor
+1,PSY-P,103,29730,Lecture,1/12/2026,5/8/2026,In Person,KOMN203,4:00:00 PM,5:15:00 PM,MW,"Nichols,Steven",Primary Instructor
+1,PSY-P,216,27327,Lecture,1/12/2026,5/8/2026,In Person,KOMN201,11:30:00 AM,12:45:00 PM,MW,"Agalar,Afra",Primary Instructor
+1,PSY-P,259,26875,Lecture,1/12/2026,5/8/2026,In Person,KOMN112,10:00:00 AM,11:15:00 AM,MW,"Tobin,Julie Ann",Primary Instructor
+1,PSY-P,320,26802,Lecture,1/12/2026,5/8/2026,In Person,KOMN105,10:00:00 AM,11:15:00 AM,TR,"Tobin,Julie Ann",Primary Instructor
+1,PSY-P,324,27174,Lecture,1/12/2026,5/8/2026,In Person,KOMN101,1:00:00 PM,2:15:00 PM,TR,"Komar,Brooke D",Primary Instructor
+1,PSY-P,326,26803,Lecture,1/12/2026,5/8/2026,In Person,KOMN201,11:30:00 AM,12:45:00 PM,TR,"Nichols,Steven",Primary Instructor
+1,PSY-P,335,26790,Lecture,1/12/2026,5/8/2026,In Person,KOMN203,11:30:00 AM,12:45:00 PM,MW,"Clark,Kevin Michael",Primary Instructor
+1,PSY-P,348,27459,Lecture,1/12/2026,5/8/2026,In Person,KOMN203,4:00:00 PM,5:15:00 PM,TR,"Davis,Rosalyn Diane",Primary Instructor
+1,PSY-P,355,26819,Lecture,1/12/2026,5/8/2026,In Person,KOMN105,1:00:00 PM,2:15:00 PM,MW,"Holcomb,Kathryn M.",Primary Instructor
+1,PSY-P,355,27009,Laboratory,1/12/2026,5/8/2026,In Person,KOMN111,4:00:00 PM,6:00:00 PM,W,"Holcomb,Kathryn M.",Primary Instructor
+1,PSY-P,381,26771,Lecture,1/12/2026,5/8/2026,In Person,KOMN105,4:00:00 PM,6:45:00 PM,M,"Waters,Joseph Michael",Primary Instructor
+1,PSY-P,459,26804,Lecture,1/12/2026,5/8/2026,In Person,KOMN201,2:30:00 PM,5:15:00 PM,T,"Clark,Kevin Michael",Primary Instructor
+1,PSY-P,493,27171,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Holcomb,Kathryn M.",Primary Instructor
+1,PSY-P,493,29738,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Nichols,Steven",Primary Instructor
+1,PSY-P,494,27329,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Tobin,Julie Ann",Primary Instructor
+1,PSY-P,495,29748,Ind Study,1/12/2026,5/8/2026,Independent/Directed Study, , , , ,"Davis,Rosalyn Diane",Primary Instructor
+1,SOC-S,100,27236,Lecture,1/12/2026,5/8/2026,In Person,KOMN206,1:00:00 PM,2:15:00 PM,MW,"Weller,Niki",Primary Instructor
+1,SOC-S,100,27491,Lecture,1/12/2026,5/8/2026,In Person,KOMN206,10:00:00 AM,11:15:00 AM,TR,"Medley-Rath,Stephanie",Primary Instructor
+1,SOC-S,100,27539,Lecture,1/12/2026,5/8/2026,In Person,KOMN206,1:00:00 PM,2:15:00 PM,TR,"Oslawski-Lopez,Jamie Lynn",Primary Instructor
+1,SOC-S,340,28713,Lecture,1/12/2026,5/8/2026,In Person,KOMN104,11:30:00 AM,12:45:00 PM,TR,"Baxter,Nicholas Michael",Primary Instructor
+1,SPAN-S,112,26755,Lecture,1/12/2026,5/8/2026,In Person,KOMN175,2:00:00 PM,3:45:00 PM,MW,"Taff,Christine M",Primary Instructor
+1,SPAN-S,275,31138,Lecture,1/12/2026,5/8/2026,76-99% Online Interactive,OLONLINE, , , ,"Zink,Amy E.",Primary Instructor
+1,SPAN-S,390,35171,Lecture,1/12/2026,5/8/2026,76-99% Online Interactive,OLONLINE, , , ,"Simon,Julien J",Primary Instructor
+1,SPCH-C,382,27417,Lecture,1/12/2026,5/8/2026,In Person,KOMN105,2:30:00 PM,3:45:00 PM,TR,"Doss,Erin F",Primary Instructor
+1,SPCH-C,480,26842,Lecture,1/12/2026,5/8/2026,In Person,KOMN103,10:00:00 AM,11:15:00 AM,TR,"Sills,Liz",Primary Instructor
+1,SPCH-S,121,26738,Lecture,1/12/2026,5/8/2026,In Person,KOMN100,1:00:00 PM,2:15:00 PM,MW,"Sills,Liz",Primary Instructor
+1,SPCH-S,121,26768,Lecture,1/12/2026,5/8/2026,In Person,KOMN106,11:30:00 AM,12:45:00 PM,TR,"Faunce,Edwin E",Primary Instructor
+1,SPCH-S,121,26783,Lecture,1/12/2026,5/8/2026,In Person,KOMN100,11:30:00 AM,12:45:00 PM,MW,"Manthe,Scott Alan",Primary Instructor
+1,SPCH-S,309,29688,Lecture,1/12/2026,5/8/2026,In Person,KELL144,2:30:00 PM,5:00:00 PM,W,"Simmons,Shane",Primary Instructor
+1,SPCH-S,395,27418,Lecture,1/12/2026,5/8/2026,In Person,KOMN201,10:00:00 AM,11:15:00 AM,MW,"Sills,Liz",Primary Instructor
+1,SPCH-S,400,26928,Lecture,1/12/2026,5/8/2026,In Person,KOMN105,11:30:00 AM,12:45:00 PM,TR,"Doss,Erin F",Primary Instructor
+1,SRM-R,213,27155,Lecture,1/12/2026,5/8/2026,In Person,KOMN108,1:00:00 PM,2:15:00 PM,TR,"Jinkins,Larry",Primary Instructor
+1,SRM-R,445,31974,Lecture,1/12/2026,5/8/2026,In Person,KOMN112,5:00:00 PM,7:40:00 PM,W,"Jinkins,Larry",Primary Instructor
+1,SRM-R,450,28522,Lecture,1/12/2026,5/8/2026,In Person,KOMN201,10:00:00 AM,11:15:00 AM,TR,"Jinkins,Larry",Primary Instructor
+1,SRM-S,320,27426,Lecture,1/12/2026,5/8/2026,Hybrid-On Campus & Online,KOMN108,11:30:00 AM,12:45:00 PM,T,"Meng,Mark Z.",Primary Instructor
+1,SSCI-S,100,27253,Activity,1/12/2026,5/8/2026,In Person,KOMN082,11:30:00 AM,12:45:00 PM,MW,"Jalaie,Mahdokht Jasmine",Primary Instructor
+1,SSCI-S,100,27301,Activity,1/12/2026,5/8/2026,In Person,KOMN082,2:30:00 PM,3:45:00 PM,TR,"Burnett,Tifany",Primary Instructor
+1,THTR-T,349,35278,Practicum,1/12/2026,5/8/2026,In Person, , , , ,"Grice,Wendy",Primary Instructor

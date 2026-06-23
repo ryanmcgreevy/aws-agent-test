@@ -18,6 +18,7 @@ from strands.models import BedrockModel
 from strands.session import FileSessionManager, S3SessionManager
 from strands import tool
 from strands.agent.conversation_manager import SummarizingConversationManager
+from schedule_tools import query_schedule
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +55,7 @@ bedrock_agent_runtime = boto3.client('bedrock-agent-runtime', region_name='us-ea
 def access_RAG(query: str) -> str:
     """Access the Retrieval Augmented Generation (RAG) system. 
     This tool is used by the agent to retrieve relevant documents from the knowledge base based on the user's query, and returns the retrieved context as a string.
-    This knowledge base contains information about college courses and requirements, and is used to provide accurate and informed responses to user questions. 
+    This knowledge base contains information about college courses and requirements, as well as suggested course plans for each program, and is used to provide accurate and informed responses to user questions. 
     The agent will call this tool with the user's query, and the tool will return relevant information from the knowledge base that the agent can then use to formulate its response.
 
     Args:
@@ -82,18 +83,24 @@ def build_session_manager(session_id: str) -> S3SessionManager | FileSessionMana
         return None
 
 
-def build_agent(session_manager: S3SessionManager | None = None) -> Agent:
+def build_agent(session_manager: S3SessionManager | FileSessionManager | None = None) -> Agent:
     """Construct a Strands agent instance with the shared model and prompt."""
     return Agent(
         model=model,
         system_prompt=(
-            "You are a helpful assistant with access to a knowledge base. "
-            "When answering questions, use the provided context documents to "
+            "You are a helpful assistant with access to a college knowledge base and class schedule data. "
+            "When answering questions, use the provided context to "
             "give accurate, well-informed responses. "
+            "Use the query_schedule tool when the user asks about schedules, class offerings, times, instructors, or rooms in the schedule. "
             "If the context doesn't contain relevant information, try calling the access_RAG tool to retrieve more information. You may need to rephrase the question to get better retrieval results."
-            "Your primary goal is to assist the user in answering questions about college courses and requirements, using the knowledge base to find relevant information."
+            "access_RAG returns information relevant to all degrees, programs, and their requirements, as well as suggested course plans for each program. "
+            "Ensure that any schedules are as detailed and accurate as possible and contain no course conflicts. Provide only the conflict-free schedule options in your response. "
+            "If any prerequisite, eligibility fact, or user preference is unknown, ask a direct follow-up question. "
+            "Ask only for the minimum missing information needed to proceed. "
+            "After the user answers, continue schedule construction using that answer. "
+            "Your primary goal is to assist the user in answering questions about college courses and requirements and creating a schedule or degree plan."
         ),
-        tools=[access_RAG],  # Add strands_tools here, e.g.: from strands_tools import calculator
+        tools=[access_RAG, query_schedule],  # Add strands_tools here, e.g.: from strands_tools import calculator
         session_manager=session_manager,
         conversation_manager=SummarizingConversationManager(
             proactive_compression=True,

@@ -1,0 +1,654 @@
+Class Session Code,Subject Area,Course Catalog Number,Class Number,Course Component Short Description,Class Start Date,End Date,Instruction Mode Description,Facility ID,Start Time,End Time,Derived Meeting Pattern,Instructor Name,Instructor Role Description
+1,AHLT-R,100,26694,Lecture,8/25/2025,12/19/2025,In Person,HUNT101,12:00:00 PM,2:00:00 PM,M,"Rassel,Christine M",Primary Instructor
+1,AHLT-R,101,27779,Lecture,8/25/2025,12/19/2025,In Person,HUNT101,8:30:00 AM,11:00:00 AM,W,"Sebastian,Heidi Michelle",Primary Instructor
+1,AHLT-R,101,27780,Clinic,8/25/2025,12/19/2025,In Person,HUNT101,11:30:00 AM,1:30:00 PM,W,"Sebastian,Heidi Michelle",Secondary Instructor
+1,AHLT-R,101,27780,Clinic,8/25/2025,12/19/2025,In Person,HUNT101,11:30:00 AM,1:30:00 PM,W,"Johnston,Amanda Lynn",Primary Instructor
+1,AHLT-R,101,27781,Clinic,8/25/2025,12/19/2025,In Person,HUNT101,1:45:00 PM,3:45:00 PM,W,"Sebastian,Heidi Michelle",Secondary Instructor
+1,AHLT-R,101,27781,Clinic,8/25/2025,12/19/2025,In Person,HUNT101,1:45:00 PM,3:45:00 PM,W,"Johnston,Amanda Lynn",Primary Instructor
+1,AHLT-R,102,26695,Lecture,8/25/2025,12/19/2025,In Person,HUNT101,8:30:00 AM,11:00:00 AM,M,"Evelo,Anna Christine",Primary Instructor
+1,AHLT-R,205,27782,Lecture,8/25/2025,12/19/2025,In Person,HUNT101,8:30:00 AM,11:00:00 AM,R,"Sebastian,Heidi Michelle",Primary Instructor
+1,AHLT-R,205,27783,Laboratory,8/25/2025,12/19/2025,In Person,HUNT101,11:30:00 AM,1:30:00 PM,R,"Sebastian,Heidi Michelle",Primary Instructor
+1,AHLT-R,205,27784,Laboratory,8/25/2025,12/19/2025,In Person,HUNT101,1:45:00 PM,3:45:00 PM,R,"Sebastian,Heidi Michelle",Primary Instructor
+1,AHLT-R,222,26753,Lecture,8/25/2025,12/19/2025,In Person,HUNT101,12:00:00 PM,2:30:00 PM,T,"Sebastian,Heidi Michelle",Primary Instructor
+1,AHLT-R,222,26753,Lecture,8/25/2025,12/19/2025,In Person,HUNT101,12:00:00 PM,2:30:00 PM,T,"Evelo,Anna Christine",Primary Instructor
+1,AHLT-R,250,26754,Lecture,8/25/2025,12/19/2025,In Person,HUNT101,8:30:00 AM,11:00:00 AM,T,"Evelo,Anna Christine",Primary Instructor
+1,ANAT-A,215,26697,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,1:00:00 PM,2:15:00 PM,TR,"Houston,Nicole Christina",Secondary Instructor
+1,ANAT-A,215,26697,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,1:00:00 PM,2:15:00 PM,TR,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,26697,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,1:00:00 PM,2:15:00 PM,TR,"Rifai,Lina",Primary Instructor
+1,ANAT-A,215,27096,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,1:00:00 PM,2:15:00 PM,TR,"Houston,Nicole Christina",Secondary Instructor
+1,ANAT-A,215,27096,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,1:00:00 PM,2:15:00 PM,TR,"Wysong,Brandon Carter",Primary Instructor
+1,ANAT-A,215,27096,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,1:00:00 PM,2:15:00 PM,TR,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27309,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,1:00:00 PM,2:15:00 PM,WF,"Houston,Nicole Christina",Secondary Instructor
+1,ANAT-A,215,27309,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,1:00:00 PM,2:15:00 PM,WF,"Wysong,Brandon Carter",Primary Instructor
+1,ANAT-A,215,27309,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,1:00:00 PM,2:15:00 PM,WF,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,27653,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,5:30:00 PM,6:45:00 PM,TR,"Wysong,Brandon Carter",Primary Instructor
+1,ANAT-A,215,27653,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,5:30:00 PM,6:45:00 PM,TR,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,30602,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,10:00:00 AM,12:30:00 PM,W,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,30602,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,10:00:00 AM,12:30:00 PM,W,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,30603,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,2:30:00 PM,5:00:00 PM,R,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,30603,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,2:30:00 PM,5:00:00 PM,R,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,30604,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,30604,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,30604,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,2:30:00 PM,5:00:00 PM,F,"Church,Nick",Primary Instructor
+1,ANAT-A,215,30605,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,10:00:00 AM,12:30:00 PM,R,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,30605,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,10:00:00 AM,12:30:00 PM,R,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,30605,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,10:00:00 AM,12:30:00 PM,R,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,30606,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,2:30:00 PM,5:00:00 PM,W,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,30606,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,2:30:00 PM,5:00:00 PM,W,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,30606,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,2:30:00 PM,5:00:00 PM,W,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,30607,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,30607,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,30607,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,10:00:00 AM,12:30:00 PM,F,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,30608,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,7:00:00 PM,9:30:00 PM,T,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,30608,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,7:00:00 PM,9:30:00 PM,T,"Rifai,Lina",Primary Instructor
+1,ANAT-A,215,30608,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,7:00:00 PM,9:30:00 PM,T,"Rogers,Allacyn Marie",Primary Instructor
+1,ANAT-A,215,30609,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,7:00:00 PM,9:30:00 PM,R,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,30609,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,7:00:00 PM,9:30:00 PM,R,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,30609,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,7:00:00 PM,9:30:00 PM,R,"Ray,Lindsay Nicole",Primary Instructor
+1,ANAT-A,215,35327,Lecture,8/25/2025,12/19/2025,In Person,HUNT109,10:00:00 AM,11:15:00 AM,MW,"Rassel,Christine M",Primary Instructor
+1,ANAT-A,215,35327,Lecture,8/25/2025,12/19/2025,In Person,HUNT109,10:00:00 AM,11:15:00 AM,MW,"Wysong,Brandon Carter",Secondary Instructor
+1,ANAT-A,215,35327,Lecture,8/25/2025,12/19/2025,In Person,HUNT109,10:00:00 AM,11:15:00 AM,MW,"Rifai,Lina",Secondary Instructor
+1,ANAT-A,215,35328,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,3:30:00 PM,6:00:00 PM,T,"Rassel,Christine M",Secondary Instructor
+1,ANAT-A,215,35328,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,3:30:00 PM,6:00:00 PM,T,"Houston,Nicole Christina",Primary Instructor
+1,ANAT-A,215,35328,Laboratory,8/25/2025,12/19/2025,In Person,HUNT129,3:30:00 PM,6:00:00 PM,T,"Rifai,Lina",Secondary Instructor
+1,BIOL-L,121,27497,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,8:30:00 AM,9:45:00 AM,MW,"Wysong,Brandon Carter",Primary Instructor
+1,BIOL-L,121,27497,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,8:30:00 AM,9:45:00 AM,MW,"Church,Nick",Secondary Instructor
+1,BIOL-L,121,27516,Laboratory,8/25/2025,12/19/2025,In Person,HUNT125,2:30:00 PM,5:00:00 PM,T,"Wysong,Brandon Carter",Secondary Instructor
+1,BIOL-L,121,27516,Laboratory,8/25/2025,12/19/2025,In Person,HUNT125,2:30:00 PM,5:00:00 PM,T,"Church,Nick",Primary Instructor
+1,BIOL-L,121,27517,Laboratory,8/25/2025,12/19/2025,In Person,HUNT125,10:00:00 AM,12:30:00 PM,T,"Wysong,Brandon Carter",Secondary Instructor
+1,BIOL-L,121,27517,Laboratory,8/25/2025,12/19/2025,In Person,HUNT125,10:00:00 AM,12:30:00 PM,T,"Church,Nick",Primary Instructor
+1,BIOL-L,122,27591,Lecture,8/25/2025,12/19/2025,In Person,HUNT209,10:00:00 AM,11:15:00 AM,TR,"Rifai,Lina",Primary Instructor
+1,BIOL-L,122,27591,Lecture,8/25/2025,12/19/2025,In Person,HUNT209,10:00:00 AM,11:15:00 AM,TR,"Church,Nick",Secondary Instructor
+1,BIOL-L,122,27687,Laboratory,8/25/2025,12/19/2025,In Person,HUNT125,10:00:00 AM,12:30:00 PM,W,"Rifai,Lina",Secondary Instructor
+1,BIOL-L,122,27687,Laboratory,8/25/2025,12/19/2025,In Person,HUNT125,10:00:00 AM,12:30:00 PM,W,"Church,Nick",Primary Instructor
+1,BIOL-L,321,26841,Lecture,8/25/2025,12/19/2025,In Person,KOMN101,1:00:00 PM,2:15:00 PM,TR,"Chauret,Christian",Primary Instructor
+1,BIOL-L,329,26813,Lecture,8/25/2025,12/19/2025,In Person,HUNT226,8:30:00 AM,9:45:00 AM,MW,"Masuda,Hisako",Primary Instructor
+1,BIOL-L,329,26889,Laboratory,8/25/2025,12/19/2025,In Person,HUNT227,10:00:00 AM,12:45:00 PM,MW,"Masuda,Hisako",Primary Instructor
+1,BIOL-L,379,29402,Lecture,8/25/2025,12/19/2025,In Person,HUNT209,8:30:00 AM,11:15:00 AM,W,"Rifai,Lina",Primary Instructor
+1,BIOL-L,391,29793,Lecture,8/25/2025,12/19/2025,In Person,KOMN106,4:00:00 PM,5:15:00 PM,TR,"Finkler,Michael S.",Primary Instructor
+1,BIOL-L,473,27593,Lecture,8/25/2025,12/19/2025,In Person,HUNT109,11:30:00 AM,12:45:00 PM,TR,"Sullivan,T.J.",Primary Instructor
+1,BIOL-L,474,27594,Laboratory,8/25/2025,12/19/2025,In Person,HUNT125,2:30:00 PM,6:30:00 PM,W,"Sullivan,T.J.",Primary Instructor
+1,BIOL-L,490,27738,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Chauret,Christian",Primary Instructor
+1,BIOL-L,490,27739,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Rifai,Lina",Primary Instructor
+1,BIOL-L,490,27741,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Finkler,Michael S.",Primary Instructor
+1,BUKO-A,522,27077,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN127,4:00:00 PM,5:15:00 PM,R,"Cox,Steve R",Primary Instructor
+1,BUKO-C,577,27833,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN127,11:30:00 AM,12:45:00 PM,R,"Li,Yiping",Primary Instructor
+8W2,BUKO-C,599,37069,Ind Study,10/22/2025,12/19/2025,Independent/Directed Study, , , , ,"Krabbenhoft,Alan George",Primary Instructor
+8W2,BUKO-E,542,27184,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,KOMN127,6:00:00 PM,8:45:00 PM,T,"Zhukov,Konstantin",Primary Instructor
+8W1,BUKO-J,552,27210,Lecture,8/25/2025,10/17/2025,Hybrid-On Campus & Online,KOMN127,6:00:00 PM,8:45:00 PM,R,"Clayton,Elizabeth Diane",Primary Instructor
+1,BUKO-K,544,35714,Lecture,8/25/2025,12/19/2025,In Person, , , , ,"Govindarajulu,Chittibabu",Primary Instructor
+1,BUKO-L,506,26995,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN127,1:00:00 PM,2:15:00 PM,R,"Tamvada,Mallika",Primary Instructor
+8W2,BUKO-M,560,26700,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,KOMN127,6:00:00 PM,8:45:00 PM,R,"Li,Yiping",Primary Instructor
+8W1,BUKO-Z,542,26701,Lecture,8/25/2025,10/17/2025,Hybrid-On Campus & Online,KOMN127,6:00:00 PM,8:45:00 PM,T,"Smith,Adam R",Primary Instructor
+1,BUS-A,201,26853,Lecture,8/25/2025,12/19/2025,In Person,KOMN206,10:00:00 AM,11:15:00 AM,TR,"Kim,Joungyeon",Primary Instructor
+1,BUS-A,202,27134,Lecture,8/25/2025,12/19/2025,In Person,KOMN113,2:30:00 PM,3:45:00 PM,TR,"Chimhanda,Tsarai Runyararo",Primary Instructor
+1,BUS-A,311,26703,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN108,2:30:00 PM,3:45:00 PM,R,"Korne,Olga V",Primary Instructor
+1,BUS-A,325,27164,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN108,4:00:00 PM,5:15:00 PM,T,"Cox,Steve R",Primary Instructor
+1,BUS-A,328,26704,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN108,2:30:00 PM,3:45:00 PM,T,"Korne,Olga V",Primary Instructor
+1,BUS-A,422,26705,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN127,4:00:00 PM,5:15:00 PM,R,"Cox,Steve R",Primary Instructor
+1,BUS-D,301,27197,Lecture,8/25/2025,12/19/2025,In Person,KELL144,4:00:00 PM,5:15:00 PM,TR,"Ameyaw,Abdul-Kadir",Primary Instructor
+1,BUS-F,301,27261,Lecture,8/25/2025,12/19/2025,In Person,KOMN100,11:30:00 AM,12:45:00 PM,TR,"Cox,Steve R",Primary Instructor
+1,BUS-F,302,26707,Lecture,8/25/2025,12/19/2025,In Person,KELL144,10:00:00 AM,11:15:00 AM,TR,"Cao,Tim",Primary Instructor
+1,BUS-F,414,27388,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KELL144,1:00:00 PM,2:15:00 PM,T,"Cao,Tim",Primary Instructor
+1,BUS-J,401,27637,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN108,10:00:00 AM,11:15:00 AM,T,"Gupta,Jyoti P.",Primary Instructor
+1,BUS-J,404,26788,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN108,10:00:00 AM,11:15:00 AM,R,"Ameyaw,Abdul-Kadir",Primary Instructor
+1,BUS-L,201,27330,Lecture,8/25/2025,12/19/2025,In Person,KELL144,10:00:00 AM,11:15:00 AM,MW,"Tamvada,Mallika",Primary Instructor
+1,BUS-L,406,27334,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN127,1:00:00 PM,2:15:00 PM,R,"Tamvada,Mallika",Primary Instructor
+1,BUS-M,301,27233,Lecture,8/25/2025,12/19/2025,In Person,KOMN127,2:30:00 PM,3:45:00 PM,TR,"Li,Yiping",Primary Instructor
+1,BUS-M,303,30709,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN127,11:30:00 AM,12:45:00 PM,R,"Li,Yiping",Primary Instructor
+1,BUS-M,455,26874,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KELL144,2:30:00 PM,3:45:00 PM,T,"Preece,Gloria Lynn",Primary Instructor
+1,BUS-P,301,26708,Lecture,8/25/2025,12/19/2025,In Person,KOMN100,1:00:00 PM,2:15:00 PM,TR,"Meybodi,Mohammad Z.",Primary Instructor
+1,BUS-P,421,27254,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN100,2:30:00 PM,3:45:00 PM,R,"Meybodi,Mohammad Z.",Primary Instructor
+1,BUS-W,100,27539,Lecture,8/25/2025,12/19/2025,In Person,KOMN108,1:00:00 PM,2:15:00 PM,MW,"Byrd,Sarah",Primary Instructor
+1,BUS-W,430,27205,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN102,1:00:00 PM,2:15:00 PM,T,"Smith,Adam R",Primary Instructor
+1,BUS-X,107,26954,Lecture,8/25/2025,12/19/2025,In Person,KOMN104,10:00:00 AM,11:15:00 AM,TR,"Byrd,Sarah",Primary Instructor
+1,BUS-X,107,26955,Lecture,8/25/2025,12/19/2025,In Person,KOMN082,10:00:00 AM,11:15:00 AM,MW,"Leicht,Ashley Marie",Primary Instructor
+1,BUS-X,107,26959,Lecture,8/25/2025,12/19/2025,In Person,KELL144,11:30:00 AM,12:45:00 PM,TR,"Byrd,Sarah",Primary Instructor
+1,BUS-X,107,27154,Lecture,8/25/2025,12/19/2025,In Person,KOMN206,2:30:00 PM,3:45:00 PM,TR,"Leicht,Ashley Marie",Primary Instructor
+1,BUS-X,107,36411,Lecture,8/25/2025,12/19/2025,In Person,KOMN101,11:30:00 AM,12:45:00 PM,MW,"Byrd,Sarah",Primary Instructor
+8W2,BUS-X,220,27108,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,KOMN108,1:00:00 PM,2:15:00 PM,R,"Leicht,Ashley Marie",Primary Instructor
+8W2,BUS-X,220,27109,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,KOMN108,1:00:00 PM,2:15:00 PM,T,"Leicht,Ashley Marie",Primary Instructor
+1,BUS-X,487,27454,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN105,4:00:00 PM,5:15:00 PM,R,"Geiger,James David",Primary Instructor
+1,BUS-Z,302,26838,Lecture,8/25/2025,12/19/2025,In Person,KOMN100,4:00:00 PM,5:15:00 PM,TR,"Gupta,Jyoti P.",Primary Instructor
+1,BUS-Z,447,27255,Lecture,8/25/2025,12/19/2025,In Person,KOMN179,11:30:00 AM,12:45:00 PM,TR,"Clayton,Elizabeth Diane",Primary Instructor
+1,CHEM-C,100,26711,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,11:30:00 AM,12:45:00 PM,MW,"Wilson,Linda Wright",Primary Instructor
+1,CHEM-C,105,26712,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,8:30:00 AM,9:45:00 AM,TRF,"Masuda,Hisako",Primary Instructor
+1,CHEM-C,109,26797,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,10:00:00 AM,11:15:00 AM,MW,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,120,26713,Laboratory,8/25/2025,12/19/2025,In Person,HUNT231,3:30:00 PM,5:00:00 PM,M,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,120,26713,Laboratory,8/25/2025,12/19/2025,In Person,HUNT226,2:30:00 PM,3:30:00 PM,M,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,123,34304,Lecture,8/25/2025,12/19/2025,In Person,KOMN179,2:30:00 PM,3:45:00 PM,MW,"Wilson,Linda Wright",Primary Instructor
+1,CHEM-C,125,26714,Laboratory,8/25/2025,12/19/2025,In Person,HUNT226,10:00:00 AM,11:00:00 AM,T,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,125,26714,Laboratory,8/25/2025,12/19/2025,In Person,HUNT231,11:00:00 AM,12:30:00 PM,T,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,125,26715,Laboratory,8/25/2025,12/19/2025,In Person,HUNT226,10:00:00 AM,11:00:00 AM,R,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,125,26715,Laboratory,8/25/2025,12/19/2025,In Person,HUNT231,11:00:00 AM,12:30:00 PM,R,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,125,26716,Laboratory,8/25/2025,12/19/2025,In Person,HUNT226,10:00:00 AM,11:00:00 AM,F,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,125,26716,Laboratory,8/25/2025,12/19/2025,In Person,HUNT231,11:00:00 AM,12:30:00 PM,F,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,125,27498,Lecture,8/25/2025,12/19/2025,In Person,HUNT226,2:30:00 PM,3:30:00 PM,R,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,125,27498,Lecture,8/25/2025,12/19/2025,In Person,HUNT231,3:30:00 PM,5:00:00 PM,R,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,129,27310,Laboratory,8/25/2025,12/19/2025,In Person,HUNT231,3:30:00 PM,5:00:00 PM,T,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,129,27310,Laboratory,8/25/2025,12/19/2025,In Person,HUNT226,2:30:00 PM,3:30:00 PM,T,"Tanner,Amanda Sharon",Primary Instructor
+1,CHEM-C,329,26810,Lecture,8/25/2025,12/19/2025,In Person,HUNT226,8:30:00 AM,9:45:00 AM,MW,"Masuda,Hisako",Primary Instructor
+1,CHEM-C,329,26890,Laboratory,8/25/2025,12/19/2025,In Person,HUNT227,10:00:00 AM,12:45:00 PM,MW,"Masuda,Hisako",Primary Instructor
+1,CHEM-C,341,26717,Lecture,8/25/2025,12/19/2025,In Person,KOMN101,11:30:00 AM,12:45:00 PM,F,"Hossain,Mohammad",Primary Instructor
+1,CHEM-C,341,26717,Lecture,8/25/2025,12/19/2025,In Person,KOMN101,8:30:00 AM,9:45:00 AM,MW,"Hossain,Mohammad",Primary Instructor
+1,CHEM-C,343,26718,Laboratory,8/25/2025,12/19/2025,In Person,KOMN101,10:00:00 AM,11:00:00 AM,M,"Hossain,Mohammad",Primary Instructor
+1,CHEM-C,343,26718,Laboratory,8/25/2025,12/19/2025,In Person,HUNT232,2:30:00 PM,5:30:00 PM,W,"Deyo,Sara M",Primary Instructor
+1,CHEM-C,343,26815,Laboratory,8/25/2025,12/19/2025,In Person,HUNT232,10:00:00 AM,1:00:00 PM,W,"Hossain,Mohammad",Primary Instructor
+1,CHEM-C,343,26815,Laboratory,8/25/2025,12/19/2025,In Person,KOMN101,10:00:00 AM,11:00:00 AM,M,"Hossain,Mohammad",Primary Instructor
+1,CHEM-C,409,36861,Research,8/25/2025,12/19/2025,In Person, , , , ,"Masuda,Hisako",Primary Instructor
+1,CHEM-Y,398,37608,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Masuda,Hisako",Primary Instructor
+1,CJHS-J,101,26823,Lecture,8/25/2025,12/19/2025,In Person,KOE103,10:00:00 AM,11:15:00 AM,MW,"Fisher,Kelly Lynn",Primary Instructor
+1,CJHS-J,101,27214,Lecture,8/25/2025,12/19/2025,In Person,KOE103,1:00:00 PM,2:15:00 PM,MW,"Fisher,Kelly Lynn",Primary Instructor
+1,CJHS-J,305,26799,Lecture,8/25/2025,12/19/2025,In Person,KOE103,10:00:00 AM,11:15:00 AM,TR,"Brown,Kelly L",Primary Instructor
+1,CJHS-J,321,26828,Lecture,8/25/2025,12/19/2025,In Person,KOE103,1:00:00 PM,2:15:00 PM,TR,"Kinney,Sean P",Primary Instructor
+1,CJHS-J,322,26880,Lecture,8/25/2025,12/19/2025,In Person,KOE103,2:30:00 PM,3:45:00 PM,TR,"Kinney,Sean P",Primary Instructor
+1,CJHS-J,401,29977,Seminar,8/25/2025,12/19/2025,In Person,KOMN179,1:00:00 PM,2:15:00 PM,TR,"Felts,Chris",Primary Instructor
+1,CSCI-B,100,27315,Lecture,8/25/2025,12/19/2025,In Person,HUNT201,8:30:00 AM,10:15:00 AM,MW,"Aktaruzzaman,Md",Primary Instructor
+1,CSCI-B,401,27244,Lecture,8/25/2025,12/19/2025,In Person,KOMN281,11:30:00 AM,12:45:00 PM,TR,"Aktaruzzaman,Md",Primary Instructor
+1,CSCI-B,438,27535,Lecture,8/25/2025,12/19/2025,In Person,KOMN111,4:00:00 PM,5:15:00 PM,MW,"Mairaj,Aakif",Primary Instructor
+1,CSCI-C,101,26996,Lecture,8/25/2025,12/19/2025,In Person,HUNT201,8:30:00 AM,10:15:00 AM,TR,"Liu,Yang",Primary Instructor
+1,CSCI-C,101,29615,Lecture,8/25/2025,12/19/2025,In Person,HUNT201,1:00:00 PM,2:15:00 PM,F,"Liu,Hong",Primary Instructor
+1,CSCI-C,201,26997,Lecture,8/25/2025,12/19/2025,In Person,HUNT201,10:30:00 AM,12:15:00 PM,TR,"Mairaj,Aakif",Primary Instructor
+1,CSCI-C,308,27700,Lecture,8/25/2025,12/19/2025,In Person,HUNT224,1:00:00 PM,2:15:00 PM,TR,"Aktaruzzaman,Md",Primary Instructor
+1,CSCI-C,343,27087,Lecture,8/25/2025,12/19/2025,In Person,HUNT224,8:30:00 AM,10:15:00 AM,MW,"Liu,Hong",Primary Instructor
+1,CSCI-C,436,27088,Lecture,8/25/2025,12/19/2025,In Person,HUNT201,2:30:00 PM,3:45:00 PM,MW,"Mairaj,Aakif",Primary Instructor
+1,DPIS-D,285,27716,Ind Study,8/25/2025,12/19/2025,In Person, , , , ,"Tebbe,Amelia Nora",Primary Instructor
+1,ECON-E,201,26719,Lecture,8/25/2025,12/19/2025,In Person,KOMN113,11:30:00 AM,12:45:00 PM,TR,"Zhukov,Konstantin",Primary Instructor
+1,ECON-E,202,26720,Lecture,8/25/2025,12/19/2025,In Person,KELL144,1:00:00 PM,2:15:00 PM,MW,"Krabbenhoft,Alan George",Primary Instructor
+1,ECON-E,270,26721,Lecture,8/25/2025,12/19/2025,In Person,KELL144,11:30:00 AM,12:45:00 PM,MW,"Geiger,James David",Primary Instructor
+1,EDUC-E,325,27612,Lecture,8/25/2025,12/19/2025,Internship/Practica,KOMN287,4:30:00 PM,7:15:00 PM,M,"Lepley,Kristin",Primary Instructor
+1,EDUC-E,325,31001,Practicum,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Lepley,Kristin",Primary Instructor
+1,EDUC-E,328,29630,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN176,4:45:00 PM,6:00:00 PM,T,"Wang,Lu",Primary Instructor
+1,EDUC-E,328,29631,Practicum,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOOCOC,8:30:00 AM,12:00:00 PM,W,"Wang,Lu",Primary Instructor
+1,EDUC-E,336,27425,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN206,5:30:00 PM,7:00:00 PM,M,"Parisi,Kristin",Primary Instructor
+1,EDUC-E,339,27613,Lecture,8/25/2025,12/19/2025,In Person,KOMN204,4:30:00 PM,7:15:00 PM,T,"Michels,Brenna Lynne",Primary Instructor
+1,EDUC-E,340,26789,Lecture,8/25/2025,12/19/2025,In Person,KOMN281,5:00:00 PM,7:45:00 PM,T,"Acton,Lindsey L",Primary Instructor
+1,EDUC-E,340,27692,Practicum,8/25/2025,12/19/2025,In Person,KOOCOC,8:30:00 AM,12:00:00 PM,W,"Acton,Lindsey L",Primary Instructor
+1,EDUC-E,340,30987,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN179,4:45:00 PM,6:15:00 PM,M,"French,Jenny",Primary Instructor
+1,EDUC-E,340,30988,Practicum,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"French,Jenny",Primary Instructor
+1,EDUC-E,341,27608,Lecture,8/25/2025,12/19/2025,In Person,KOMN175,12:00:00 PM,2:45:00 PM,R,"Gillam,Holly Beth",Primary Instructor
+1,EDUC-E,341,30989,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN127,6:30:00 PM,8:00:00 PM,M,"French,Jenny",Primary Instructor
+1,EDUC-E,341,30990,Practicum,8/25/2025,12/19/2025,In Person, , , , ,"French,Jenny",Primary Instructor
+1,EDUC-E,343,29642,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN176,6:15:00 PM,7:30:00 PM,T,"Wang,Lu",Primary Instructor
+NON,EDUC-E,518,27812,Lecture,8/25/2025,9/19/2025,Hybrid-Distance Video & Online, , , , ,"Kingsley,Tara Lynn",Primary Instructor
+1,EDUC-E,534,34156,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN103,4:45:00 PM,7:30:00 PM,T,"Wang,Lu",Primary Instructor
+1,EDUC-F,200,27047,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOOCOC, , , ,"Smith,Amy Linn",Primary Instructor
+1,EDUC-F,200,27296,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOOCOC, , , ,"Smith,Amy Linn",Primary Instructor
+1,EDUC-F,200,27412,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOOCOC, , , ,"Smith,Amy Linn",Primary Instructor
+1,EDUC-F,200,34959,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOOCOC, , , ,"Newman,Ryan Scott",Primary Instructor
+1,EDUC-F,205,26767,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN201,4:00:00 PM,6:00:00 PM,M,"Maurer,Randy Joseph",Primary Instructor
+1,EDUC-F,205,27112,Lecture,8/25/2025,12/19/2025,In Person,KOMN204,9:00:00 AM,11:45:00 AM,W,"Hanson,Amanda",Primary Instructor
+1,EDUC-F,205,27113,Lecture,8/25/2025,12/19/2025,In Person,KOMN204,9:00:00 AM,11:45:00 AM,W,"Hanson,Amanda",Primary Instructor
+8W1,EDUC-F,205,33710,Lecture,8/25/2025,10/17/2025,Hybrid-Distance Video & Online,KOWBWEB,4:30:00 PM,5:45:00 PM,R,"Grubb,Sarrah Jean",Primary Instructor
+1,EDUC-F,401,27256,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN281,3:00:00 PM,4:15:00 PM,TR,"Fortner,Shelbi Ann",Primary Instructor
+1,EDUC-F,401,27834,Lecture,8/25/2025,12/19/2025,Hybrid-Distance Video & Online,KOWBWEB,5:00:00 PM,7:00:00 PM,M,"Grubb,Sarrah Jean",Primary Instructor
+8W1,EDUC-F,500,36227,Lecture,8/25/2025,10/17/2025,Distance Synchronous Video,OLONLINE,6:30:00 PM,8:00:00 PM,T,"Manis,Mike",Primary Instructor
+1,EDUC-F,501,37210,Lecture,8/25/2025,12/19/2025,Hybrid-Distance Video & Online,KOWBWEB,5:00:00 PM,7:00:00 PM,M,"Grubb,Sarrah Jean",Primary Instructor
+1,EDUC-H,340,26852,Lecture,8/25/2025,12/19/2025,In Person,KOMN103,12:00:00 PM,2:45:00 PM,T,"Grubb,Sarrah Jean",Primary Instructor
+1,EDUC-K,308,27617,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN204,9:00:00 AM,11:00:00 AM,R,"Mihai,Alina",Primary Instructor
+8W2,EDUC-K,361,27170,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,KOMN100,5:30:00 PM,7:30:00 PM,W,"Donica,Leta D",Primary Instructor
+1,EDUC-K,370,27204,Lecture,8/25/2025,12/19/2025,In Person,KOMN176,6:00:00 PM,8:30:00 PM,R,"Reagle,Suzie",Primary Instructor
+8W1,EDUC-K,370,27524,Lecture,8/25/2025,10/17/2025,Hybrid-On Campus & Online,KOMN108,5:00:00 PM,7:00:00 PM,R,"Helmberger,Tenicia Rae",Primary Instructor
+8W1,EDUC-K,370,29650,Practicum,8/25/2025,10/17/2025,In Person,KOOCOC, , , ,"Helmberger,Tenicia Rae",Primary Instructor
+1,EDUC-K,370,30991,Practicum,8/25/2025,12/19/2025,In Person,KOOCOC,8:30:00 AM,11:00:00 AM,R,"Reagle,Suzie",Primary Instructor
+8W1,EDUC-K,371,27688,Lecture,8/25/2025,10/17/2025,Hybrid-On Campus & Online,KOMN108,5:00:00 PM,7:00:00 PM,W,"Beyioku,Cheryl",Primary Instructor
+8W2,EDUC-K,490,33708,Lecture,10/22/2025,12/19/2025,Hybrid-Distance Video & Online,KOMN101,5:00:00 PM,7:00:00 PM,W,"Beyioku,Cheryl",Primary Instructor
+1,EDUC-L,520,37217,Ind Study,8/25/2025,12/19/2025,In Person,KOMN175,5:00:00 PM,6:30:00 PM,TRF,"Pico,J. R.",Primary Instructor
+1,EDUC-L,524,35061,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,OLONLINE, , , ,"McMahan,Tami",Primary Instructor
+1,EDUC-M,300,26781,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN176,11:30:00 AM,12:45:00 PM,TR,"Newman,Ryan Scott",Primary Instructor
+8W2,EDUC-M,324,27167,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,KOMN176,4:30:00 PM,7:15:00 PM,M,"Hankins,Amber",Primary Instructor
+1,EDUC-M,339,27731,Lecture,8/25/2025,12/19/2025,In Person, , , , ,"Anderson,Brandon Wayne",Primary Instructor
+8W2,EDUC-M,430,27086,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,KOMN176,4:30:00 PM,7:15:00 PM,M,"Hankins,Amber",Primary Instructor
+1,EDUC-M,432,33712,Ind Study,8/25/2025,12/19/2025,In Person,KOMN175,5:00:00 PM,6:30:00 PM,TRF,"Pico,J. R.",Primary Instructor
+1,EDUC-M,440,27036,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN082,5:00:00 PM,7:00:00 PM,T,"Marler,Dee Richard",Primary Instructor
+1,EDUC-M,441,26790,Lecture,8/25/2025,12/19/2025,In Person,KOMN113,5:00:00 PM,7:45:00 PM,W,"Barbre,James Orman",Primary Instructor
+1,EDUC-M,446,27746,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN110,5:00:00 PM,6:30:00 PM,M,"Wang,Lu",Primary Instructor
+1,EDUC-M,452,26791,Lecture,8/25/2025,12/19/2025,Hybrid-Distance Video & Online,OLONLINE,5:00:00 PM,7:45:00 PM,W,"French,Jenny",Primary Instructor
+1,EDUC-M,457,30992,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN110,5:00:00 PM,6:30:00 PM,M,"Wang,Lu",Primary Instructor
+8W2,EDUC-M,482,35472,Practicum,10/22/2025,12/19/2025,In Person,KOOCOC, , , ,"Marler,Dee Richard",Primary Instructor
+8W2,EDUC-M,531,37218,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,KOMN176,4:30:00 PM,7:15:00 PM,M,"Hankins,Amber",Primary Instructor
+1,EDUC-N,102,33709,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,4:30:00 PM,5:45:00 PM,TR,"Smith,Amy Linn",Primary Instructor
+1,EDUC-N,102,36054,Lecture,8/25/2025,12/19/2025,In Person,KOMN101,4:30:00 PM,5:45:00 PM,TR,"Newman,Ryan Scott",Primary Instructor
+1,EDUC-N,518,37239,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online, , , , ,"Wang,Lu",Primary Instructor
+1,EDUC-P,214,27114,Lecture,8/25/2025,12/19/2025,In Person,KOMN287,11:30:00 AM,12:45:00 PM,R,"McNeany,Jennifer Ruth",Primary Instructor
+1,EDUC-P,214,27125,Lecture,8/25/2025,12/19/2025,In Person,KOMN204,1:00:00 PM,2:15:00 PM,W,"Hanson,Amanda",Primary Instructor
+1,EDUC-P,214,27126,Lecture,8/25/2025,12/19/2025,In Person,KOMN204,1:00:00 PM,2:15:00 PM,W,"Hanson,Amanda",Primary Instructor
+8W1,EDUC-P,214,33711,Lecture,8/25/2025,10/17/2025,Hybrid-Distance Video & Online,KOWBWEB,5:45:00 PM,7:00:00 PM,R,"Grubb,Sarrah Jean",Primary Instructor
+8W2,EDUC-P,250,30867,Lecture,10/22/2025,12/19/2025,In Person,KOMN206,11:30:00 AM,12:45:00 PM,TR,"Marley,Melody Estelle",Primary Instructor
+1,EDUC-P,290,26762,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN176,4:15:00 PM,5:30:00 PM,W,"Eby,Stephen",Primary Instructor
+1,EDUC-P,320,27132,Lecture,8/25/2025,12/19/2025,In Person,KOMN112,4:30:00 PM,7:15:00 PM,R,"McNeany,Jennifer Ruth",Primary Instructor
+NON,EDUC-P,507,34147,Lecture,9/27/2025,12/6/2025,Hybrid-On Campus & Online,KOMN101,8:30:00 AM,12:00:00 PM,S,"Buckner,Jeff",Primary Instructor
+1,EDUC-P,602,31843,Lecture,8/25/2025,12/19/2025,Distance Synchronous Video,OLONLINE,5:00:00 PM,6:30:00 PM,M,"Marley,Melody Estelle",Primary Instructor
+8W2,EDUC-P,605,27645,Seminar,10/22/2025,12/19/2025,Hybrid-Distance Video & Online,OLONLINE,6:30:00 PM,8:00:00 PM,T,"McNeany,Jennifer Ruth",Primary Instructor
+1,EDUC-P,609,32133,Lecture,8/25/2025,12/19/2025,Distance Synchronous Video,OLONLINE,4:30:00 PM,6:00:00 PM,T,"Marley,Melody Estelle",Primary Instructor
+8W2,EDUC-P,692,35480,Lecture,10/22/2025,12/19/2025,Distance Synchronous Video,OLONLINE,6:15:00 PM,7:45:00 PM,T,"Marley,Melody Estelle",Primary Instructor
+1,EDUC-S,512,27537,Lecture,8/25/2025,12/19/2025,Hybrid-Distance Video & Online,KOWBWEB,5:00:00 PM,7:00:00 PM,M,"Grubb,Sarrah Jean",Primary Instructor
+1,EDUC-S,518,37220,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN110,5:00:00 PM,6:30:00 PM,M,"Wang,Lu",Primary Instructor
+1,EDUC-S,519,37219,Lecture,8/25/2025,12/19/2025,In Person,KOMN113,5:00:00 PM,7:45:00 PM,W,"Barbre,James Orman",Primary Instructor
+1,EDUC-W,200,27544,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online, , , , ,"Smith,Amy Linn",Primary Instructor
+1,EDUC-W,200,27759,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online, , , , ,"Newman,Ryan Scott",Primary Instructor
+1,EDUC-X,530,27545,Lecture,8/25/2025,12/19/2025,Hybrid-Distance Video & Online,KOWBWEB,5:00:00 PM,7:30:00 PM,R,"Gill,Melissa C",Primary Instructor
+1,ENG-L,220,29932,Lecture,8/25/2025,12/19/2025,In Person,KOMN052,11:30:00 AM,12:45:00 PM,TR,"Keener,Joe",Primary Instructor
+1,ENG-L,354,29925,Lecture,8/25/2025,12/19/2025,In Person,KOMN104,11:30:00 AM,12:45:00 PM,MW,"Coby,Jim",Primary Instructor
+1,ENG-W,130,27711,Lecture,8/25/2025,12/19/2025,In Person,KOMN287,11:30:00 AM,12:45:00 PM,W,"Westervelt,Michelle",Primary Instructor
+1,ENG-W,130,27712,Lecture,8/25/2025,12/19/2025,In Person,KOMN111,11:30:00 AM,12:45:00 PM,M,"Amos,Molly M",Primary Instructor
+1,ENG-W,130,27713,Lecture,8/25/2025,12/19/2025,In Person,KOMN111,11:30:00 AM,12:45:00 PM,W,"Amos,Molly M",Primary Instructor
+1,ENG-W,130,27714,Lecture,8/25/2025,12/19/2025,In Person,KOMN111,11:30:00 AM,12:45:00 PM,T,"Bruns,Lori Michelle",Primary Instructor
+1,ENG-W,130,27715,Lecture,8/25/2025,12/19/2025,In Person,KOMN200,10:00:00 AM,11:15:00 AM,W,"Kennelly,Mary K",Primary Instructor
+1,ENG-W,130,27764,Lecture,8/25/2025,12/19/2025,In Person,KOMN200,8:30:00 AM,9:45:00 AM,R,"Coombs,Amy R",Primary Instructor
+1,ENG-W,130,36452,Lecture,8/25/2025,12/19/2025,In Person,KOMN103,1:00:00 PM,2:15:00 PM,W,"Nestor,Sarah",Primary Instructor
+1,ENG-W,130,36816,Lecture,8/25/2025,12/19/2025,In Person,KOMN111,1:00:00 PM,2:15:00 PM,T,"Coombs,Amy R",Primary Instructor
+1,ENG-W,131,26722,Lecture,8/25/2025,12/19/2025,In Person,KOMN203,10:00:00 AM,11:15:00 AM,TR,"Coombs,Amy R",Primary Instructor
+1,ENG-W,131,26723,Lecture,8/25/2025,12/19/2025,In Person,KOMN111,1:00:00 PM,2:15:00 PM,MW,"Westervelt,Michelle",Primary Instructor
+1,ENG-W,131,26835,Lecture,8/25/2025,12/19/2025,In Person,KOMN111,2:30:00 PM,3:45:00 PM,TR,"Bruns,Lori Michelle",Primary Instructor
+1,ENG-W,131,26849,Lecture,8/25/2025,12/19/2025,In Person,KOMN200,1:00:00 PM,2:15:00 PM,TR,"Cook,Paul",Primary Instructor
+1,ENG-W,131,27035,Lecture,8/25/2025,12/19/2025,In Person,HUNT224,11:30:00 AM,12:45:00 PM,MW,"Kennelly,Mary K",Primary Instructor
+1,ENG-W,131,27194,Lecture,8/25/2025,12/19/2025,In Person,KOMN111,10:00:00 AM,11:15:00 AM,MW,"Amos,Molly M",Primary Instructor
+1,ENG-W,131,27215,Lecture,8/25/2025,12/19/2025,In Person,KOMN200,1:00:00 PM,2:15:00 PM,MW,"Amos,Molly M",Primary Instructor
+1,ENG-W,131,27221,Lecture,8/25/2025,12/19/2025,In Person,KOMN111,10:00:00 AM,11:15:00 AM,TR,"Bruns,Lori Michelle",Primary Instructor
+1,ENG-W,131,35623,Lecture,8/25/2025,12/19/2025,In Person,KOMN105,10:00:00 AM,11:15:00 AM,MW,"Westervelt,Michelle",Primary Instructor
+1,ENG-W,131,36448,Lecture,8/25/2025,12/19/2025,In Person,KOMN200,11:30:00 AM,12:45:00 PM,MW,"Keener,Joe",Primary Instructor
+1,ENG-W,131,36450,Lecture,8/25/2025,12/19/2025,In Person,KOMN111,8:30:00 AM,9:45:00 AM,MW,"Nestor,Sarah",Primary Instructor
+1,ENG-W,131,36451,Lecture,8/25/2025,12/19/2025,In Person,KOMN206,11:30:00 AM,12:45:00 PM,MW,"Nestor,Sarah",Primary Instructor
+1,ENG-W,131,36817,Lecture,8/25/2025,12/19/2025,In Person,KOMN203,11:30:00 AM,12:45:00 PM,TR,"Coombs,Amy R",Primary Instructor
+1,ENG-W,221,27094,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN111,2:30:00 PM,3:45:00 PM,M,"Westervelt,Michelle",Primary Instructor
+1,FOLK-F,101,26957,Lecture,8/25/2025,12/19/2025,In Person,KOMN175,4:00:00 PM,6:30:00 PM,M,"Pico,J. R.",Primary Instructor
+1,GEOL-G,100,26725,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,10:00:00 AM,11:15:00 AM,TR,"Lorenz,Vincente J",Secondary Instructor
+1,GEOL-G,100,26725,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,10:00:00 AM,11:15:00 AM,TR,"Jackson Overpeck,Leda Rene",Primary Instructor
+1,GEOL-G,100,26726,Laboratory,8/25/2025,12/19/2025,In Person,HUNT209,5:30:00 PM,8:00:00 PM,T,"Lorenz,Vincente J",Primary Instructor
+1,GEOL-G,100,26726,Laboratory,8/25/2025,12/19/2025,In Person,HUNT209,5:30:00 PM,8:00:00 PM,T,"Jackson Overpeck,Leda Rene",Secondary Instructor
+1,GEOL-G,100,26727,Laboratory,8/25/2025,12/19/2025,In Person,HUNT209,5:30:00 PM,8:00:00 PM,R,"Lorenz,Vincente J",Primary Instructor
+1,GEOL-G,100,30633,Laboratory,8/25/2025,12/19/2025,In Person,HUNT209,1:00:00 PM,3:30:00 PM,T,"Jackson Overpeck,Leda Rene",Primary Instructor
+8W2,HIST-A,363,27368,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,KOMN105,6:00:00 PM,8:30:00 PM,R,"Withers,Ron E",Primary Instructor
+1,HIST-B,361,29729,Lecture,8/25/2025,12/19/2025,In Person,KOMN113,11:30:00 AM,12:45:00 PM,MW,"McFarland,Andrew M",Primary Instructor
+1,HIST-H,105,26870,Lecture,8/25/2025,12/19/2025,In Person,KOMN281,11:30:00 AM,12:45:00 PM,MW,"Moskowitz,Kevin A",Primary Instructor
+1,HIST-H,113,26904,Lecture,8/25/2025,12/19/2025,In Person,KOMN112,10:00:00 AM,11:15:00 AM,MW,"Sposato,Peter",Primary Instructor
+1,HIST-H,425,30722,Lecture,8/25/2025,12/19/2025,In Person,KOMN106,2:30:00 PM,3:45:00 PM,MW,"Moskowitz,Kevin A",Primary Instructor
+1,HON-H,375,37457,Lecture,8/25/2025,12/19/2025,In Person, ,1:00:00 PM,2:15:00 PM,TR,"Blackwell,Scott",Primary Instructor
+1,HON-H,375,37458,Lecture,8/25/2025,12/19/2025,In Person, ,8:15:00 AM,11:15:00 AM,T,"Sposato,Margaret Fallon Van Brunt",Primary Instructor
+1,HON-H,375,37459,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Ledbetter,Tamera Louise",Primary Instructor
+1,HON-H,375,37459,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Primary Instructor
+1,HON-H,375,37460,Lecture,8/25/2025,12/19/2025,In Person, ,8:15:00 AM,11:15:00 AM,W,"Pixley,Melissa",Primary Instructor
+1,HON-H,375,37461,Clinic,8/25/2025,12/19/2025,In Person, , , , ,"Pixley,Melissa",Primary Instructor
+1,HON-H,375,37462,Lecture,8/25/2025,12/19/2025,In Person, ,1:00:00 PM,2:15:00 PM,TR,"Kinney,Sean P",Primary Instructor
+1,HON-H,375,37463,Lecture,8/25/2025,12/19/2025,In Person, ,10:00:00 AM,11:15:00 AM,MW,"Holcomb,Kathryn M.",Primary Instructor
+1,HON-H,375,37464,Lecture,8/25/2025,12/19/2025,In Person, ,1:00:00 PM,2:15:00 PM,TR,"Chauret,Christian",Primary Instructor
+1,HON-H,375,37465,Lecture,8/25/2025,12/19/2025,In Person, , , , ,"Rifai,Lina",Primary Instructor
+1,HON-H,375,37484,Lecture,8/25/2025,12/19/2025,In Person, ,8:15:00 AM,11:15:00 AM,T,"Douglas,Christy",Primary Instructor
+1,HON-H,375,37486,Lecture,8/25/2025,12/19/2025,In Person, ,1:00:00 PM,2:15:00 PM,MW,"Tebbe,Amelia Nora",Primary Instructor
+1,HON-H,375,37488,Lecture,8/25/2025,12/19/2025,In Person, ,11:30:00 AM,12:45:00 PM,R,"Meng,Mark Z.",Primary Instructor
+1,HON-H,375,37489,Lecture,8/25/2025,12/19/2025,In Person, ,11:30:00 AM,12:45:00 PM,T,"Meng,Mark Z.",Primary Instructor
+1,HON-H,375,37977,Lecture,8/25/2025,12/19/2025,In Person, , , , ,"Motl,Patrick Michael",Primary Instructor
+1,HON-H,399,31045,Lecture,8/25/2025,12/19/2025,In Person,KOMN101,10:00:00 AM,11:15:00 AM,TR,"Chauret,Christian",Primary Instructor
+1,HON-H,475,37467,Lecture,8/25/2025,12/19/2025,In Person, ,2:30:00 PM,4:30:00 PM,W,"Swartzendruber,Leigh Erin",Primary Instructor
+1,HON-H,475,37468,Lecture,8/25/2025,12/19/2025,In Person, ,8:15:00 AM,11:15:00 AM,W,"Pratt,Stephanie Nicole",Primary Instructor
+1,HON-H,475,37469,Practicum,8/25/2025,12/19/2025,In Person, , , , ,"Pratt,Stephanie Nicole",Secondary Instructor
+1,HON-H,475,37469,Practicum,8/25/2025,12/19/2025,In Person, , , , ,"Julius-Forkner,Patti Ann",Primary Instructor
+1,HON-H,475,37470,Lecture,8/25/2025,12/19/2025,In Person, ,11:30:00 AM,12:45:00 PM,TR,"Nichols,Steven",Primary Instructor
+1,HON-H,475,37471,Practicum,8/25/2025,12/19/2025,In Person, , , , ,"Jones,Naomi Jean",Primary Instructor
+1,HON-H,475,37471,Practicum,8/25/2025,12/19/2025,In Person, , , , ,"Pratt,Stephanie Nicole",Secondary Instructor
+1,HON-H,475,37473,Practicum,8/25/2025,12/19/2025,In Person, , , , ,"Bortone,Christy JoeAnn",Primary Instructor
+1,HON-H,475,37473,Practicum,8/25/2025,12/19/2025,In Person, , , , ,"Pratt,Stephanie Nicole",Secondary Instructor
+1,HON-H,475,37474,Lecture,8/25/2025,12/19/2025,In Person, ,11:30:00 AM,12:45:00 PM,TR,"Sullivan,T.J.",Primary Instructor
+1,HON-H,475,37477,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online, ,2:30:00 PM,3:45:00 PM,T,"Preece,Gloria Lynn",Primary Instructor
+8W1,HSCI-E,100,27272,Activity,8/25/2025,10/17/2025,In Person,KOLB038,8:30:00 AM,9:30:00 AM,MW,"Kretz,Amy",Primary Instructor
+8W2,HSCI-E,100,27480,Activity,10/22/2025,12/19/2025,In Person,KOLB038,2:30:00 PM,3:30:00 PM,MW,"Bultman,Joanna Christine",Primary Instructor
+8W1,HSCI-E,115,27627,Lecture,8/25/2025,10/17/2025,In Person,KOLB024,10:00:00 AM,11:00:00 AM,TR,"Duffitt,Allison",Primary Instructor
+8W2,HSCI-E,115,27628,Lecture,10/22/2025,12/19/2025,In Person,KOLB024,10:00:00 AM,11:00:00 AM,TR,"Duffitt,Allison",Primary Instructor
+8W1,HSCI-E,121,27271,Activity,8/25/2025,10/17/2025,In Person,KOLB038,10:00:00 AM,11:00:00 AM,MW,"Kretz,Amy",Primary Instructor
+8W2,HSCI-E,121,27358,Activity,10/22/2025,12/19/2025,In Person,KOLB038,10:00:00 AM,11:00:00 AM,MW,"Kretz,Amy",Primary Instructor
+8W1,HSCI-E,190,27278,Activity,8/25/2025,10/17/2025,In Person,KOLB024,8:45:00 AM,9:45:00 AM,TR,"Duffitt,Allison",Primary Instructor
+8W2,HSCI-E,190,27279,Activity,10/22/2025,12/19/2025,In Person,KOLB024,4:00:00 PM,5:00:00 PM,TR,"Duffitt,Allison",Primary Instructor
+8W2,HSCI-E,190,27529,Activity,10/22/2025,12/19/2025,In Person,KOLB024,11:30:00 AM,12:30:00 PM,MW,"Duffitt,Allison",Primary Instructor
+8W1,HSCI-E,200,27400,Activity,8/25/2025,10/17/2025,In Person,KOLB038,8:30:00 AM,9:30:00 AM,MW,"Kretz,Amy",Primary Instructor
+8W1,HSCI-E,221,27381,Activity,8/25/2025,10/17/2025,In Person,KOLB038,10:00:00 AM,11:00:00 AM,MW,"Kretz,Amy",Primary Instructor
+8W2,HSCI-E,221,27382,Activity,10/22/2025,12/19/2025,In Person,KOLB038,10:00:00 AM,11:00:00 AM,MW,"Kretz,Amy",Primary Instructor
+8W1,HSCI-E,290,27375,Activity,8/25/2025,10/17/2025,In Person,KOLB024,8:45:00 AM,9:45:00 AM,TR,"Duffitt,Allison",Primary Instructor
+8W2,HSCI-E,290,27378,Activity,10/22/2025,12/19/2025,In Person,KOLB024,4:00:00 PM,5:00:00 PM,TR,"Duffitt,Allison",Primary Instructor
+1,HSCI-H,120,26834,Lecture,8/25/2025,12/19/2025,In Person,KOLB007,10:00:00 AM,11:15:00 AM,MW,"Coppola,Angela",Primary Instructor
+1,HSCI-H,204,26827,Lecture,8/25/2025,12/19/2025,In Person,KOLB007,11:30:00 AM,12:45:00 PM,TR,"Zhu,Huiying",Primary Instructor
+1,HSCI-H,204,27471,Lecture,8/25/2025,12/19/2025,In Person,KOLB007,2:30:00 PM,3:45:00 PM,TR,"Zhu,Huiying",Primary Instructor
+1,HSCI-H,212,27267,Lecture,8/25/2025,12/19/2025,In Person,KOLB007,1:00:00 PM,2:15:00 PM,MW,"Mossburg,Kim",Primary Instructor
+1,HSCI-H,220,27263,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN179,10:00:00 AM,11:15:00 AM,R,"Mossburg,Kim",Primary Instructor
+1,HSCI-H,321,26918,Lecture,8/25/2025,12/19/2025,In Person,KOMN179,1:00:00 PM,2:15:00 PM,MW,"Alshuwaiyer,Ghadah",Primary Instructor
+1,HSCI-H,322,26999,Lecture,8/25/2025,12/19/2025,In Person,HUNT224,2:30:00 PM,3:45:00 PM,TR,"Coppola,Angela",Primary Instructor
+1,HSCI-H,325,27253,Lecture,8/25/2025,12/19/2025,In Person,KOMN206,9:30:00 AM,10:45:00 AM,MW,"Acharya,Lalatendu",Primary Instructor
+1,HSCI-H,327,26798,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,10:00:00 AM,11:15:00 AM,TR,"Alshuwaiyer,Ghadah",Primary Instructor
+1,HSCI-H,333,27107,Lecture,8/25/2025,12/19/2025,In Person,KOLB007,2:30:00 PM,3:45:00 PM,MW,"Acharya,Lalatendu",Primary Instructor
+1,HSCI-H,360,27037,Lecture,8/25/2025,12/19/2025,In Person,KOMN110,11:30:00 AM,2:15:00 PM,R,"Echelbarger,Eric",Primary Instructor
+1,HSCI-H,409,27362,Lecture,8/25/2025,12/19/2025,In Person,KOMN110,10:00:00 AM,12:45:00 PM,T,"Mossburg,Kim",Primary Instructor
+1,HSCI-H,442,26886,Lecture,8/25/2025,12/19/2025,In Person,KOMN179,11:30:00 AM,12:45:00 PM,MW,"Mossburg,Kim",Primary Instructor
+8W1,HSCI-H,477,27474,Lecture,8/25/2025,10/17/2025,In Person, , , , ,"Coppola,Angela",Primary Instructor
+8W2,HSCI-H,478,27475,Lecture,10/22/2025,12/19/2025,In Person, , , , ,"Coppola,Angela",Primary Instructor
+1,HSS-A,101,27041,Lecture,8/25/2025,12/19/2025,In Person,KOMN105,2:30:00 PM,3:45:00 PM,W,"Jarecki,Amy Andrea",Primary Instructor
+1,HSS-A,101,27042,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,10:00:00 AM,11:15:00 AM,T,"Keith,Brandi",Primary Instructor
+1,HSS-A,101,27043,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,11:30:00 AM,12:45:00 PM,R,"Kennelly,Mary K",Primary Instructor
+1,HSS-A,101,27045,Lecture,8/25/2025,12/19/2025,In Person,KOMN105,4:00:00 PM,5:15:00 PM,W,"Schlemmer,Cheryl Ann",Primary Instructor
+1,HSS-A,101,27211,Lecture,8/25/2025,12/19/2025,In Person,KOMN127,11:30:00 AM,12:45:00 PM,T,"Ducret,Victoria",Primary Instructor
+1,HSS-A,101,27213,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,11:30:00 AM,12:45:00 PM,W,"Sala,Tracey",Primary Instructor
+1,HSS-A,101,27222,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,1:00:00 PM,2:15:00 PM,R,"Svoboda,Adam Joseph",Primary Instructor
+1,HSS-A,101,27275,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,8:30:00 AM,9:45:00 AM,W,"Kemper,Eella Yokum",Primary Instructor
+1,HSS-A,101,27276,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,8:30:00 AM,9:45:00 AM,F,"Keener,Kelli L",Primary Instructor
+1,HSS-A,101,27363,Lecture,8/25/2025,12/19/2025,In Person,KOMN100,10:00:00 AM,11:15:00 AM,M,"Collins,Lori",Primary Instructor
+1,HSS-A,101,27364,Lecture,8/25/2025,12/19/2025,In Person,KOMN100,8:30:00 AM,9:45:00 AM,M,"Collins,Lori",Primary Instructor
+1,HSS-A,101,27370,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,2:30:00 PM,3:45:00 PM,R,"Edom,Jeremy L",Primary Instructor
+1,HSS-A,101,27551,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,2:30:00 PM,3:45:00 PM,T,"Keith,Brandi",Primary Instructor
+1,HSS-A,101,27795,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,11:30:00 AM,12:45:00 PM,T,"Dominguez,Sharra",Primary Instructor
+1,HSS-A,101,36307,Lecture,8/25/2025,12/19/2025,In Person,KOMN103,11:30:00 AM,12:45:00 PM,R,"Bourne,Hannah Marie",Primary Instructor
+1,HSS-A,101,36455,Lecture,8/25/2025,12/19/2025,In Person,KOMN100,2:30:00 PM,3:45:00 PM,T,"Kennelly,Mary K",Primary Instructor
+1,HSS-S,410,27366,Seminar,8/25/2025,12/19/2025,In Person,KOMN175,4:00:00 PM,6:30:00 PM,W,"Pico,J. R.",Primary Instructor
+1,HTM-T,100,27723,Lecture,8/25/2025,12/19/2025,In Person,KOMN100,10:00:00 AM,11:15:00 AM,TR,"Jinkins,Larry",Primary Instructor
+1,HTM-T,191,26839,Lecture,8/25/2025,12/19/2025,In Person,KOMN113,1:00:00 PM,2:15:00 PM,TR,"Meng,Mark Z.",Primary Instructor
+1,HTM-T,219,30031,Lecture,8/25/2025,12/19/2025,In Person,KOMN204,11:30:00 AM,12:45:00 PM,TR,"Schoen,Esra",Primary Instructor
+1,HTM-T,334,30065,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN108,11:30:00 AM,12:45:00 PM,T,"Meng,Mark Z.",Primary Instructor
+1,HTM-T,375,30030,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,KOMN108,11:30:00 AM,12:45:00 PM,R,"Meng,Mark Z.",Primary Instructor
+1,HTM-T,419,27469,Lecture,8/25/2025,12/19/2025,In Person,KOMN179,2:30:00 PM,3:45:00 PM,TR,"Schoen,Esra",Primary Instructor
+1,INFO-I,101,26772,Lecture,8/25/2025,12/19/2025,In Person,HUNT201,4:00:00 PM,5:45:00 PM,MW,"Grant,Johnathan E",Primary Instructor
+1,INFO-I,210,26763,Lecture,8/25/2025,12/19/2025,In Person,HUNT201,8:30:00 AM,10:15:00 AM,TR,"Liu,Yang",Primary Instructor
+1,INFO-I,211,26998,Lecture,8/25/2025,12/19/2025,In Person,HUNT201,10:30:00 AM,12:15:00 PM,TR,"Mairaj,Aakif",Primary Instructor
+1,INFO-I,300,26842,Lecture,8/25/2025,12/19/2025,In Person,HUNT224,4:00:00 PM,5:15:00 PM,MW,"Liu,Yang",Primary Instructor
+1,INFO-I,450,27699,Lecture,8/25/2025,12/19/2025,In Person,HUNT224,1:00:00 PM,2:15:00 PM,TR,"Aktaruzzaman,Md",Primary Instructor
+1,LBST-D,510,32518,Lecture,8/25/2025,12/19/2025,Distance Synchronous Video,SBWBWEB,5:30:00 PM,8:00:00 PM,M,"Lidinsky,April",Primary Instructor
+1,MATH-M,104,26806,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,8:30:00 AM,9:45:00 AM,MW,"Hampshire,Diane Marie",Primary Instructor
+1,MATH-M,104,26926,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,10:00:00 AM,11:15:00 AM,M,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,26927,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,10:00:00 AM,11:15:00 AM,W,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,26928,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,11:30:00 AM,12:45:00 PM,MW,"Pennington,Carl Bates",Primary Instructor
+1,MATH-M,104,26929,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,1:00:00 PM,2:15:00 PM,M,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,26930,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,1:00:00 PM,2:15:00 PM,W,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,26931,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,10:00:00 AM,11:15:00 AM,TR,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,104,26932,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,11:30:00 AM,12:45:00 PM,T,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,26933,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,11:30:00 AM,12:45:00 PM,R,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,26934,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,1:00:00 PM,2:15:00 PM,TR,"Pennington,Carl Bates",Primary Instructor
+1,MATH-M,104,26935,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,2:30:00 PM,3:45:00 PM,T,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,26936,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,2:30:00 PM,3:45:00 PM,R,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,27246,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,4:00:00 PM,5:15:00 PM,TR,"Cole,Amy Rae",Primary Instructor
+1,MATH-M,104,27257,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,5:30:00 PM,6:45:00 PM,T,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,27482,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,5:30:00 PM,6:45:00 PM,R,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,35845,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,8:30:00 AM,9:45:00 AM,TR,"Hampshire,Diane Marie",Primary Instructor
+1,MATH-M,104,35846,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,10:00:00 AM,11:15:00 AM,T,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,35847,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,10:00:00 AM,11:15:00 AM,R,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,35849,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,2:30:00 PM,3:45:00 PM,MW,"Duncan,Timothy Alan",Primary Instructor
+1,MATH-M,104,35851,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,4:00:00 PM,5:15:00 PM,M,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,104,35852,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,4:00:00 PM,5:15:00 PM,W,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,105,26807,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,10:00:00 AM,11:15:00 AM,MW,"Motl,Patrick Michael",Primary Instructor
+1,MATH-M,105,26937,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,11:30:00 AM,12:45:00 PM,M,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,105,26938,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,11:30:00 AM,12:45:00 PM,W,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,105,26939,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,1:00:00 PM,2:15:00 PM,MW,"Krause,Linda",Primary Instructor
+1,MATH-M,105,26940,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,2:30:00 PM,3:45:00 PM,M,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,105,26941,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,2:30:00 PM,3:45:00 PM,W,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,105,26942,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,2:30:00 PM,3:45:00 PM,TR,"Burnett,Tifany",Primary Instructor
+1,MATH-M,105,26943,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,4:00:00 PM,5:15:00 PM,T,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,105,26944,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,4:00:00 PM,5:15:00 PM,R,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,105,26948,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,11:30:00 AM,12:45:00 PM,TR,"Burnett,Tifany",Primary Instructor
+1,MATH-M,105,26949,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,1:00:00 PM,2:15:00 PM,T,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,105,26950,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,1:00:00 PM,2:15:00 PM,R,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,105,35853,Lecture,8/25/2025,12/19/2025,In Person,KOMN080,4:00:00 PM,5:15:00 PM,MW,"Duncan,Timothy Alan",Primary Instructor
+1,MATH-M,105,35855,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,5:30:00 PM,6:45:00 PM,W,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,105,36929,Laboratory,8/25/2025,12/19/2025,In Person,KOMN054,5:30:00 PM,6:45:00 PM,M,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,113,27160,Lecture,8/25/2025,12/19/2025,In Person,KOMN082,8:30:00 AM,9:45:00 AM,TR,"Jaworski,Deborah",Primary Instructor
+1,MATH-M,118,26732,Lecture,8/25/2025,12/19/2025,In Person,KOMN072,11:30:00 AM,12:45:00 PM,TR,"Caruvana,Christopher",Primary Instructor
+1,MATH-M,118,26733,Lecture,8/25/2025,12/19/2025,In Person,KOMN072,11:30:00 AM,12:45:00 PM,MW,"Tupa,Peter Robert",Primary Instructor
+1,MATH-M,125,26734,Lecture,8/25/2025,12/19/2025,In Person,KOMN082,1:00:00 PM,2:15:00 PM,MWF,"Hampshire,Diane Marie",Primary Instructor
+1,MATH-M,126,26843,Lecture,8/25/2025,12/19/2025,In Person,KOMN082,1:00:00 PM,2:15:00 PM,TR,"Caruvana,Christopher",Primary Instructor
+1,MATH-M,215,26735,Lecture,8/25/2025,12/19/2025,In Person,KOMN072,12:55:00 PM,2:20:00 PM,MWF,"Carter,Jim",Primary Instructor
+1,MATH-M,301,29939,Lecture,8/25/2025,12/19/2025,In Person,KOMN052,1:00:00 PM,2:15:00 PM,MW,"Tebbe,Amelia Nora",Primary Instructor
+1,MATH-M,347,29940,Lecture,8/25/2025,12/19/2025,In Person,KOMN052,10:00:00 AM,11:15:00 AM,MW,"Carter,Jim",Primary Instructor
+1,MATH-M,403,29941,Lecture,8/25/2025,12/19/2025,In Person,KOMN052,11:30:00 AM,12:45:00 PM,MW,"Caruvana,Christopher",Primary Instructor
+1,MICR-J,200,26792,Lecture,8/25/2025,12/19/2025,Hybrid-On Campus & Online,HUNT116,1:00:00 PM,2:15:00 PM,M,"Duffitt,Ashley Dawn",Primary Instructor
+1,MICR-J,200,36773,Lecture,8/25/2025,12/19/2025,In Person,HUNT226,1:00:00 PM,2:15:00 PM,TR,"Sullivan,T.J.",Primary Instructor
+1,MICR-J,201,26737,Laboratory,8/25/2025,12/19/2025,In Person,HUNT130,2:30:00 PM,5:00:00 PM,M,"Chauret,Christian",Primary Instructor
+1,MICR-J,201,26875,Laboratory,8/25/2025,12/19/2025,In Person,HUNT130,6:00:00 PM,8:30:00 PM,M,"Chauret,Christian",Primary Instructor
+1,MICR-J,201,27157,Laboratory,8/25/2025,12/19/2025,In Person,HUNT130,2:30:00 PM,5:00:00 PM,W,"Church,Nick",Primary Instructor
+1,MICR-J,201,36774,Laboratory,8/25/2025,12/19/2025,In Person,HUNT130,10:00:00 AM,12:30:00 PM,F,"Church,Nick",Primary Instructor
+1,MUS-B,340,27549,Activity,8/25/2025,12/19/2025,In Person, , , , ,"Pinson,John A.",Primary Instructor
+1,MUS-D,300,27384,Activity,8/25/2025,12/19/2025,In Person, , , , ,"Anderson,Brandon Wayne",Primary Instructor
+1,MUS-M,174,27248,Lecture,8/25/2025,12/19/2025,In Person,OBLC101,11:30:00 AM,12:45:00 PM,MW,"Karst,George Lowery",Primary Instructor
+8W1,MUS-M,174,27249,Lecture,8/25/2025,10/17/2025,Hybrid-On Campus & Online,OBLC101,4:00:00 PM,5:15:00 PM,MW,"Pinson,John A.",Primary Instructor
+1,MUS-P,300,26956,Activity,8/25/2025,12/19/2025,In Person, , , , ,"Britton,David Lynn",Primary Instructor
+1,MUS-P,300,27098,Activity,8/25/2025,12/19/2025,In Person, , , , ,"Britton,David Lynn",Primary Instructor
+1,MUS-S,315,27099,Lecture,8/25/2025,12/19/2025,In Person, , , , ,"White,Joan C",Primary Instructor
+1,MUS-S,315,27509,Lecture,8/25/2025,12/19/2025,In Person, , , , ,"White,Joan C",Primary Instructor
+1,MUS-V,300,27350,Activity,8/25/2025,12/19/2025,In Person, , , , ,"Grice,Garry",Primary Instructor
+1,MUS-V,300,27351,Activity,8/25/2025,12/19/2025,In Person, , , , ,"Grice,Garry",Primary Instructor
+1,MUS-V,300,36106,Activity,8/25/2025,12/19/2025,In Person, , , , ,"Grice,Garry",Primary Instructor
+1,MUS-W,110,36571,Activity,8/25/2025,12/19/2025,In Person, , , , ,"Pinson,John A.",Primary Instructor
+1,MUS-W,310,27323,Lecture,8/25/2025,12/19/2025,In Person, , , , ,"Whitford,Trudy Ann",Primary Instructor
+1,MUS-X,40,26784,Activity,8/25/2025,12/19/2025,In Person,KOLB105,6:00:00 PM,7:30:00 PM,W,"Pinson,John A.",Primary Instructor
+1,MUS-X,40,26985,Activity,8/25/2025,12/19/2025,In Person, , , , ,"Pinson,John A.",Primary Instructor
+1,MUS-X,40,26986,Activity,8/25/2025,12/19/2025,In Person, , , , ,"Thornbury,Eric J",Primary Instructor
+1,MUS-X,40,27268,Activity,8/25/2025,12/19/2025,In Person,KOMN148,3:30:00 PM,5:30:00 PM,W,"Anderson,Brandon Wayne",Primary Instructor
+1,MUS-X,70,26759,Activity,8/25/2025,12/19/2025,In Person,KOMN150,4:00:00 PM,5:15:00 PM,TR,"Gerhard,Matt",Primary Instructor
+1,MUS-Z,281,27322,Lecture,8/25/2025,12/19/2025,In Person,OBLC101,10:00:00 AM,11:15:00 AM,MW,"Karst,George Lowery",Primary Instructor
+8W2,MUS-Z,281,27443,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,OBLC101,4:00:00 PM,5:15:00 PM,MW,"Pinson,John A.",Primary Instructor
+1,NMAT-D,216,27435,Lecture,8/25/2025,12/19/2025,In Person,KOMN208,4:00:00 PM,5:15:00 PM,MW,"Glassburn,Michael Paul",Primary Instructor
+1,NMAT-D,217,27429,Lecture,8/25/2025,12/19/2025,In Person,KOMN208,9:30:00 AM,12:15:00 PM,F,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-D,257,27262,Lecture,8/25/2025,12/19/2025,In Person,KOMN208,2:30:00 PM,3:45:00 PM,MW,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-F,101,26923,Lecture,8/25/2025,12/19/2025,In Person,CNED105,5:30:00 PM,7:30:00 PM,MW,"Applegate,Mike J",Primary Instructor
+1,NMAT-F,102,26961,Laboratory,8/25/2025,12/19/2025,In Person,KOFA101,11:30:00 AM,1:30:00 PM,MW,"Snoddy,Stuart",Primary Instructor
+1,NMAT-F,103,27690,Lecture,8/25/2025,12/19/2025,In Person,KOMN125,11:30:00 AM,1:30:00 PM,MW,"Douglas,Martin William",Primary Instructor
+1,NMAT-G,341,27532,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-G,341,27589,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Pickens,Aaron",Primary Instructor
+1,NMAT-G,346,27283,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,10:00:00 AM,11:15:00 AM,TR,"Steel,Gregory",Primary Instructor
+1,NMAT-G,491,27430,Lecture,8/25/2025,12/19/2025,In Person,KOMN110,11:30:00 AM,12:45:00 PM,MW,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-G,499,27808,Practicum,8/25/2025,12/19/2025,In Person, , , , ,"Steel,Gregory",Primary Instructor
+1,NMAT-G,499,27810,Practicum,8/25/2025,12/19/2025,In Person, , , , ,"Koerner,Michael Allen",Primary Instructor
+1,NMAT-G,499,27811,Practicum,8/25/2025,12/19/2025,In Person, , , , ,"Pickens,Aaron",Primary Instructor
+1,NMAT-S,230,27431,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,2:30:00 PM,5:15:00 PM,TR,"Pickens,Aaron",Primary Instructor
+1,NMAT-S,270,27316,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,11:30:00 AM,2:15:00 PM,TR,"Steel,Gregory",Primary Instructor
+1,NMAT-S,330,27432,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,8:30:00 AM,11:15:00 AM,TR,"Pickens,Aaron",Primary Instructor
+1,NMAT-S,332,30796,Lecture,8/25/2025,12/19/2025,In Person,KOFA115,9:00:00 AM,2:00:00 PM,F,"Pickens,Aaron",Primary Instructor
+1,NMAT-S,370,27317,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,9:00:00 AM,11:45:00 AM,F,"Steel,Gregory",Primary Instructor
+1,NMAT-S,370,27317,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,12:30:00 PM,1:30:00 PM,F,"Steel,Gregory",Primary Instructor
+1,NMAT-S,430,27433,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,8:30:00 AM,11:15:00 AM,TR,"Pickens,Aaron",Primary Instructor
+1,NMAT-S,432,27434,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,8:30:00 AM,11:15:00 AM,TR,"Pickens,Aaron",Primary Instructor
+1,NMAT-S,470,27318,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,9:00:00 AM,11:45:00 AM,F,"Steel,Gregory",Primary Instructor
+1,NMAT-S,470,27318,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,12:30:00 PM,1:30:00 PM,F,"Steel,Gregory",Primary Instructor
+1,NMAT-S,472,27319,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,12:30:00 PM,1:30:00 PM,F,"Steel,Gregory",Primary Instructor
+1,NMAT-S,472,27319,Lecture,8/25/2025,12/19/2025,In Person,KOFA125,9:00:00 AM,11:45:00 AM,F,"Steel,Gregory",Primary Instructor
+1,NURS-A,190,27110,Lecture,8/25/2025,12/19/2025,In Person,KOMN287,11:30:00 AM,2:15:00 PM,T,"Pratt,Stephanie Nicole",Primary Instructor
+1,NURS-B,222,26892,Lecture,8/25/2025,12/19/2025,In Person,KOE125,8:15:00 AM,11:15:00 AM,M,"Swartzendruber,Leigh Erin",Primary Instructor
+1,NURS-B,222,26893,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,1:00:00 PM,6:00:00 PM,T,"Swartzendruber,Leigh Erin",Secondary Instructor
+1,NURS-B,222,26893,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,1:00:00 PM,6:00:00 PM,T,"Chou,Alessandra Jeanae",Primary Instructor
+1,NURS-B,222,26894,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,8:00:00 AM,1:00:00 PM,T,"Mouser,April Lynne",Primary Instructor
+1,NURS-B,222,26894,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,8:00:00 AM,1:00:00 PM,T,"Swartzendruber,Leigh Erin",Secondary Instructor
+1,NURS-B,222,26895,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,1:00:00 PM,6:00:00 PM,R,"Swartzendruber,Leigh Erin",Secondary Instructor
+1,NURS-B,222,26895,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,1:00:00 PM,6:00:00 PM,R,"Hunt,Jill",Primary Instructor
+1,NURS-B,222,26896,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,9:00:00 AM,2:30:00 PM,F,"Swartzendruber,Leigh Erin",Secondary Instructor
+1,NURS-B,222,26896,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,9:00:00 AM,2:30:00 PM,F,"Bryant,Olivia",Primary Instructor
+1,NURS-B,222,26897,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,3:00:00 PM,8:00:00 PM,W,"Swartzendruber,Leigh Erin",Secondary Instructor
+1,NURS-B,222,26897,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,3:00:00 PM,8:00:00 PM,W,"Woody,Heather Marie",Primary Instructor
+1,NURS-B,222,26898,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,7:00:00 AM,12:00:00 PM,W,"Swartzendruber,Leigh Erin",Secondary Instructor
+1,NURS-B,222,26898,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,7:00:00 AM,12:00:00 PM,W,"Rosales,Stacy Ann",Primary Instructor
+8W1,NURS-B,222,27185,Lecture,8/25/2025,10/17/2025,In Person,KOMN175,8:30:00 AM,11:30:00 AM,TW,"Swartzendruber,Leigh Erin",Primary Instructor
+8W1,NURS-B,222,27186,Laboratory,8/25/2025,10/17/2025,In Person,KOE207,7:30:00 AM,5:30:00 PM,M,"Swartzendruber,Leigh Erin",Secondary Instructor
+8W1,NURS-B,222,27186,Laboratory,8/25/2025,10/17/2025,In Person,KOE207,7:30:00 AM,5:30:00 PM,M,"Leatherman Grubbs,Amanda Priest",Primary Instructor
+8W1,NURS-B,222,27187,Laboratory,8/25/2025,10/17/2025,In Person,KOE207,7:30:00 AM,5:30:00 PM,M,"Swartzendruber,Leigh Erin",Secondary Instructor
+8W1,NURS-B,222,27187,Laboratory,8/25/2025,10/17/2025,In Person,KOE207,7:30:00 AM,5:30:00 PM,M,"Hurst,Ashley Rachelle",Primary Instructor
+1,NURS-B,223,26899,Lecture,8/25/2025,12/19/2025,In Person,KOE125,12:00:00 PM,2:15:00 PM,W,"Fouts,Samantha Jo",Primary Instructor
+1,NURS-B,223,26899,Lecture,8/25/2025,12/19/2025,In Person,KOE125,2:30:00 PM,4:30:00 PM,M,"Fouts,Samantha Jo",Primary Instructor
+1,NURS-B,253,26900,Lecture,8/25/2025,12/19/2025,In Person,KOE125,8:30:00 AM,11:30:00 AM,R,"Hunt,Jill",Primary Instructor
+8W2,NURS-B,253,27193,Lecture,10/22/2025,12/19/2025,In Person,KOMN175,9:00:00 AM,12:00:00 PM,TW,"Chou,Alessandra Jeanae",Primary Instructor
+1,NURS-B,260,26912,Lecture,8/25/2025,12/19/2025,In Person,KOMN204,8:15:00 AM,11:15:00 AM,T,"Freeman,Andrea Beth",Primary Instructor
+1,NURS-B,260,26913,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,5:30:00 PM,9:30:00 PM,M,"Freeman,Andrea Beth",Primary Instructor
+1,NURS-B,260,26913,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,5:30:00 PM,9:30:00 PM,M,"Plough,Susan Elaine",Primary Instructor
+1,NURS-B,260,26913,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,5:30:00 PM,9:30:00 PM,M,"Miller,Craig Brandon",Primary Instructor
+1,NURS-B,260,26915,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,12:00:00 PM,4:00:00 PM,T,"Clem,Kassi Jo",Primary Instructor
+1,NURS-B,260,26915,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,12:00:00 PM,4:00:00 PM,T,"Freeman,Andrea Beth",Secondary Instructor
+1,NURS-B,260,26916,Laboratory,8/25/2025,12/19/2025,In Person,KOE207,11:00:00 AM,3:00:00 PM,W,"Freeman,Andrea Beth",Primary Instructor
+1,NURS-B,260,27188,Lecture,8/25/2025,12/19/2025,In Person,KOMN203,1:00:00 PM,4:00:00 PM,T,"Freeman,Andrea Beth",Primary Instructor
+1,NURS-B,260,27189,Laboratory,8/25/2025,12/19/2025,In Person,KOE207, , , ,"Freeman,Andrea Beth",Secondary Instructor
+1,NURS-B,260,27189,Laboratory,8/25/2025,12/19/2025,In Person,KOE207, , , ,"Leatherman Grubbs,Amanda Priest",Primary Instructor
+1,NURS-B,260,27189,Laboratory,8/25/2025,12/19/2025,In Person,KOE207, , , ,"Anderson,Della Marie",Secondary Instructor
+1,NURS-B,260,27190,Laboratory,8/25/2025,12/19/2025,In Person,KOE207, , , ,"Freeman,Andrea Beth",Secondary Instructor
+1,NURS-B,260,27190,Laboratory,8/25/2025,12/19/2025,In Person,KOE207, , , ,"Hurst,Ashley Rachelle",Primary Instructor
+1,NURS-B,260,27190,Laboratory,8/25/2025,12/19/2025,In Person,KOE207, , , ,"Anderson,Della Marie",Secondary Instructor
+1,NURS-B,261,26910,Lecture,8/25/2025,12/19/2025,In Person,KOMN108,8:30:00 AM,10:30:00 AM,MW,"Mouser,April Lynne",Primary Instructor
+1,NURS-B,261,27192,Lecture,8/25/2025,12/19/2025,In Person,KOMN287,1:00:00 PM,3:00:00 PM,WR,"Mouser,April Lynne",Primary Instructor
+1,NURS-B,334,27010,Lecture,8/25/2025,12/19/2025,In Person,KOE125,8:15:00 AM,11:15:00 AM,T,"Sposato,Margaret Fallon Van Brunt",Primary Instructor
+1,NURS-B,334,27011,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Secondary Instructor
+1,NURS-B,334,27011,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Glaze,Melissa Anne",Primary Instructor
+1,NURS-B,334,27012,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Primary Instructor
+1,NURS-B,334,27013,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Secondary Instructor
+1,NURS-B,334,27013,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Rosales,Stacy Ann",Primary Instructor
+1,NURS-B,334,27014,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Herr,Jade Kristine",Primary Instructor
+1,NURS-B,334,27014,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Secondary Instructor
+1,NURS-B,334,27015,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Woody,Heather Marie",Primary Instructor
+1,NURS-B,334,27015,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Secondary Instructor
+1,NURS-B,334,27016,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Ledbetter,Tamera Louise",Primary Instructor
+1,NURS-B,334,27016,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Secondary Instructor
+1,NURS-B,334,27019,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Secondary Instructor
+1,NURS-B,334,27019,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Rosales,Stacy Ann",Primary Instructor
+1,NURS-B,334,27289,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Sposato,Margaret Fallon Van Brunt",Secondary Instructor
+1,NURS-B,334,27289,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Glaze,Melissa Anne",Primary Instructor
+1,NURS-B,444,27021,Lecture,8/25/2025,12/19/2025,In Person,KOE125,8:15:00 AM,11:15:00 AM,W,"Pratt,Stephanie Nicole",Primary Instructor
+1,NURS-B,444,27022,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Pratt,Stephanie Nicole",Secondary Instructor
+1,NURS-B,444,27022,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Julius-Forkner,Patti Ann",Primary Instructor
+1,NURS-B,444,27023,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Bortone,Christy JoeAnn",Primary Instructor
+1,NURS-B,444,27023,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Pratt,Stephanie Nicole",Secondary Instructor
+1,NURS-B,444,27091,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Jones,Naomi Jean",Primary Instructor
+1,NURS-B,444,27091,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Pratt,Stephanie Nicole",Secondary Instructor
+1,NURS-B,444,27200,Clinic,8/25/2025,12/19/2025,In Person, , , , ,"Moore,Jamie Lynn",Primary Instructor
+1,NURS-B,444,27200,Clinic,8/25/2025,12/19/2025,In Person, , , , ,"Pratt,Stephanie Nicole",Secondary Instructor
+1,NURS-B,444,27285,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Pratt,Stephanie Nicole",Secondary Instructor
+1,NURS-B,444,27285,Clinic,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Julius-Forkner,Patti Ann",Primary Instructor
+1,NURS-F,582,31534,Lecture,8/25/2025,12/19/2025,In Person,KOE201,9:00:00 AM,11:00:00 AM,R,"Kent,Dea J",Primary Instructor
+1,NURS-F,582,31536,Clinic,8/25/2025,12/19/2025,In Person,OLONLINE, , , ,"Shively,Cheryl L",Primary Instructor
+1,NURS-H,355,26917,Lecture,8/25/2025,12/19/2025,In Person,KOMN204,2:30:00 PM,5:30:00 PM,M,"Bourke,Mary P",Primary Instructor
+1,NURS-H,356,26952,Lecture,8/25/2025,12/19/2025,In Person,KOE125,12:00:00 PM,3:00:00 PM,T,"Jones,Naomi Jean",Primary Instructor
+1,NURS-H,360,26953,Lecture,8/25/2025,12/19/2025,In Person,KOMN202,1:00:00 PM,4:00:00 PM,W,"Arwood,Brian Ashley",Primary Instructor
+1,NURS-H,371,27001,Lecture,8/25/2025,12/19/2025,In Person,KOMN202,8:15:00 AM,11:15:00 AM,W,"Pixley,Melissa",Primary Instructor
+NON,NURS-H,401,27264,Lecture,8/25/2025,12/19/2025,In Person,KOMN204,9:00:00 AM,11:00:00 AM,M,"Fouts,Samantha Jo",Primary Instructor
+1,NURS-H,476,27024,Lecture,8/25/2025,12/19/2025,In Person,KOMN202,2:00:00 PM,5:00:00 PM,M,"Woody,Heather Marie",Primary Instructor
+1,NURS-L,230,26911,Lecture,8/25/2025,12/19/2025,In Person,KOMN127,2:30:00 PM,5:30:00 PM,M,"Clem,Kassi Jo",Primary Instructor
+1,NURS-L,430,27104,Lecture,8/25/2025,12/19/2025,In Person,KOMN202,8:15:00 AM,11:15:00 AM,T,"Plough,Susan Elaine",Primary Instructor
+1,NURS-R,375,27000,Lecture,8/25/2025,12/19/2025,In Person,KOMN202,8:15:00 AM,11:15:00 AM,M,"Rosales,Stacy Ann",Primary Instructor
+1,NURS-S,474,26991,Lecture,8/25/2025,12/19/2025,In Person,KOE125,2:30:00 PM,4:30:00 PM,W,"Swartzendruber,Leigh Erin",Primary Instructor
+1,NURS-S,488,27093,Seminar,8/25/2025,12/19/2025,In Person,KOMN202,1:00:00 PM,4:00:00 PM,T,"Geiselman,Erin Lee",Primary Instructor
+1,NURS-S,488,27093,Seminar,8/25/2025,12/19/2025,In Person,KOMN202,1:00:00 PM,4:00:00 PM,T, ,Secondary Instructor
+1,NURS-S,491,27387,Lecture,8/25/2025,12/19/2025,In Person, , , ,T,"Townsend,Carolyn Sutton",Primary Instructor
+1,NURS-T,670,27444,Lecture,8/25/2025,12/19/2025,In Person,KOMN103,3:00:00 PM,6:00:00 PM,R,"Bourke,Mary P",Primary Instructor
+1,NURS-T,675,27760,Seminar,8/25/2025,12/19/2025,In Person,KOMN125,11:00:00 AM,3:00:00 PM,R,"Geiselman,Erin Lee",Primary Instructor
+1,NURS-T,675,27760,Seminar,8/25/2025,12/19/2025,In Person,KOMN125,11:00:00 AM,3:00:00 PM,R, ,Secondary Instructor
+1,NURS-Y,515,27682,Lecture,8/25/2025,12/19/2025,In Person,KOE201,12:00:00 PM,2:00:00 PM,R,"Kent,Dea J",Primary Instructor
+1,NURS-Y,515,27785,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE,10:00:00 AM,12:00:00 PM,R,"Pixley,Melissa",Primary Instructor
+1,NURS-Y,515,27785,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE,10:00:00 AM,12:00:00 PM,R,"Pixley,Melissa",Primary Instructor
+1,NURS-Y,515,27785,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE, , , ,"Pixley,Melissa",Primary Instructor
+1,NURS-Y,515,31948,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE,10:00:00 AM,12:00:00 PM,R,"Evans,Cindy Renee",Primary Instructor
+1,NURS-Y,515,31948,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE,10:00:00 AM,12:00:00 PM,R,"Evans,Cindy Renee",Primary Instructor
+1,NURS-Y,515,31948,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE, , , ,"Evans,Cindy Renee",Primary Instructor
+1,NURS-Y,515,33602,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE, , , ,"Velasco,Selena Marie",Primary Instructor
+1,NURS-Y,515,33602,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE,9:00:00 AM,11:00:00 AM,R, ,Primary Instructor
+1,NURS-Y,515,33602,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE,9:00:00 AM,11:00:00 AM,R, ,Primary Instructor
+1,NURS-Y,612,31944,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE, , , ,"Haubach,Kira Theresa Marie",Primary Instructor
+1,NURS-Y,612,31944,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE,10:00:00 AM,12:00:00 PM,R,"Haubach,Kira Theresa Marie",Primary Instructor
+1,NURS-Y,612,31944,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE,10:00:00 AM,12:00:00 PM,R,"Haubach,Kira Theresa Marie",Primary Instructor
+1,NURS-Y,612,32590,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,OLONLINE, , , ,"Cline,Danniel Lee",Primary Instructor
+1,NURS-Y,612,32590,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,SBWBWEB,10:00:00 AM,12:00:00 PM,R,"Cline,Danniel Lee",Primary Instructor
+1,NURS-Y,612,32590,Lecture,8/25/2025,12/19/2025,76-99% Online Interactive,SBWBWEB,10:00:00 AM,12:00:00 PM,R,"Cline,Danniel Lee",Primary Instructor
+1,NURS-Y,612,32829,Lecture,8/25/2025,12/19/2025,In Person,KOE201,2:30:00 PM,5:30:00 PM,R,"Kent,Dea J",Primary Instructor
+1,OCTH-K,320,27461,Lecture,8/25/2025,12/19/2025,In Person,KOMN125,8:15:00 AM,11:15:00 AM,M,"Fulk,Morgan",Primary Instructor
+1,OCTH-K,341,27510,Lecture,8/25/2025,12/19/2025,In Person,KOMN125,1:30:00 PM,3:30:00 PM,M,"Douglas,Christy",Primary Instructor
+1,OCTH-K,341,27511,Laboratory,8/25/2025,12/19/2025,In Person,KOE208,12:00:00 PM,2:00:00 PM,R,"Davis,Christine Elaine DuPouy",Primary Instructor
+1,OCTH-K,341,35097,Laboratory,8/25/2025,12/19/2025,In Person,KOE208,2:00:00 PM,4:00:00 PM,R,"Davis,Christine Elaine DuPouy",Primary Instructor
+1,OCTH-K,350,27462,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,8:15:00 AM,11:15:00 AM,R,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,355,27512,Lecture,8/25/2025,12/19/2025,In Person,KOMN052,1:00:00 PM,3:00:00 PM,T,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,355,27513,Laboratory,8/25/2025,12/19/2025,In Person, ,12:00:00 PM,2:00:00 PM,R,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,355,35106,Laboratory,8/25/2025,12/19/2025,In Person, ,2:00:00 PM,4:00:00 PM,R,"Negron,Jennifer",Primary Instructor
+1,OCTH-K,365,27463,Lecture,8/25/2025,12/19/2025,In Person,KOMN125,8:15:00 AM,11:15:00 AM,T,"Douglas,Christy",Primary Instructor
+1,OCTH-K,381,27527,Practicum,8/25/2025,12/19/2025,In Person,KOMN112,12:30:00 PM,4:30:00 PM,W,"Davis,Christine Elaine DuPouy",Primary Instructor
+1,OCTH-K,381,27527,Practicum,8/25/2025,12/19/2025,In Person,KOOCOC, , , ,"Davis,Christine Elaine DuPouy",Primary Instructor
+8W1,OCTH-K,432,27724,Lecture,8/25/2025,10/17/2025,In Person,KOMN125,1:00:00 PM,4:00:00 PM,TW,"Douglas,Christy",Primary Instructor
+8W1,OCTH-K,443,27725,Lecture,8/25/2025,10/17/2025,In Person,KOMN103,8:00:00 AM,10:00:00 AM,RF,"Davis,Christine Elaine DuPouy",Secondary Instructor
+8W1,OCTH-K,443,27725,Lecture,8/25/2025,10/17/2025,In Person,KOMN103,8:00:00 AM,10:00:00 AM,RF,"Sturm,Debra",Primary Instructor
+8W1,OCTH-K,443,27726,Laboratory,8/25/2025,10/17/2025,In Person, ,10:00:00 AM,12:00:00 PM,RF,"Davis,Christine Elaine DuPouy",Secondary Instructor
+8W1,OCTH-K,443,27726,Laboratory,8/25/2025,10/17/2025,In Person, ,10:00:00 AM,12:00:00 PM,RF,"Sturm,Debra",Primary Instructor
+8W1,OCTH-K,465,27727,Lecture,8/25/2025,10/17/2025,In Person,HUNT226,11:00:00 AM,12:00:00 PM,MW,"Douglas,Christy",Primary Instructor
+8W1,OCTH-K,472,27728,Lecture,8/25/2025,10/17/2025,In Person,KOMN103,8:00:00 AM,11:00:00 AM,MW,"Negron,Jennifer",Primary Instructor
+8W1,OCTH-K,472,27729,Laboratory,8/25/2025,10/17/2025,In Person,KOE208,10:00:00 AM,12:00:00 PM,T,"Negron,Jennifer",Primary Instructor
+8W1,OCTH-K,472,27729,Laboratory,8/25/2025,10/17/2025,In Person,KOE208,1:00:00 PM,3:00:00 PM,M,"Negron,Jennifer",Primary Instructor
+8W1,PAHM-V,502,26826,Lecture,8/25/2025,10/17/2025,Hybrid-On Campus & Online,KOMN127,6:00:00 PM,8:45:00 PM,W,"Hur,Hyunkang",Primary Instructor
+8W2,PAHM-V,504,26836,Lecture,10/22/2025,12/19/2025,In Person,KOMN106,6:00:00 PM,8:45:00 PM,W,"Hur,Hyunkang",Primary Instructor
+1,PHIL-P,100,27039,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,10:00:00 AM,11:15:00 AM,MW,"Buckman,Christopher",Primary Instructor
+1,PHIL-P,140,26739,Lecture,8/25/2025,12/19/2025,In Person,KOMN105,1:00:00 PM,2:15:00 PM,TR,"Buckman,Christopher",Primary Instructor
+1,PHIL-P,140,29727,Lecture,8/25/2025,12/19/2025,In Person,KOMN105,11:30:00 AM,12:45:00 PM,TR,"Blackwell,Scott",Primary Instructor
+1,PHIL-P,383,29728,Lecture,8/25/2025,12/19/2025,In Person,KOMN281,1:00:00 PM,2:15:00 PM,TR,"Blackwell,Scott",Primary Instructor
+1,PHSL-P,215,26740,Lecture,8/25/2025,12/19/2025,In Person,KOMN204,1:00:00 PM,2:15:00 PM,TR,"Finkler,Michael S.",Primary Instructor
+1,PHSL-P,215,26741,Laboratory,8/25/2025,12/19/2025,In Person,HUNT126,10:00:00 AM,12:30:00 PM,R,"Finkler,Michael S.",Secondary Instructor
+1,PHSL-P,215,26741,Laboratory,8/25/2025,12/19/2025,In Person,HUNT126,10:00:00 AM,12:30:00 PM,R,"Church,Nick",Primary Instructor
+1,PHSL-P,215,26768,Laboratory,8/25/2025,12/19/2025,In Person,HUNT126,2:30:00 PM,5:00:00 PM,R,"Finkler,Michael S.",Secondary Instructor
+1,PHSL-P,215,26768,Laboratory,8/25/2025,12/19/2025,In Person,HUNT126,2:30:00 PM,5:00:00 PM,R,"Church,Nick",Primary Instructor
+1,PHYS-P,201,27159,Lecture,8/25/2025,12/19/2025,In Person,HUNT116,2:30:00 PM,3:45:00 PM,MWF,"Tupa,Peter Robert",Primary Instructor
+1,PHYS-P,201,27181,Laboratory,8/25/2025,12/19/2025,In Person,HUNT109,4:00:00 PM,6:00:00 PM,M,"Detchon,Joel C",Primary Instructor
+1,PHYS-P,201,27181,Laboratory,8/25/2025,12/19/2025,In Person,HUNT109,4:00:00 PM,6:00:00 PM,M,"Tupa,Peter Robert",Secondary Instructor
+1,PHYS-P,201,27182,Laboratory,8/25/2025,12/19/2025,In Person,HUNT109,4:00:00 PM,6:00:00 PM,W,"Detchon,Joel C",Primary Instructor
+1,PHYS-P,201,27182,Laboratory,8/25/2025,12/19/2025,In Person,HUNT109,4:00:00 PM,6:00:00 PM,W,"Tupa,Peter Robert",Secondary Instructor
+1,PHYS-P,201,27183,Laboratory,8/25/2025,12/19/2025,In Person,HUNT109,12:00:00 PM,2:00:00 PM,F,"Detchon,Joel C",Primary Instructor
+1,PHYS-P,201,27183,Laboratory,8/25/2025,12/19/2025,In Person,HUNT109,12:00:00 PM,2:00:00 PM,F,"Tupa,Peter Robert",Secondary Instructor
+1,PHYS-P,301,32072,Lecture,8/25/2025,12/19/2025,Distance Synchronous Video,OLONLINE,4:00:00 PM,5:15:00 PM,MW,"Levine,Ilan Y.",Primary Instructor
+1,PHYS-P,310,27747,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Motl,Patrick Michael",Primary Instructor
+1,PHYS-P,441,32171,Lecture,8/25/2025,12/19/2025,Distance Synchronous Video,OLONLINE,4:15:00 PM,5:30:00 PM,TR,"De,Subhranil",Primary Instructor
+1,POLS-Y,219,29731,Lecture,8/25/2025,12/19/2025,In Person,KOMN113,10:00:00 AM,11:15:00 AM,MW,"Tuholski,Andy",Primary Instructor
+1,POLS-Y,313,29732,Lecture,8/25/2025,12/19/2025,In Person,KOMN113,1:00:00 PM,2:15:00 PM,MW,"Tuholski,Andy",Primary Instructor
+1,PSY-G,532,30000,Lecture,8/25/2025,12/19/2025,In Person,KOMN104,5:30:00 PM,8:15:00 PM,W,"Waters,Joseph Michael",Primary Instructor
+1,PSY-G,550,29998,Intern,8/25/2025,12/19/2025,In Person,KOMN104,5:30:00 PM,8:15:00 PM,M,"Waters,Joseph Michael",Primary Instructor
+1,PSY-G,550,29999,Intern,8/25/2025,12/19/2025,In Person,KOMN104,5:30:00 PM,8:15:00 PM,T,"Davis,Rosalyn Diane",Primary Instructor
+1,PSY-K,300,26871,Lecture,8/25/2025,12/19/2025,In Person,KOMN106,10:00:00 AM,11:15:00 AM,TR,"Tobin,Julie Ann",Primary Instructor
+1,PSY-P,103,26743,Lecture,8/25/2025,12/19/2025,In Person,KOMN179,10:00:00 AM,11:15:00 AM,MW,"Komar,Brooke D",Primary Instructor
+1,PSY-P,103,26760,Lecture,8/25/2025,12/19/2025,In Person,KOMN106,4:00:00 PM,5:15:00 PM,MW,"Holcomb,Kathryn M.",Primary Instructor
+1,PSY-P,103,26769,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,4:00:00 PM,5:15:00 PM,TR,"Agalar,Afra",Primary Instructor
+1,PSY-P,103,26907,Lecture,8/25/2025,12/19/2025,In Person,KOMN106,11:30:00 AM,12:45:00 PM,TR,"Agalar,Afra",Primary Instructor
+1,PSY-P,103,27476,Lecture,8/25/2025,12/19/2025,In Person,KOMN104,1:00:00 PM,2:15:00 PM,TR,"Tobin,Julie Ann",Primary Instructor
+1,PSY-P,103,27477,Lecture,8/25/2025,12/19/2025,In Person,KOMN104,1:00:00 PM,2:15:00 PM,MW,"Waters,Joseph Michael",Primary Instructor
+1,PSY-P,103,29993,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,11:30:00 AM,12:45:00 PM,MW,"Komar,Brooke D",Primary Instructor
+1,PSY-P,216,27696,Lecture,8/25/2025,12/19/2025,In Person,KOMN108,11:30:00 AM,12:45:00 PM,MW,"Agalar,Afra",Primary Instructor
+1,PSY-P,259,27165,Lecture,8/25/2025,12/19/2025,In Person,KOMN105,1:00:00 PM,2:15:00 PM,MW,"Holcomb,Kathryn M.",Primary Instructor
+1,PSY-P,319,26803,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,10:00:00 AM,11:15:00 AM,MW,"Holcomb,Kathryn M.",Primary Instructor
+1,PSY-P,324,26983,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,11:30:00 AM,12:45:00 PM,TR,"Komar,Brooke D",Primary Instructor
+1,PSY-P,325,26744,Lecture,8/25/2025,12/19/2025,In Person,KOMN106,11:30:00 AM,12:45:00 PM,MW,"Clark,Kevin Michael",Primary Instructor
+1,PSY-P,329,33679,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,2:30:00 PM,3:45:00 PM,TR,"Nichols,Steven",Primary Instructor
+1,PSY-P,355,26819,Lecture,8/25/2025,12/19/2025,In Person,KOMN101,1:00:00 PM,2:15:00 PM,MW,"Tobin,Julie Ann",Primary Instructor
+1,PSY-P,355,27048,Laboratory,8/25/2025,12/19/2025,In Person,KOMN200,4:00:00 PM,6:00:00 PM,W,"Tobin,Julie Ann",Primary Instructor
+1,PSY-P,364,29995,Seminar,8/25/2025,12/19/2025,In Person,KOMN106,1:00:00 PM,2:15:00 PM,TR,"Davis,Rosalyn Diane",Primary Instructor
+1,PSY-P,381,26794,Lecture,8/25/2025,12/19/2025,In Person,KOMN105,4:00:00 PM,6:45:00 PM,M,"Davis,Rosalyn Diane",Primary Instructor
+1,PSY-P,407,26824,Lecture,8/25/2025,12/19/2025,In Person,HUNT226,11:30:00 AM,12:45:00 PM,TR,"Nichols,Steven",Primary Instructor
+1,PSY-P,459,26820,Lecture,8/25/2025,12/19/2025,In Person,KOMN105,2:30:00 PM,5:15:00 PM,T,"Clark,Kevin Michael",Primary Instructor
+1,PSY-P,493,27485,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Tobin,Julie Ann",Primary Instructor
+1,PSY-P,494,27486,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Holcomb,Kathryn M.",Primary Instructor
+1,PSY-P,494,27490,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Tobin,Julie Ann",Primary Instructor
+1,SOC-S,100,26920,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,2:30:00 PM,3:45:00 PM,MW,"Baxter,Nicholas Michael",Primary Instructor
+1,SOC-S,100,27281,Lecture,8/25/2025,12/19/2025,In Person,KOMN113,8:30:00 AM,9:45:00 AM,MW,"Medley-Rath,Stephanie",Primary Instructor
+1,SOC-S,100,34685,Lecture,8/25/2025,12/19/2025,In Person,KOMN206,1:00:00 PM,2:15:00 PM,MW,"Baxter,Nicholas Michael",Primary Instructor
+1,SOC-S,252,27459,Lecture,8/25/2025,12/19/2025,In Person,KOMN104,10:00:00 AM,11:15:00 AM,MW,"Oslawski-Lopez,Jamie Lynn",Primary Instructor
+1,SOC-S,317,30007,Lecture,8/25/2025,12/19/2025,In Person,KOMN105,11:30:00 AM,12:45:00 PM,MW,"Oslawski-Lopez,Jamie Lynn",Primary Instructor
+1,SOC-S,355,30008,Lecture,8/25/2025,12/19/2025,In Person,KOMN102,1:00:00 PM,2:15:00 PM,MW,"Weller,Niki",Primary Instructor
+1,SPAN-S,111,26757,Lecture,8/25/2025,12/19/2025,In Person,KOMN175,2:00:00 PM,3:45:00 PM,MW,"Pico,J. R.",Primary Instructor
+1,SPAN-S,203,26747,Lecture,8/25/2025,12/19/2025,In Person,KOMN103,2:30:00 PM,3:45:00 PM,MW,"Taff,Christine M",Primary Instructor
+1,SPCH-C,255,26885,Lecture,8/25/2025,12/19/2025,In Person,KOMN202,11:30:00 AM,12:45:00 PM,MW,"Doss,Erin F",Primary Instructor
+1,SPCH-C,325,29913,Lecture,8/25/2025,12/19/2025,In Person,KOMN106,10:00:00 AM,11:15:00 AM,MW,"Sills,Liz",Primary Instructor
+1,SPCH-S,120,29909,Lecture,8/25/2025,12/19/2025,In Person,KOMN101,2:30:00 PM,3:45:00 PM,TR,"Doss,Erin F",Primary Instructor
+1,SPCH-S,121,26750,Lecture,8/25/2025,12/19/2025,In Person,KOMN287,10:00:00 AM,11:15:00 AM,TR,"Seaborn Jr,Joseph William",Primary Instructor
+1,SPCH-S,121,26751,Lecture,8/25/2025,12/19/2025,In Person,KOMN100,2:30:00 PM,3:45:00 PM,MW,"Kennelly,Mary K",Primary Instructor
+1,SPCH-S,121,26771,Lecture,8/25/2025,12/19/2025,In Person,KOMN206,1:00:00 PM,2:15:00 PM,TR,"Sills,Liz",Primary Instructor
+1,SPCH-S,121,26796,Lecture,8/25/2025,12/19/2025,In Person,KOMN103,11:30:00 AM,12:45:00 PM,MW,"Manthe,Scott Alan",Primary Instructor
+1,SPCH-S,121,26833,Lecture,8/25/2025,12/19/2025,In Person,KOMN101,11:30:00 AM,12:45:00 PM,TR,"Seaborn Jr,Joseph William",Primary Instructor
+1,SPCH-S,121,26988,Lecture,8/25/2025,12/19/2025,In Person,KOMN287,10:00:00 AM,11:15:00 AM,MW,"Faunce,Edwin E",Primary Instructor
+1,SPCH-S,121,27218,Lecture,8/25/2025,12/19/2025,In Person,KOMN104,2:30:00 PM,3:45:00 PM,TR,"Seaborn Jr,Joseph William",Primary Instructor
+1,SPCH-S,121,27225,Lecture,8/25/2025,12/19/2025,In Person,KOMN104,4:00:00 PM,5:15:00 PM,TR,"Neely,Nicole Renee",Primary Instructor
+1,SPCH-S,121,27280,Lecture,8/25/2025,12/19/2025,In Person,KOMN105,8:30:00 AM,9:45:00 AM,MW,"Faunce,Edwin E",Primary Instructor
+1,SPCH-S,121,27365,Lecture,8/25/2025,12/19/2025,In Person,KOMN106,1:00:00 PM,2:15:00 PM,MW,"Faunce,Edwin E",Primary Instructor
+1,SPCH-S,121,36423,Lecture,8/25/2025,12/19/2025,In Person,KOMN106,2:30:00 PM,3:45:00 PM,TR,"Manthe,Scott Alan",Primary Instructor
+1,SPCH-S,122,26752,Lecture,8/25/2025,12/19/2025,In Person,KOMN201,1:00:00 PM,2:15:00 PM,MW,"Sills,Liz",Primary Instructor
+1,SPCH-S,304,27606,Lecture,8/25/2025,12/19/2025,In Person,KOMN108,2:30:00 PM,3:45:00 PM,MW,"Doss,Erin F",Primary Instructor
+1,SPCH-S,398,37292,Ind Study,8/25/2025,12/19/2025,Independent/Directed Study, , , , ,"Doss,Erin F",Primary Instructor
+1,SRM-P,211,27265,Lecture,8/25/2025,12/19/2025,In Person,KOMN100,10:00:00 AM,11:15:00 AM,TR,"Jinkins,Larry",Primary Instructor
+1,SRM-P,333,27277,Lecture,8/25/2025,12/19/2025,In Person,KOMN112,11:30:00 AM,12:45:00 PM,TR,"Jinkins,Larry",Primary Instructor
+1,SRM-P,415,30129,Lecture,8/25/2025,12/19/2025,In Person,KOMN112,1:00:00 PM,2:15:00 PM,TR,"Jinkins,Larry",Primary Instructor
+1,SRM-R,418,26989,Lecture,8/25/2025,12/19/2025,In Person,KOMN179,2:30:00 PM,3:45:00 PM,TR,"Schoen,Esra",Primary Instructor
+1,SSCI-S,100,26844,Activity,8/25/2025,12/19/2025,In Person,KOMN082,10:00:00 AM,11:15:00 AM,TR,"Jalaie,Mahdokht Jasmine",Primary Instructor
+1,SSCI-S,100,27245,Activity,8/25/2025,12/19/2025,In Person,KOMN072,1:00:00 PM,2:15:00 PM,TR,"Krause,Linda",Primary Instructor
+1,SSCI-S,100,27550,Activity,8/25/2025,12/19/2025,In Person,KOMN072,10:00:00 AM,11:15:00 AM,TR,"Burnett,Tifany",Primary Instructor
+1,SSCI-S,100,27787,Activity,8/25/2025,12/19/2025,In Person,KOMN082,8:30:00 AM,9:45:00 AM,MW,"Jaworski,Deborah",Primary Instructor
+1,SSCI-S,100,27788,Activity,8/25/2025,12/19/2025,In Person,KOMN082,11:30:00 AM,12:45:00 PM,TR,"Jalaie,Mahdokht Jasmine",Primary Instructor
+1,SSCI-S,100,36557,Activity,8/25/2025,12/19/2025,In Person,KOMN072,2:30:00 PM,3:45:00 PM,TR,"Krause,Linda",Primary Instructor
+8W2,SUST-S,305,34080,Lecture,10/22/2025,12/19/2025,Hybrid-On Campus & Online,HUNT116,10:00:00 AM,12:30:00 PM,F,"Wysong,Brandon Carter",Primary Instructor
+1,THTR-T,120,36447,Lecture,8/25/2025,12/19/2025,In Person,KOMN150,2:30:00 PM,3:45:00 PM,MW,"Huber,Anna Noelle",Primary Instructor
