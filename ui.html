@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strands Agent Test UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            gap: 1px;
+            background: #e0e0e0;
+        }
+
+        .main-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            min-width: 0;
+        }
+
+        .header {
+            padding: 16px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #f9f9f9;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .session-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            overflow: hidden;
+        }
+
+        .mode-btn {
+            padding: 4px 12px;
+            font-size: 12px;
+            background: white;
+            border: none;
+            border-right: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #666;
+        }
+
+        .mode-btn:last-child {
+            border-right: none;
+        }
+
+        .mode-btn:hover:not(:disabled) {
+            background: #f0f0f0;
+        }
+
+        .mode-btn.active {
+            background: #007bff;
+            color: white;
+            font-weight: 600;
+        }
+
+        .mode-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .mode-indicator {
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .mode-indicator.remote {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .session-id-display {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .copy-btn {
+            padding: 2px 8px;
+            font-size: 11px;
+            background: #e0e0e0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #d0d0d0;
+        }
+
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            display: flex;
+            gap: 8px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            word-wrap: break-word;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message.user .message-bubble {
+            background: #007bff;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.agent .message-bubble {
+            background: #e8e8e8;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.error .message-bubble {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message.info .message-bubble {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        .message-meta {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        /* Markdown formatting styles */
+        .message-bubble strong {
+            font-weight: 600;
+        }
+
+        .message-bubble em {
+            font-style: italic;
+        }
+
+        .message-bubble code {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        .message.agent .message-bubble code {
+            background: rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .message.user .message-bubble code {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .message-bubble a {
+            color: #007bff;
+            text-decoration: none;
+            border-bottom: 1px solid #007bff;
+        }
+
+        .message.agent .message-bubble a {
+            color: #0056b3;
+        }
+
+        .message-bubble a:hover {
+            text-decoration: underline;
+        }
+
+        .input-area {
+            border-top: 1px solid #e0e0e0;
+            padding: 12px;
+            background: white;
+        }
+
+        .input-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .input-form textarea {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            max-height: 100px;
+            min-height: 40px;
+        }
+
+        .input-form textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+        }
+
+        .input-form button {
+            padding: 8px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s;
+            white-space: nowrap;
+            align-self: flex-end;
+        }
+
+        .input-form button:hover:not(:disabled) {
+            background: #0056b3;
+        }
+
+        .input-form button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .sidebar {
+            width: 320px;
+            background: white;
+            border-left: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #666;
+            background: #f9f9f9;
+        }
+
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
+            font-size: 12px;
+        }
+
+        .debug-section {
+            margin-bottom: 16px;
+        }
+
+        .debug-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .debug-title:hover {
+            color: #007bff;
+        }
+
+        .debug-content {
+            display: none;
+            background: #f5f5f5;
+            padding: 8px;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 11px;
+            color: #333;
+            border: 1px solid #e0e0e0;
+            word-break: break-all;
+        }
+
+        .debug-content.expanded {
+            display: block;
+        }
+
+        .debug-json {
+            color: #666;
+            white-space: pre-wrap;
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 6px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .control-buttons button {
+            flex: 1;
+            padding: 6px;
+            font-size: 11px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .control-buttons button:hover {
+            background: #e0e0e0;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 4px;
+            background: #4caf50;
+        }
+
+        .status-indicator.error {
+            background: #f44336;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff9800;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-height: 40vh;
+            }
+
+            .message-bubble {
+                max-width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-panel">
+            <div class="header">
+                <h1>Strands Agent Test</h1>
+                <div class="session-info">
+                    <div class="mode-selector">
+                        <button class="mode-btn active" id="localModeBtn" onclick="setMode('local')">Local</button>
+                        <button class="mode-btn" id="remoteModeBtn" onclick="setMode('remote')">Remote</button>
+                    </div>
+                    <span class="mode-indicator" id="modeIndicator">Local</span>
+                    <span class="status-indicator" id="statusIndicator"></span>
+                    <span>Session:</span>
+                    <span class="session-id-display" id="sessionIdDisplay"></span>
+                    <button class="copy-btn" id="copySessionBtn">Copy</button>
+                </div>
+            </div>
+
+            <div class="messages" id="messagesContainer"></div>
+
+            <div class="input-area">
+                <form class="input-form" id="inputForm">
+                    <textarea id="userInput" placeholder="Ask the agent something..." rows="1"></textarea>
+                    <button type="submit" id="sendBtn">Send</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-header">Debug Panel</div>
+            <div class="sidebar-content">
+                <div class="debug-section">
+                    <div class="debug-title" onclick="toggleDebugSection(event)">📤 Last Request</div>
+                    <div class="debug-content" id="lastRequestContent">
+                        <div class="debug-json">None yet</div>
+                    </div>
+                </div>
+
+                <div class="debug-section">
+                    <div class="debug-title" onclick="toggleDebugSection(event)">📥 Last Response</div>
+                    <div class="debug-content" id="lastResponseContent">
+                        <div class="debug-json">None yet</div>
+                    </div>
+                </div>
+
+                <div class="debug-section">
+                    <div class="debug-title" onclick="toggleDebugSection(event)">⏱️ Metrics</div>
+                    <div class="debug-content" id="metricsContent">
+                        <div class="debug-json">
+Latency: --
+Messages: 0
+Errors: 0
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-buttons">
+                    <button onclick="clearHistory()">Clear History</button>
+                    <button onclick="copyLastResponse()">Copy Response</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize state
+        let sessionId = generateSessionId();
+        let messageCount = 0;
+        let errorCount = 0;
+        let lastRequestTime = null;
+        let lastLatency = null;
+        let currentMode = localStorage.getItem("testMode") || "local";
+        let remoteEnabled = false;
+
+        // DOM elements
+        const messagesContainer = document.getElementById('messagesContainer');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const inputForm = document.getElementById('inputForm');
+        const sessionIdDisplay = document.getElementById('sessionIdDisplay');
+        const copySessionBtn = document.getElementById('copySessionBtn');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const lastRequestContent = document.getElementById('lastRequestContent');
+        const lastResponseContent = document.getElementById('lastResponseContent');
+        const metricsContent = document.getElementById('metricsContent');
+        const localModeBtn = document.getElementById('localModeBtn');
+        const remoteModeBtn = document.getElementById('remoteModeBtn');
+        const modeIndicator = document.getElementById('modeIndicator');
+
+        // Initialize UI
+        async function init() {
+            sessionIdDisplay.textContent = sessionId;
+            userInput.focus();
+
+            // Check if remote endpoint is configured
+            try {
+                const response = await fetch('/remote-config');
+                const config = await response.json();
+                remoteEnabled = config.enabled;
+
+                if (!remoteEnabled) {
+                    remoteModeBtn.disabled = true;
+                    remoteModeBtn.title = "Remote endpoint not configured";
+                    // Force to local mode if remote was previously selected but isn't available
+                    if (currentMode === 'remote') {
+                        currentMode = 'local';
+                        localStorage.setItem('testMode', 'local');
+                    }
+                } else {
+                    remoteModeBtn.title = `Remote: ${config.endpoint_name} (${config.region})`;
+                }
+            } catch (error) {
+                console.error("Failed to check remote config:", error);
+                remoteModeBtn.disabled = true;
+                currentMode = 'local';
+            }
+
+            // Set initial mode UI
+            updateModeUI();
+
+            // Auto-resize textarea
+            userInput.addEventListener('input', function () {
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+            });
+        }
+
+        // Set mode and update UI
+        function setMode(mode) {
+            if (mode === 'remote' && !remoteEnabled) {
+                alert('Remote endpoint is not configured. Please set AGENT_RUNTIME_ARN or AGENT_RUNTIME_ID + AWS_ACCOUNT_ID.');
+                return;
+            }
+            currentMode = mode;
+            localStorage.setItem('testMode', mode);
+            updateModeUI();
+            addMessage(`Switched to ${mode} mode`, 'info', getTimestamp());
+        }
+
+        // Update mode UI
+        function updateModeUI() {
+            if (currentMode === 'local') {
+                localModeBtn.classList.add('active');
+                remoteModeBtn.classList.remove('active');
+                modeIndicator.textContent = 'Local';
+                modeIndicator.classList.remove('remote');
+            } else {
+                localModeBtn.classList.remove('active');
+                remoteModeBtn.classList.add('active');
+                modeIndicator.textContent = `Remote (${AGENT_ENDPOINT_NAME || 'prod'})`;
+                modeIndicator.classList.add('remote');
+            }
+        }
+
+        // Generate session ID
+        function generateSessionId() {
+            return 'session-' + Math.random().toString(36).substr(2, 9);
+        }
+
+        // Format timestamp
+        function getTimestamp() {
+            return new Date().toLocaleTimeString();
+        }
+
+        // Simple markdown to HTML converter (safe subset)
+        function markdownToHtml(text) {
+            // Escape HTML entities first to prevent XSS
+            const escapeHtml = (str) => {
+                const map = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                };
+                return str.replace(/[&<>"']/g, c => map[c]);
+            };
+
+            // Don't escape yet - we'll do it on unformatted text only
+            let result = text;
+
+            // Bold: **text** → <strong>text</strong>
+            result = result.replace(/\*\*(.+?)\*\*/g, (match, text) => {
+                return `<strong>${escapeHtml(text)}</strong>`;
+            });
+
+            // Italic: *text* → <em>text</em>
+            result = result.replace(/\*(.+?)\*/g, (match, text) => {
+                return `<em>${escapeHtml(text)}</em>`;
+            });
+
+            // Inline code: `text` → <code>text</code>
+            result = result.replace(/`(.+?)`/g, (match, text) => {
+                return `<code>${escapeHtml(text)}</code>`;
+            });
+
+            // Links: [text](url) → <a href="url">text</a>
+            result = result.replace(/\[(.+?)\]\((.+?)\)/g, (match, text, url) => {
+                // Basic URL validation (prevent javascript: etc)
+                if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/')) {
+                    return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(text)}</a>`;
+                }
+                return escapeHtml(match);
+            });
+
+            // Line breaks: \n → <br>
+            result = result.replace(/\n/g, '<br>');
+
+            // Escape any remaining unescaped text by wrapping in span
+            // Actually, we need to be smarter: split by our formatted tags and only escape the plain text parts
+            // For now, return the result as is - our replacements have already escaped the content
+            return result;
+        }
+
+        // Add message to chat
+        function addMessage(text, role, metadata = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            // Render markdown for agent responses, plain text for user messages and info
+            if (role === 'agent') {
+                bubble.innerHTML = markdownToHtml(text);
+            } else {
+                bubble.textContent = text;
+            }
+            messageDiv.appendChild(bubble);
+
+            if (metadata) {
+                const metaDiv = document.createElement('div');
+                metaDiv.className = 'message-meta';
+                metaDiv.textContent = metadata;
+                messageDiv.appendChild(metaDiv);
+            }
+
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            if (role === 'user') {
+                messageCount++;
+            }
+        }
+
+        // Toggle debug section
+        function toggleDebugSection(event) {
+            const content = event.target.nextElementSibling;
+            content.classList.toggle('expanded');
+        }
+
+        // Update debug panel
+        function updateDebugPanel(request, response, latency) {
+            lastRequestContent.innerHTML = `<div class="debug-json">${JSON.stringify(request, null, 2)}</div>`;
+            lastResponseContent.innerHTML = `<div class="debug-json">${JSON.stringify(response, null, 2)}</div>`;
+            lastLatency = latency;
+            updateMetrics();
+        }
+
+        // Update metrics
+        function updateMetrics() {
+            const metricsText = `Latency: ${lastLatency ? lastLatency + 'ms' : '--'}
+Messages: ${messageCount}
+Errors: ${errorCount}`;
+            metricsContent.innerHTML = `<div class="debug-json">${metricsText}</div>`;
+        }
+
+        // Set status indicator
+        function setStatus(status) {
+            if (status === 'loading') {
+                statusIndicator.className = 'loading';
+            } else if (status === 'error') {
+                statusIndicator.className = 'status-indicator error';
+            } else {
+                statusIndicator.className = 'status-indicator';
+            }
+        }
+
+        // Send message
+        async function sendMessage(e) {
+            e.preventDefault();
+
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            // Add user message to chat
+            addMessage(text, 'user', getTimestamp());
+            userInput.value = '';
+            userInput.style.height = 'auto';
+            sendBtn.disabled = true;
+            setStatus('loading');
+
+            const request = {
+                prompt: text,
+                session_id: sessionId
+            };
+
+            try {
+                const startTime = performance.now();
+                const endpoint = currentMode === 'local' ? '/invoke' : '/invoke-remote';
+
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(request)
+                });
+
+                const endTime = performance.now();
+                const latency = Math.round(endTime - startTime);
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    const errorMsg = errorData.detail || `HTTP ${response.status}`;
+                    addMessage(`Error: ${errorMsg}`, 'error', getTimestamp());
+                    errorCount++;
+                    updateDebugPanel(request, { error: errorMsg, status: response.status }, latency);
+                    setStatus('error');
+                    return;
+                }
+
+                const data = await response.json();
+                sessionId = data.session_id || sessionId;
+                sessionIdDisplay.textContent = sessionId;
+
+                addMessage(data.response, 'agent', getTimestamp());
+                updateDebugPanel(request, data, latency);
+                setStatus('ok');
+            } catch (error) {
+                addMessage(`Error: ${error.message}`, 'error', getTimestamp());
+                errorCount++;
+                updateDebugPanel(request, { error: error.message }, null);
+                setStatus('error');
+            } finally {
+                sendBtn.disabled = false;
+                userInput.focus();
+            }
+        }
+
+        // Copy session ID
+        function copySessionId() {
+            navigator.clipboard.writeText(sessionId).then(() => {
+                const originalText = copySessionBtn.textContent;
+                copySessionBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copySessionBtn.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        // Copy last response
+        function copyLastResponse() {
+            const responseText = lastResponseContent.textContent;
+            navigator.clipboard.writeText(responseText);
+        }
+
+        // Clear history
+        function clearHistory() {
+            if (confirm('Clear chat history and reset session?')) {
+                messagesContainer.innerHTML = '';
+                sessionId = generateSessionId();
+                sessionIdDisplay.textContent = sessionId;
+                messageCount = 0;
+                errorCount = 0;
+                lastLatency = null;
+                updateMetrics();
+                lastRequestContent.innerHTML = '<div class="debug-json">None yet</div>';
+                lastResponseContent.innerHTML = '<div class="debug-json">None yet</div>';
+                userInput.focus();
+                setStatus('ok');
+            }
+        }
+
+        // Event listeners
+        inputForm.addEventListener('submit', sendMessage);
+        copySessionBtn.addEventListener('click', copySessionId);
+
+        // Keyboard behavior: Enter sends, Shift+Enter inserts newline
+        userInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage({ preventDefault: () => { } });
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

@@ -37,6 +37,68 @@ This is **not production-ready** code. It is for experimentation, validation, an
 - `pipeline.yml`: CloudFormation template for CI/CD pipeline
 - `buildspec-build.yml`: CodeBuild buildspec for Docker image build and push
 - `buildspec-deploy.yml`: CodeBuild buildspec for AgentCore runtime/endpoint deployment
+- `ui.html`: Web-based testing UI for the agent (local and remote modes)
+
+## Testing UI
+
+A minimal web-based testing interface is included for quick experimentation and debugging during development.
+
+### Running the UI
+
+1. Start the FastAPI server:
+   ```bash
+   python -m uvicorn main:app --host 0.0.0.0 --port 8080
+   ```
+
+2. Open your browser to `http://localhost:8080/`
+
+### Features
+
+The UI provides:
+- **Chat-like interface** with message history
+- **Session management** — agent sessions persist across multiple messages
+- **Local mode** — test your agent running locally (default)
+- **Remote mode** — test the deployed AgentCore Runtime endpoint (when configured)
+- **Mode toggle** — switch between local and remote testing in real-time
+- **Debug panel** — view raw request/response JSON, latency, and message metrics
+- **Responsive design** — works on desktop and mobile
+
+### Local Testing
+
+By default, the UI connects to the FastAPI server running locally. Simply type messages and chat with your agent.
+
+### Remote Testing
+
+To test against your deployed AgentCore Runtime endpoint:
+
+1. Deploy your agent using `./deploy.sh`
+   ```bash
+   ./deploy.sh
+   ```
+   The output will display your `AGENT_RUNTIME_ARN`, `AGENT_RUNTIME_ID`, and `AGENT_ENDPOINT_NAME`.
+
+2. Set environment variables for the FastAPI server:
+   ```bash
+   # Either use AGENT_RUNTIME_ARN (recommended):
+   export AGENT_RUNTIME_ARN="arn:aws:bedrock-agentcore:us-east-1:123456789012:runtime/my_agent-abc123"
+   export AGENT_ENDPOINT_NAME="prod"
+   
+   # OR use AGENT_RUNTIME_ID + AWS_ACCOUNT_ID:
+   export AGENT_RUNTIME_ID="my_agent-abc123"
+   export AWS_ACCOUNT_ID="123456789012"
+   export AGENT_ENDPOINT_NAME="prod"
+   
+   # Optional (defaults to us-east-1):
+   export AWS_REGION="us-east-1"
+   ```
+
+3. Restart the FastAPI server (so it picks up the new environment variables)
+
+4. Reload the UI in your browser — the "Remote" button will now be enabled
+
+5. Click the "Remote" button to switch modes, then test your deployed agent
+
+**Security Note:** AWS credentials are handled server-side only. No credentials are stored in the UI or transmitted to the browser. The FastAPI server uses your AWS credentials from environment variables, IAM role, or `~/.aws/credentials` to authenticate with AgentCore.
 
 ## Prerequisites
 
