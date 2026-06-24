@@ -9,17 +9,16 @@ It is intentionally small and practical, designed to help me learn how to:
 
 1. Build a basic Strands agent in Python
 2. Wrap it with FastAPI using an HTTP runtime contract
-3. Containerize for ARM64
-4. Deploy to AgentCore Runtime
-5. Invoke the deployed endpoint from the AWS CLI
+3. Trigger the CloudFormation + CodePipeline deployment flow
+4. Invoke the deployed endpoint from the AWS CLI
 
 ## Project Status
 
 This project is currently functioning as a working end-to-end learning setup:
 
 - Local API app runs via FastAPI
-- ARM64 image builds and pushes to ECR
-- AgentCore Runtime deploys and endpoint can be invoked
+- CodePipeline builds and deploys the runtime after stack bootstrap
+- AgentCore Runtime endpoint can be invoked
 
 ## Important Note
 
@@ -30,8 +29,8 @@ This is **not production-ready** code. It is for experimentation, validation, an
 - `agent.py`: Defines the Strands agent and `run()` function
 - `main.py`: FastAPI app exposing health and invoke routes
 - `requirements.txt`: Python dependencies
-- `Dockerfile`: ARM64 container build for AgentCore
-- `deploy.sh`: Local build + push + deploy helper script
+- `Dockerfile`: ARM64 container build used by the pipeline
+- `deploy.sh`: CloudFormation bootstrap helper for the pipeline stack
 - `invoke.sh`: Quick test invoke script for deployed runtime
 - `.env.example`: Environment variable template
 - `pipeline.yml`: CloudFormation template for CI/CD pipeline
@@ -71,11 +70,11 @@ By default, the UI connects to the FastAPI server running locally. Simply type m
 
 To test against your deployed AgentCore Runtime endpoint:
 
-1. Deploy your agent using `./deploy.sh`
+1. Deploy the CloudFormation stack using `./deploy.sh`
    ```bash
    ./deploy.sh
    ```
-   The output will display your `AGENT_RUNTIME_ARN`, `AGENT_RUNTIME_ID`, and `AGENT_ENDPOINT_NAME`.
+  This creates the pipeline that builds the image and deploys the runtime.
 
 2. Set environment variables for the FastAPI server:
    ```bash
@@ -104,63 +103,9 @@ To test against your deployed AgentCore Runtime endpoint:
 
 - Python 3.12+
 - AWS CLI v2 configured with credentials
-- Docker with `buildx`
 - Bedrock model access enabled in your AWS region
-- IAM execution role for AgentCore runtime with at least:
-  - `bedrock:InvokeModel`
-  - `bedrock:InvokeModelWithResponseStream`
-  - `ecr:GetAuthorizationToken`
-  - `ecr:BatchGetImage`
-  - `ecr:GetDownloadUrlForLayer`
 
-If you enable session persistence, the runtime execution role also needs access to the session bucket:
-
-- `s3:ListBucket`
-- `s3:GetBucketLocation`
-- `s3:GetObject`
-- `s3:GetObjectVersion`
-- `s3:PutObject`
-- `s3:DeleteObject`
-
-## Execution Role IAM Permissions
-
-The runtime execution role (for example `AgentCoreExecutionRole`) should include these permissions.
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowBedrockModelInvoke",
-      "Effect": "Allow",
-      "Action": [
-        "bedrock:InvokeModel",
-        "bedrock:InvokeModelWithResponseStream"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "AllowEcrAuthToken",
-      "Effect": "Allow",
-      "Action": [
-        "ecr:GetAuthorizationToken"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "AllowEcrImagePull",
-      "Effect": "Allow",
-      "Action": [
-        "ecr:BatchGetImage",
-        "ecr:GetDownloadUrlForLayer"
-      ],
-      "Resource": "arn:aws:ecr:<region>:<account-id>:repository/<repo-name>"
-    }
-  ]
-}
-```
-
-For least privilege, scope ECR permissions to the exact repository and scope Bedrock permissions to only the model or inference profile ARNs you use.
+Deployment and IAM are defined in `pipeline.yml`.
 
 ## Local Development
 
@@ -204,11 +149,7 @@ cp .env.example .env
 
 Set required fields in `.env`:
 
-- `AWS_ACCOUNT_ID`
 - `AWS_REGION`
-- `ECR_REPO_NAME`
-- `AGENTCORE_EXECUTION_ROLE_ARN`
-- `AGENT_RUNTIME_NAME`
 
 After deployment, also set either:
 
@@ -239,13 +180,8 @@ Run:
 What `deploy.sh` does:
 
 1. Loads `.env`
-2. Verifies AWS CLI and Docker buildx
-3. Ensures ECR repo exists
-4. Logs Docker into ECR
-5. Builds and pushes ARM64 image
-6. Creates AgentCore runtime with HTTP protocol
-7. Waits for runtime `READY`
-8. Creates endpoint (name `prod`)
+2. Runs `aws cloudformation deploy` for `pipeline.yml`
+3. Hands off builds and runtime deployment to CodePipeline
 
 ## CI/CD Pipeline (CloudFormation + AWS CodePipeline)
 
@@ -269,7 +205,7 @@ aws cloudformation deploy \
   --region us-east-1
 ```
 
-2. Retrieve the CloudStar Connections ARN from stack outputs and authorize GitHub:
+2. Retrieve the CodeStar Connections ARN from stack outputs and authorize GitHub:
 
 ```bash
 aws cloudformation describe-stacks \
@@ -306,16 +242,6 @@ The deploy stage (`buildspec-deploy.yml`):
 - **Subsequent runs**: Updates runtime with new image
 - Waits for runtime to become `READY`
 - Creates or updates the endpoint
-
-### Local Deployment vs. Pipeline
-
-Both `deploy.sh` (local) and the pipeline use identical conflict-handling logic:
-
-- If a runtime with the same name already exists, both adopt it and update with the new image
-- If no endpoint exists, both create one
-- If endpoint exists, both update it to the latest runtime version
-
-You can use either method interchangeably; the pipeline is useful for automated deployments on repository changes.
 
 ## Invoke Deployed Runtime
 
@@ -377,101 +303,19 @@ The API response includes the effective `session_id`, so clients can reuse it on
 
 ## Bedrock Knowledge Base (RAG Integration)
 
-This project includes a **Bedrock Managed Knowledge Base**. This enables Retrieval Augmented Generation (RAG) without managing vector-store infrastructure directly.
+This project uses an AWS Managed Knowledge Base for RAG retrieval.
 
-### Knowledge Base Architecture
+Today, that managed knowledge base must be created and configured outside this CloudFormation stack (for example in the AWS Console or via CLI). The pipeline then references the existing knowledge base by ID and handles runtime wiring, data source sync, and retrieval integration.
 
-The CloudFormation stack (`pipeline.yml`) creates:
+For source document updates, the CloudFormation stack provisions an EventBridge rule and Lambda function that automatically start ingestion sync when new files are uploaded to the configured S3 knowledge base source prefix.
 
-- **Source Document Bucket** (`agent-vectors-{AccountId}-{Region}`): S3 bucket that stores source files under a configurable prefix (`kb-source/` by default)
-- **Knowledge Base Role**: IAM role for Bedrock managed knowledge base to read source documents from S3
-- **Bedrock Managed Knowledge Base**: `Type: MANAGED` with AWS-managed embedding model
-- **Auto-Sync Lambda + EventBridge Rule**: Starts ingestion jobs when new source files are uploaded
-- **Deploy Stage Data Source Automation**: Pipeline deploy step ensures the managed S3 connector data source exists and triggers initial ingestion when first created
-- **Agent Execution Role Updates**: Includes `bedrock:Retrieve` permissions for KB retrieval
-
-### Configuration
-
-You can customize the knowledge base when deploying:
-
-```bash
-aws cloudformation deploy \
-  --stack-name agent-pipeline \
-  --template-file pipeline.yml \
-  --capabilities CAPABILITY_NAMED_IAM \
-  --parameter-overrides \
-    KnowledgeBaseName=my-custom-kb \
-    KnowledgeBaseDescription="My custom knowledge base" \
-  --region us-east-1
-```
-
-### Adding Documents
-
-1. **Upload documents to the source prefix** (any format supported by Bedrock connectors, such as PDF, TXT, JSON, Markdown):
-
-```bash
-aws s3 cp my-document.pdf s3://agent-vectors-{AccountId}-{Region}/kb-source/
-```
-
-2. **Auto-sync handles ingestion for uploads**:
-
-- EventBridge detects object creation
-- Lambda resolves the data source by name and calls `start-ingestion-job`
-
-3. **Optional manual sync commands** (for troubleshooting or bulk refresh):
-
-```bash
-# Get the Knowledge Base ID from stack outputs
-KB_ID=$(aws cloudformation describe-stacks \
-  --stack-name agent-pipeline \
-  --query 'Stacks[0].Outputs[?OutputKey==`KnowledgeBaseId`].OutputValue' \
-  --output text)
-
-# Discover managed data source ID by configured name
-DS_NAME=$(aws cloudformation describe-stacks \
-  --stack-name agent-pipeline \
-  --query 'Stacks[0].Outputs[?OutputKey==`KnowledgeBaseDataSourceName`].OutputValue' \
-  --output text)
-
-DS_ID=$(aws bedrock-agent list-data-sources \
-  --knowledge-base-id "$KB_ID" \
-  --query "dataSourceSummaries[?name=='$DS_NAME'].dataSourceId | [0]" \
-  --output text)
-
-# Start ingestion manually if needed
-aws bedrock-agent start-ingestion-job \
-  --knowledge-base-id "$KB_ID" \
-  --data-source-id "$DS_ID"
-```
-
-### Using the Knowledge Base with Your Agent
-
-The agent code (`agent.py`) is already updated to support RAG:
-
-```python
-# Retrieve context from knowledge base
-def retrieve_from_knowledge_base(query: str, max_results: int = 3) -> str:
-    # Returns relevant document chunks based on semantic similarity
-    ...
-
-# The run() function automatically augments prompts with KB context
-# and returns the response plus the effective session_id.
-def run(user_input: str, session_id: str | None = None) -> tuple[str, str]:
-    context = retrieve_from_knowledge_base(user_input)
-    augmented_input = f"Context: {context}\n\nQuestion: {user_input}"
-  return agent(augmented_input), session_id or "generated-session-id"
-```
-
-To enable the knowledge base at runtime, set the `KNOWLEDGE_BASE_ID` environment variable in your deployment configuration. In this project, the value is injected automatically by the CloudFormation pipeline stack.
-
-For comprehensive documentation, see [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md).
+Once CloudFormation adds full support for managed knowledge base creation, this can move fully into IaC.
 
 ## Learning Goals / Future Ideas
 
 - Add tool usage in Strands (`strands-agents-tools`)
 - Add CI smoke test for endpoint readiness + invoke success
 - Add structured logging and basic observability checks
-- Add least-privilege IAM policy docs for runtime and caller
 
 ## Cleanup (Optional)
 
@@ -480,7 +324,7 @@ If you want to tear down resources later, remove:
 - AgentCore runtime endpoint
 - AgentCore runtime
 - ECR repository/images
-- IAM role/policies created for this test
+- The CloudFormation stack and its pipeline resources
 
 ---
 
